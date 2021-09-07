@@ -1,6 +1,6 @@
 ![**Pamaxie**](https://i.imgur.com/aXwrGhC.png)
 
-This is the source for the documentation [of pamaxies source code](https://wiki.pamaxie.com/). This means all content on the website will be saved on here as a backup as well.
+This is the source for the documentation [of pamaxies source code](https://wiki.pamaxie.com/). This means all content on the website will be saved on here as a backup and to enable changes / corrections by users.
 
 ### About
 This project basically contains all changes to all files that were made on Pamaxies wiki since its release. This is important to be able to rollback changes if we detect issues with changes we made ourselfs. 

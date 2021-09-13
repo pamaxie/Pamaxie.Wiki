@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-13T18:27:48.462Z
+date: 2021-09-13T18:32:47.056Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -84,29 +84,41 @@ using System;
 using Microsoft.Extensions.Primities;
 using Newtonsoft.Json;
 
+//Namespaces are PascalCase
 namespace MyNamespace
+//Indantation before the bracket
 {
+	//Interfaces start with an 'I'
 	public interface IMyInterface
 	{
 		public int Calculate(float value, float exp);
 	}
-
+	
+	//Enumerations are PascalCase
 	public enum MyEnum
 	{
+		//Enumerators are PascalCase
 		Yes,
 		No,
 	}
 	
+	//Classes are PascalCase.
 	public class MyClass
 	{
-		public bool _noCounting;
+		//Backing Fields are _camelCase
+		//Field initializers are encouraged.
+		public bool _noCounting = false;
+		//Public member variables are PascalCase
 		public int Foo = 0;
-	
+		
+		//public properties with backing fields, should be used where needed
 		public bool NoCounting
 		{
 			get =&gt; return _noCounting;
-			set =&gt; _noCounting;
+			set =&gt; SetValue(ref _noCounting, value);
 		}
+		
+		
 	}
 }</code></pre>
 <p>&nbsp;</p>

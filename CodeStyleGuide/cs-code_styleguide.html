@@ -2,10 +2,38 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-13T12:42:44.983Z
+date: 2021-09-13T17:57:33.792Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
 -->
 
-<p>To Be added</p>
+<h1>C# with Pamaxie</h1>
+<p>This tyle guide is for C# code that was developed by Pamaxies team and is used in all its publically facing or internal projects. It makes choices to make the style of coding uniform across applications and languages such as C or C++. This is build off of <a href="https://google.github.io/styleguide">Googles Code Style Guide</a>.</p>
+<h1>Formatting Guidelines</h1>
+<h6>Naming Rules</h6>
+<p>Naming rules follow <a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines">Microsoft's C# naming guidelines</a>. Where Microsoft's naming guidelines are unspecified (e. g. private and local variables), the rules can be seen below.</p>
+<h6>Rules Summary:</h6>
+<p><strong>Code:</strong></p>
+<ul>
+  <li>Names of classes, methods, enumerations, public fields, public properties, namespaces: <code>PascalCase</code></li>
+  <li>Names of local variables, parameters: <code>camelCase</code></li>
+  <li>Names of private, protected, internal and protected internal fields and properties: <code>_camelCase</code></li>
+  <li>Naming convention is unaffected by modifiers such as const, static, readonly, overwrite, etc…</li>
+  <li>For casing a “word” is anything written without internal spaces, including acronyms. This would mean <code>RPC</code> would become <code>Rpc</code></li>
+  <li>Names of interfaces start with an capital I: <code>IInterface</code></li>
+  <li>Names of enums should be&nbsp;</li>
+</ul>
+<p>Files:</p>
+<ul>
+  <li>Filenames and directory names are PascalCase: <code>MyFile.cs</code></li>
+  <li>Where possible the file name should be the same as the name of the main class in the file: <code>MyClass.cs</code></li>
+  <li>In general, prefer one class or enum per file. This means enums and files should be seperated.</li>
+</ul>
+<h6>Organization</h6>
+<ul>
+  <li>Modifiers occur in the following order: <code>public</code> <code>protected</code> <code>internal</code> <code>private</code> <code>new</code> <code>abstract</code> <code>viritual</code> <code>override</code> <code>sealed</code> <code>static</code> <code>readonly</code> <code>extern</code> <code>unsafe</code> <code>volatile</code> <code>async</code></li>
+  <li>Namespace <code>using</code> declarations go at the top, <strong>BEFORE</strong> any namespaces. <code>using</code> import order is alphabetical, apart from <code>System</code> or <code>Microsoft</code> imports which <strong>always</strong> go first.</li>
+  <li>Class member ordering:</li>
+  <li>&nbsp;</li>
+</ul>

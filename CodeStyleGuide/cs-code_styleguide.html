@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-13T18:32:47.056Z
+date: 2021-09-13T18:36:36.026Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -105,9 +105,19 @@ namespace MyNamespace
 	//Classes are PascalCase.
 	public class MyClass
 	{
+		//Backing fields are at the top.
+		//Const does not affect naming conventions
+		private const int _barSize = 100;
+		
 		//Backing Fields are _camelCase
 		//Field initializers are encouraged.
-		public bool _noCounting = false;
+		private bool _noCounting = false;
+		
+		//Container initializers use a 2 space indent.
+		private int[] _someTable = {
+		  2, 3, 4
+		}
+		
 		//Public member variables are PascalCase
 		public int Foo = 0;
 		
@@ -118,7 +128,7 @@ namespace MyNamespace
 			set =&gt; SetValue(ref _noCounting, value);
 		}
 		
-		
+
 	}
 }</code></pre>
 <p>&nbsp;</p>

@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-13T18:24:37.261Z
+date: 2021-09-13T18:25:19.165Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -37,20 +37,20 @@ dateCreated: 2021-09-13T12:42:44.983Z
   <li>Modifiers occur in the following order: <code>public</code> <code>protected</code> <code>internal</code> <code>private</code> <code>new</code> <code>abstract</code> <code>viritual</code> <code>override</code> <code>sealed</code> <code>static</code> <code>readonly</code> <code>extern</code> <code>unsafe</code> <code>volatile</code> <code>async</code></li>
   <li>Namespace <code>using</code> declarations go at the top, <strong>BEFORE</strong> any namespaces. <code>using</code> import order is alphabetical, apart from <code>System</code> or <code>Microsoft</code> imports which <strong>always</strong> go first.</li>
   <li>Class member ordering:<ul>
-      <li>Group class members in the following order:<ul class="todo-list">
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Nested classes, enums, delegates and events</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Static, const and readonly fields.</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Fields and properties.</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Constructors and finalizers.</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Methods</span></label></li>
+      <li>Group class members in the following order:<ul>
+          <li>Nested classes, enums, delegates and events</li>
+          <li>Static, const and readonly fields.</li>
+          <li>Fields and properties.</li>
+          <li>Constructors and finalizers.</li>
+          <li>Methods</li>
         </ul>
       </li>
-      <li>Within each group, elements should be in the following order:<ul class="todo-list">
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Public</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Internal</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Protected internal</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Protected</span></label></li>
-          <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Private</span></label></li>
+      <li>Within each group, elements should be in the following order:<ul>
+          <li>Public</li>
+          <li>Internal</li>
+          <li>Protected internal</li>
+          <li>Protected</li>
+          <li>Private</li>
         </ul>
       </li>
       <li>Where possible, group interface implementations together.</li>
@@ -70,10 +70,10 @@ dateCreated: 2021-09-13T12:42:44.983Z
   <li>Space after <code>if</code>/<code>for</code>/<code>while</code> etc...</li>
   <li>No space after an opening paranthesis and before a closing Paranethesis.</li>
   <li>No space between an unary operater and its operand. One space bween the operator and each operand of all other operators.</li>
-  <li>Line warapping:<ul class="todo-list">
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">In general, line continuations are indented 4 spaces.</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Line breaks with braces (e.g. list inits, lamabads, object inits, etc) do NOT count as continuations.</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">For function definitions and calls, if the argument do not all fit in one line they should be broken onto multiple lines,&nbsp;</span></label><br><label class="todo-list__label"><span class="todo-list__label__description">with each subsequent line aligned with the first argument. If there is not enough room for this, arguments may instead be placed</span></label><br><label class="todo-list__label"><span class="todo-list__label__description">on subsequent lines with a four space indent.</span></label></li>
+  <li>Line warapping:<ul>
+      <li>In general, line continuations are indented 4 spaces.</li>
+      <li>Line breaks with braces (e.g. list inits, lamabads, object inits, etc) do NOT count as continuations.</li>
+      <li>For function definitions and calls, if the argument do not all fit in one line they should be broken onto multiple lines,&nbsp;<br>with each subsequent line aligned with the first argument. If there is not enough room for this, arguments may instead be placed<br>on subsequent lines with a four space indent.</li>
     </ul>
   </li>
 </ul>

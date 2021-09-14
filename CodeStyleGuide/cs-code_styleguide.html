@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-14T13:16:44.286Z
+date: 2021-09-14T13:17:53.733Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -410,7 +410,7 @@ DecimalNumber product = CalculateProduct(values, options, completionDelegate: nu
 <ul>
   <li>Prefer symbols over written out comparison operators - e.g. use <code>||</code> over <code>or</code></li>
   <li>Do not use ?: operators (conditional operator expressions) except when they make the code more redable. (see example below)<ul>
-      <li>Note:<br>This operator is very nice and can wrap long statements, however makes the code less debuggable. We know a lot of enviorements support debugging this by now but especially programmers<br>who are just starting out with C# are getting confused by these assigments.</li>
+      <li>Note: This operator is very nice and can wrap long statements, however makes the code less debuggable. This is why we encourage against it whenever IDEs could have issues reading the values (see below).</li>
     </ul>
   </li>
   <li>For comparison consider adding a new line after comparison blocks (see example below)</li>

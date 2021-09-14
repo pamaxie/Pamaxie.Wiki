@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. If you want to contribute you will have to follow this guide tightly for your code to be accepted.
 published: true
-date: 2021-09-14T13:00:47.976Z
+date: 2021-09-14T13:02:30.459Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -386,6 +386,10 @@ originalContainer = newContainer.ToList();</code></pre>
 <ul>
   <li>Attributes should appear on the line above the field, property or method thay are associated with, seperated from the member by a newline.</li>
   <li>Multiple attributed should be seperated by newlines. This allowes for easing adding and removing of attributes and ensures each attribute is easy to search for.</li>
+</ul>
+<h6>Instantiating Classes</h6>
+<ul>
+  <li>Prefer using &nbsp;<code>var newItem = new ItemName()</code> over <code>ClassName newItem = new();</code></li>
 </ul>
 <h6>Argument Naming</h6>
 <p>Derivated from the Google C++ and C# style guide.<br>When the meaning of a function argument is nonobvious consider one of the following remidies:</p>

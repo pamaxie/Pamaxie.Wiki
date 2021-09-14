@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-14T13:14:02.337Z
+date: 2021-09-14T13:16:07.821Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -431,8 +431,11 @@ if (value 1 != value 2 &amp;&amp;
 	//DoSomething
 }
 
-//BAD
+//GOOD
 int value = condition ? consequent : alternative;
+
+//BAD
+int value == condition ? consequent?.value ?? 0 : alternative?.value ?? 1;
 
 //GOOD
 if (condition)

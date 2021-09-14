@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:05:49.350Z
+date: 2021-09-14T12:06:41.468Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -93,14 +93,12 @@ namespace MyNamespace //Namespaces are PascalCase
         public int Calculate(float value, float exp);
     }
 
-    
     public enum MyEnum //Enumerations are PascalCase
     {
         Yes, //Enumerators are PascalCase
         No,
     }
 
-    
     public class MyClass //Classes are PascalCase.
     {
         private const int _barSize = 100; //Backing fields are at the top. Const does not affect naming conventions
@@ -109,6 +107,7 @@ namespace MyNamespace //Namespaces are PascalCase
         {
         	2, 3, 4
         }
+
 
         //Public member variables are PascalCase
         public int Foo = 0;
@@ -168,6 +167,7 @@ namespace MyNamespace //Namespaces are PascalCase
                     return diff &gt;= 0 ? diff : -diff;
                 };
 
+
             CallWithDelegate( // Inline lambda arguments also follow these rules. Prefer a leading newline before groups of arguments if they include lambdas.
                 (x, y) =&gt;
                 {
@@ -178,7 +178,6 @@ namespace MyNamespace //Namespaces are PascalCase
 
         private void DoNothing(){} //Empty blocks may be concise.
 
-        
         private void AVeryLongFunctionNameThatCausesLineWrappingProblems(int longArgumentName, //If possible, wrap arguments by aligning newlines with the first argument.
             																										 int p1, int p2)
         {
@@ -189,8 +188,7 @@ namespace MyNamespace //Namespaces are PascalCase
         {
         }
 
-
-        public void CallingLongFunctionName()
+        private void CallingLongFunctionName()
         {
             int veryLongArgumentName = 1234;
             int shortArg = 1;

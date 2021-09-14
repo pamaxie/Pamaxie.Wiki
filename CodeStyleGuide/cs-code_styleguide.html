@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. If you want to contribute you will have to follow this guide tightly for your code to be accepted.
 published: true
-date: 2021-09-14T13:06:14.794Z
+date: 2021-09-14T13:08:26.055Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -202,19 +202,19 @@ namespace MyNamespace //Namespaces are PascalCase
         }
     }
 }</code></pre>
-<h1>C# coding guidelines</h1>
-<h6>Constants</h6>
+<h1>C# Coding guidelines</h1>
+<h3>Constants</h3>
 <ul>
   <li>Variables and fields that can be made <code>const</code> should ALWAYS be made <code>const</code>.</li>
   <li>If <code>const</code> isn't possible, <code>readonly</code> static can be a suitable alternative.</li>
   <li>if <code>readonly</code> isn't possible, consider using a <code>static</code> value.</li>
 </ul>
-<h6>IEnumerable vs IList vs IReadOnlyList</h6>
+<h3>IEnumerable vs IList vs IReadOnlyList</h3>
 <ul>
   <li>For inputs use the most restrictive collection type possible, for example <code>IReadOnlyCollection</code> / <code>IReadOnlyList</code> / <code>IEnumerable</code> as imputs to methods when the inputs should be made immutable.</li>
   <li>For outsputs, if passing ownership of the returned container to the owner, prefer <code>IEnumerable</code> over <code>IList</code>. If not transferning ownership, prefer the most restrictive option.</li>
 </ul>
-<h6>Generators vs containers</h6>
+<h3>Generators vs containers</h3>
 <p>Use your best judgement depending on scenario. Please keep in mind that while generator code is often less readable than filling in a container, it can be more performant, except if it is directly turned into a container via <code>.ToList()</code>. Also using generator code that is called multiple times will be considerably slower than iterating over a container multiple times.</p>
 <h6>Propety Styles</h6>
 <ul>
@@ -224,6 +224,7 @@ namespace MyNamespace //Namespaces are PascalCase
 <h6>Expression body syntax</h6>
 <p>For example:</p>
 <pre><code class="language-cs">int SomeProperty =&gt; _someProperty;</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Use expression syntax in lambadas and properties where possible.</li>
   <li>Use on method definitions.</li>

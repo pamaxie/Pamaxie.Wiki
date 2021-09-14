@@ -2,7 +2,7 @@
 title: Wiki Home
 description: Home of Pamaxies wiki. This contains general information about the project, what we want the project to be and information about our team and recommended development tools.
 published: true
-date: 2021-09-14T14:28:56.368Z
+date: 2021-09-14T14:48:49.367Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-18T10:43:30.743Z
@@ -44,8 +44,59 @@ dateCreated: 2021-06-18T10:43:30.743Z
 <h1>About Pamaxie</h1>
 <p>Pamaxie is a publicly accessible content filter aimed at software and hardware developers. Utilizing it, they can determine what type of data was sent through their system and if it is safe for their end users.&nbsp;</p>
 <h2>The Problems we are tackling</h2>
-<p>We plan on developing on an open source, self-hostable API that allows its users to scan media send to it. We plan on detecting malicious files, hate speech, false information and adult content through it. This should hopefully make it easier for website and application developers to focus on their main business instead of developing their own content detection systems. We hope this saves developer time, effort and money implementing systems of the same scale as ours.</p>
+<p>We plan on developing on an open source, self-hostable API that allows its users to scan media send to it.&nbsp;<br>We plan on detecting malicious files, hate speech, false information and adult content through it.&nbsp;<br>This should hopefully make it easier for website and application developers to focus on their main business instead of developing their own content detection systems.&nbsp;<br>We hope this saves developer time, effort and money implementing systems of the same scale as ours.</p>
 <h2>How we plan to solve them</h2>
-<p>We plan on solving the problems through open research in the various fields required, working together with other specialists to find a solution to our problems.&nbsp;<br>For image detection and filtering we decided on using machine learning implementations to detect various tags for images. This includes for example Nazi symbolism and nudity. After that we deliver the results with the media type we detected. Media type detection is done through magic numbers, a few bytes at the start of the file’s binary data. This is a method to detect the media type based on the binary data of a format. This works because many formats start their data with a number of bytes to identify it.&nbsp;<br><br>We are implementing Video detection, which is going to be supported in the future. It is using a combination of iFrame extraction and frame deltas to get keyframes from videos via FFMPEG. After this is completed, the extracted frames are ran through a neural network. Then, like the other solutions we return the media type and detected labels for the data. What is slightly different with Video detection is that we also deliver the rough timestamps which contained certain labels (for example Nazi symbolism).&nbsp;<br><br>Identification of different types of known exploits is also planned, but the implementation is still being discussed. This would include detecting known viruses or exploits like zip bombs or ransomware. We are probably only going to work over a database of banned software hashes to keep the solution maintainable for us. We are also looking into solutions involving AV software. This solution will not be developed on for a while.&nbsp;<br><br>Text classification is also planned to allow identification of hate speech or the spreading of wrong information online. This solution is still being discussed and also probably not going to be worked on for a while. Its implementation would work based on natural language processing. We will also host an instance of the API making it even more accessible for smaller companies/projects who don’t have the resources to host it themselves. This will work over a registration of an account and an application on our website. This website will also serve as a central hub for companies, or us to manage the API controllers from.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>We plan on solving the problems through open research in the various fields required, working together with other specialists to find a solution to our problems.&nbsp;<br>For image detection and filtering we decided on using machine learning implementations to detect various tags for images.&nbsp;<br>This includes for example Nazi symbolism and nudity. After that we deliver the results with the media type we detected.&nbsp;<br>Media type detection is done through magic numbers, a few bytes at the start of the file’s binary data.&nbsp;<br>This is a method to detect the media type based on the binary data of a format.&nbsp;<br>This works because many formats start their data with a number of bytes to identify it.&nbsp;<br><br>We are implementing Video detection, which is going to be supported in the future.&nbsp;<br>It is using a combination of iFrame extraction and frame deltas to get keyframes from videos via FFMPEG.&nbsp;<br>After this is completed, the extracted frames are ran through a neural network.&nbsp;<br>Then, like the other solutions we return the media type and detected labels for the data.&nbsp;<br>What is slightly different with Video detection is that we also deliver the rough timestamps which contained certain labels (for example Nazi symbolism).&nbsp;<br><br>Identification of different types of known exploits is also planned, but the implementation is still being discussed.&nbsp;<br>This would include detecting known viruses or exploits like zip bombs or ransomware.&nbsp;<br>We are probably only going to work over a database of banned software hashes to keep the solution maintainable for us.&nbsp;<br>We are also looking into solutions involving AV software. This solution will not be developed on for a while.&nbsp;<br><br>Text classification is also planned to allow identification of hate speech or the spreading of wrong information online.&nbsp;<br>This solution is still being discussed and also probably not going to be worked on for a while. Its implementation would work based on natural language processing.&nbsp;<br>We will also host an instance of the API making it even more accessible for smaller companies/projects who don’t have the resources to host it themselves.&nbsp;<br>This will work over a registration of an account and an application on our website.&nbsp;<br>This website will also serve as a central hub for companies, or us to manage the API controllers from.</p>
+<h2>The Team</h2>
+<ul>
+  <li>Leechy<ul>
+      <li>Hey, I'm Leechy often called Lee. I currently work as a full-time software developer for a German software company.&nbsp;<br>They specialize mostly in financial and business software. I will spend most of my time working on the project during weekends.&nbsp;<br>I'm the project lead and mostly responsible for making sure all gears run properly.&nbsp;<br>That means you will see me most of the time doing documentation, reviewing the code of others, or nitpicking other people's solutions.&nbsp;<br>I also manage the servers, making sure they function reliably.&nbsp;</li>
+    </ul>
+  </li>
+  <li>Vyolex<ul>
+      <li>Hey, I'm Volex or Vyo. I am mostly responsible helping with the more complex parts of Pamaxie (like FFMPEG/ NN Stuff).<br>I also do research into how we can imrpove neural network reliability and help Lee with collecting new training data.</li>
+    </ul>
+  </li>
+  <li>Koldborg<ul>
+      <li>Hello, I am Koldborg or Kold. I am mostly responsible for tests and general software implementations. I also help preventing incidents for the website<br>to make sure its up and running without any problems. I plan on helping with the neural network / machine learning side of things in the future<br>once I gained enough expierence.</li>
+    </ul>
+  </li>
+  <li>Buddeli<ul>
+      <li>Hey, I am buddeli. I help with localization of the website and other pages (like this wiki).&nbsp;<br>Currently I'm still waiting on work to be done, because at the moment the work I can do is very limited.</li>
+    </ul>
+  </li>
+</ul>
+<h1>Roadmap (Next 12 months)</h1>
+<ul class="todo-list">
+  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Additions:</span></label>
+    <ul class="todo-list">
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Management features over Pamaxies Website</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Statuspage for API / Analysis / Server availability</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create an easy way to Install and do an intial config of the API / Website</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create an easy way to Update the API / Website</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Implement a library for .Net Framework</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Remove Dependency on Login with Google (At most an optional option)</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) More General Image Detection (detecting if things are a drawing for example)</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Implement a library for Python</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Implement a library for JavaScript</span></label></li>
+    </ul>
+  </li>
+  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Improvements:</span></label>
+    <ul class="todo-list">
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Remove dependency on SQL Server (Redis only)</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Make sure that connection to the SQL Server uses a CLEAR Client-Server architecture&nbsp;</span></label><br><label class="todo-list__label"><span class="todo-list__label__description">(avoid directly polling from the database without contacting DB API)</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Localize Websites</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Website Accessability Overhaul</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Increase Documentation Coverage</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Increase Test Coverage</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create Code-Style Documentation for different Programming Languages</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Make services DIN 66399 and DIN 66398 Compliant</span></label></li>
+    </ul>
+  </li>
+  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Fixes</span></label>
+    <ul class="todo-list">
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Use Proper StatusCodes for the Website/API</span></label></li>
+      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Rework Authentication Flow for the different APIs (use headers with Basic Auth for the initial auth, instead of the body because of security concerns).</span></label></li>
+    </ul>
+  </li>
+</ul>

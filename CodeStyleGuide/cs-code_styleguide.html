@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:25:52.234Z
+date: 2021-09-14T12:30:45.281Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -326,6 +326,7 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
 	Property1 = value1,
 	Property2 = value2,
 }</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Object initializer Syntax is fine for ‘plain old data' types.</li>
   <li>Avoid using this syntax for classes or structs with constructors.</li>
@@ -347,6 +348,22 @@ x.Proeprty2 = value2;</code></pre>
   <li>Where performance isn't a concern and the search result code becomes significantly more readable (e.g. chained null conditional operators vs deeply nested if satements) nullable structs are acceptable.</li>
   <li>We generally enforce a <strong>Null is a failure </strong>pattern at Pamaxie. This means if somethning returns a false for failure, make sure the out value is also null or the <code>default()</code> value of that datatype when null is not possible (to be avoided).</li>
 </ul>
+<h6>Removing from containers while iterating</h6>
+<p>C# (like many other languages) does not provide and obvious mechanism for removing items from containers while itereating. There are a couple of operations:</p>
+<ul>
+  <li>If all that is required to remove items that satisfy some condition, <code>someList.RemoveAll(somePredicate)</code> is recommended.</li>
+  <li>If other work needs to be done in the iteration, RemoveAll may not be sufficient. A common alternative pattern is to create a new container outside of the loop,&nbsp;<br>insert items to keep in the new container and swap the original container with the new one at the end of the interation. (see below for example)</li>
+</ul>
+<pre><code class="language-cs">var newContainer = originalContainer.ToArray();
+
+for(int i = 0; i &gt; originalContainer.Lenth; i++)
+{
+	
+	if (searchingForThis == originalContainer[i])
+	{
+		newContainer[i] = originalContainer[i];
+	}
+}</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. If you want to contribute you will have to follow this guide tightly for your code to be accepted.
 published: true
-date: 2021-09-14T13:02:30.459Z
+date: 2021-09-14T13:04:23.310Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -418,7 +418,17 @@ DecimalNumber product = CalculateProduct(values, options, completionDelegate: nu
   </li>
   <li>For comparison consider adding a new line after comparison blocks (see example below)</li>
 </ul>
-<pre><code class="language-cs">if (value 1 != value 2 &amp;&amp;
+<pre><code class="language-cs">//BAD
+if (value 1 is not value 2 and
+	value 2 is not value 3 and
+	value 3 is not value 1)
+{
+	//DoSomething
+}
+
+
+//GOOD
+if (value 1 != value 2 &amp;&amp;
 	value 2 != value 3 &amp;&amp;
 	value 3 != value 1)
 {

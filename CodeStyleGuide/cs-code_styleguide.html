@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. If you want to contribute you will have to follow this guide tightly for your code to be accepted.
 published: true
-date: 2021-09-14T13:08:26.055Z
+date: 2021-09-14T13:08:51.777Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -203,13 +203,13 @@ namespace MyNamespace //Namespaces are PascalCase
     }
 }</code></pre>
 <h1>C# Coding guidelines</h1>
-<h3>Constants</h3>
+<h2>Constants</h2>
 <ul>
   <li>Variables and fields that can be made <code>const</code> should ALWAYS be made <code>const</code>.</li>
   <li>If <code>const</code> isn't possible, <code>readonly</code> static can be a suitable alternative.</li>
   <li>if <code>readonly</code> isn't possible, consider using a <code>static</code> value.</li>
 </ul>
-<h3>IEnumerable vs IList vs IReadOnlyList</h3>
+<h2>IEnumerable vs IList vs IReadOnlyList</h2>
 <ul>
   <li>For inputs use the most restrictive collection type possible, for example <code>IReadOnlyCollection</code> / <code>IReadOnlyList</code> / <code>IEnumerable</code> as imputs to methods when the inputs should be made immutable.</li>
   <li>For outsputs, if passing ownership of the returned container to the owner, prefer <code>IEnumerable</code> over <code>IList</code>. If not transferning ownership, prefer the most restrictive option.</li>

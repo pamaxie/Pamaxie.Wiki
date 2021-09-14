@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:44:55.636Z
+date: 2021-09-14T12:51:55.046Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -370,7 +370,7 @@ originalContainer = newContainer.ToList();</code></pre>
 <ul>
   <li>The use of var is generally discouraged, it often disturbs readability.</li>
   <li>Encouraged:<ul>
-      <li>When the type is obvious - e.g. <code>var apple = new Apple()</code>, or <code>var request = Factory.Create&lt;HttpRequest&gt;();</code>&nbsp;</li>
+      <li>When the type is obvious - e.g. <code>var apple = new Apple()</code>, or <code>var request = Factory.Create&lt;HttpRequest&gt;();</code></li>
     </ul>
   </li>
   <li>Discouraged:<ul>
@@ -407,6 +407,10 @@ DecimalNumber product = CalculateProduct(values, options, completionDelegate: nu
 <h6>Comparison operators</h6>
 <ul>
   <li>Prefer symbols over written out comparison operators - e.g. use <code>||</code> over <code>or</code></li>
+  <li>Do not use ?: operators except when they make the code more redable. (see example below)<ul>
+      <li>Note:<br>This operator is very nice and can wrap long statements, however makes the code less debuggable. We know a lot of enviorements support debugging this by now but especially programmers<br>who are just starting out with C# are getting confused by these assigments.</li>
+    </ul>
+  </li>
   <li>For comparison consider adding a new line after comparison blocks (see example below)</li>
 </ul>
 <pre><code class="language-cs">if (value 1 != value 2 &amp;&amp;
@@ -414,4 +418,16 @@ DecimalNumber product = CalculateProduct(values, options, completionDelegate: nu
 	value 3 != value 1)
 {
 	//DoSomething
+}
+
+int value = condition ? consequent : alternative; //BAD
+
+if (condition)
+{
+	value = consequent;
+}
+else
+{
+	value = alternative;
 }</code></pre>
+<p>&nbsp;</p>

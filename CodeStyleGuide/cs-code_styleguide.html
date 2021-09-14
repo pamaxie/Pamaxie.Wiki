@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-14T13:22:25.866Z
+date: 2021-09-14T13:23:09.703Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -323,12 +323,6 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
   <li>Be aware that <code>using</code> statements are only file scoped and thus of limited use. Type aliasses should not be available for external users.</li>
 </ul>
 <h2>Object Initialization Syntax</h2>
-<pre><code class="language-cs">var x = new SomeClass
-{
-	Property1 = value1,
-	Property2 = value2,
-}</code></pre>
-<p>&nbsp;</p>
 <ul>
   <li>Object initializer Syntax is fine for ‘plain old data' types.</li>
   <li>Avoid using this syntax for classes or structs with constructors.</li>
@@ -336,7 +330,15 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
   <li>Prefer using &nbsp;<code>var newItem = new ItemName()</code> over <code>ClassName newItem = new();</code></li>
   <li>Prefer the above syntax over assigning properties manually (see below)</li>
 </ul>
-<pre><code class="language-cs">var x = new SomeClass();
+<pre><code class="language-cs">//GOOD
+var x = new SomeClass
+{
+	Property1 = value1,
+	Property2 = value2,
+}</code></pre>
+<p>versus</p>
+<pre><code class="language-cs">//BAD
+var x = new SomeClass();
 x.Property1 = value1;
 x.Proeprty2 = value2;</code></pre>
 <h2>Namespace naming</h2>

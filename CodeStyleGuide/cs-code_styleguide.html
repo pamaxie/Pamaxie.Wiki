@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:09:16.878Z
+date: 2021-09-14T12:09:48.170Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -66,7 +66,7 @@ dateCreated: 2021-09-13T12:42:44.983Z
   <li>Column limit: 100.</li>
   <li>Line break before opening brace</li>
   <li>Line break between functions and <code>static</code>, <code>public</code> and <code>private</code> properties.</li>
-  <li>Two linebreaks between <code>public</code>, <code>private</code> and <code>static</code> functions</li>
+  <li>Two linebreaks between <code>public</code>, <code>private</code> and <code>static</code> methods</li>
   <li>Line break between closing brace and <code>else</code></li>
   <li>NewLines <strong>before </strong>and <strong>after</strong> <code>if</code> / <code>foreach</code> / <code>for</code> blocks</li>
   <li>Braces used even when optional</li>
@@ -152,7 +152,7 @@ namespace MyNamespace //Namespaces are PascalCase
         }
         
         
-        public int CalculateValue(int mulNumber) // two newlines between public and private functions.
+        public int CalculateValue(int mulNumber) // two newlines between public and private methods.
         {
             var resultValue = Foo * mulNumber;
             NumTimesCalled++;

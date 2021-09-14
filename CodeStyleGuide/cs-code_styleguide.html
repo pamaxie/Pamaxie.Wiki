@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:06:41.468Z
+date: 2021-09-14T12:08:21.608Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -108,7 +108,6 @@ namespace MyNamespace //Namespaces are PascalCase
         	2, 3, 4
         }
 
-
         //Public member variables are PascalCase
         public int Foo = 0;
 
@@ -118,7 +117,7 @@ namespace MyNamespace //Namespaces are PascalCase
             set =&gt; SetValue(ref _noCounting, value);
         }
 
-        public MyClass() //Indent before bracket during method call
+        public MyClass() //Indent before bracket during method call, constructor comes after fields and properties.
         {
             _results = new Results //Object initializers use a tab space indent.
             {
@@ -126,7 +125,33 @@ namespace MyNamespace //Namespaces are PascalCase
                 NumPositiveResults = 1,
             }
         }
+        
+        private void DoNothing(){} //Empty blocks may be concise.
 
+        private void AVeryLongFunctionNameThatCausesLineWrappingProblems(int longArgumentName, //If possible, wrap arguments by aligning newlines with the first argument.
+            																										 int p1, int p2)
+        {
+        }
+
+        private void AnotherLongFunctionNameThatCausesLineWrappingProblems( // If aligning argument lines with the first argument doesn't fit, or is difficult to
+            int longArgumentName, int longArgumentName2, int longArgumentName3)  // read, wrap all arguments on new lines with a 4 space indent
+        {
+        }
+
+        private void CallingLongFunctionName()
+        {
+            int veryLongArgumentName = 1234;
+            int shortArg = 1;
+            
+            AnotherLongFunctionNameThatCausesLineWrappingProblems(shortArg, shortArg, // If possible, wrap arguments by aligning newlines with the first argument.
+                																									veryLongArgumentName);
+            
+            
+            AnotherLongFunctionNameThatCausesLineWrappingProblems( // If aligning argument lines with the first argument doesn't fit, or is difficult to
+                veryLongArgumentName, veryLongArgumentName, veryLongArgumentName); // read, wrap all arguments on new lines with a 4 space indent.
+        }
+        
+        
         public int CalculateValue(int mulNumber)
         {
             var resultValue = Foo * mulNumber;
@@ -166,39 +191,13 @@ namespace MyNamespace //Namespaces are PascalCase
                     long diff = (long)x - y;
                     return diff &gt;= 0 ? diff : -diff;
                 };
-
-
+                
             CallWithDelegate( // Inline lambda arguments also follow these rules. Prefer a leading newline before groups of arguments if they include lambdas.
                 (x, y) =&gt;
                 {
                     long diff = (long)x - y;
                     return diff &gt;= 0 ? diff : -diff;
                 });
-        }
-
-        private void DoNothing(){} //Empty blocks may be concise.
-
-        private void AVeryLongFunctionNameThatCausesLineWrappingProblems(int longArgumentName, //If possible, wrap arguments by aligning newlines with the first argument.
-            																										 int p1, int p2)
-        {
-        }
-
-        private void AnotherLongFunctionNameThatCausesLineWrappingProblems( // If aligning argument lines with the first argument doesn't fit, or is difficult to
-            int longArgumentName, int longArgumentName2, int longArgumentName3)  // read, wrap all arguments on new lines with a 4 space indent
-        {
-        }
-
-        private void CallingLongFunctionName()
-        {
-            int veryLongArgumentName = 1234;
-            int shortArg = 1;
-            
-            AnotherLongFunctionNameThatCausesLineWrappingProblems(shortArg, shortArg, // If possible, wrap arguments by aligning newlines with the first argument.
-                																									veryLongArgumentName);
-            
-            
-            AnotherLongFunctionNameThatCausesLineWrappingProblems( // If aligning argument lines with the first argument doesn't fit, or is difficult to
-                veryLongArgumentName, veryLongArgumentName, veryLongArgumentName); // read, wrap all arguments on new lines with a 4 space indent.
         }
     }
 }</code></pre>

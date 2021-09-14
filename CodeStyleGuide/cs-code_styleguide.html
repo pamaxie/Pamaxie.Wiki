@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:30:59.503Z
+date: 2021-09-14T12:35:50.041Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -284,7 +284,7 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
 		return;
 	}
 }</code></pre>
-<h6>Array vs List</h6>
+<h6>Array vs <code>List&lt;&gt;</code></h6>
 <ul>
   <li>In general, prefer <code>List&lt;&gt;</code> over arrays for public variables, properties and return types (please keep in mind the guidance on using the right container types above).</li>
   <li>Prefer <code>List&lt;&gt;</code> everywhere the container size may change.</li>
@@ -306,13 +306,13 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
 <ul>
   <li>In general, prefer using a named class over <code>Tuple&lt;&gt;</code>, particularly when returning complex types.</li>
 </ul>
-<h6>String interpolation vs String.Format() vs String.Concat vs operator +</h6>
+<h6>String interpolation vs <code>String.Format()</code> vs <code>String.Concat</code> vs operator +</h6>
 <ul>
   <li>Use whatever is easiest to read, particularly for logging and assert messages.</li>
   <li>Be aware that chained operator+ concatenations will be slower and cause significant memory churn.</li>
   <li>If performance is a concern, StringBuilder will be fastest for multiple string concatenations.</li>
 </ul>
-<h6>Using</h6>
+<h6><code>Using</code></h6>
 <ul>
   <li>Generally, don't alias long typenames with <code>using</code>. Often this is a singn that a <code>Tuple&lt;&gt;</code> needs to be turned into a class.<ul>
       <li>example: <code>using RecordList = List&lt;Tuple&lt;int, float&gt;&gt;</code></li>
@@ -366,6 +366,22 @@ for(int i = 0; i &gt; originalContainer.Lenth; i++)
 }
 
 originalContainer = newContainer.ToList();</code></pre>
+<h6>The <code>var</code> keyword</h6>
+<ul>
+  <li>The use of var is generally discouraged, it often disturbs readability.</li>
+  <li>Encouraged:<ul>
+      <li>When the type is obvious - e.g. <code>var apple = new Apple()</code>, or <code>var request = Factory.Create&lt;HttpRequest&gt;();</code>&nbsp;</li>
+    </ul>
+  </li>
+  <li>Discouraged:<ul>
+      <li>When working with basic types - e.g. <code>var success = true;</code></li>
+      <li>when working with compiler-resolved built-in numeric types - e.g. <code>var number = 12 * ReturnsAFloat();</code></li>
+      <li>When users would clearly benefit from knowing the type - e.g. <code>var listOfItems = GetList();</code></li>
+      <li>For transient variables that are only passed directly to other methods. - e.g. <code>var item = GetItem(); ProcessItem(item);</code></li>
+    </ul>
+  </li>
+</ul>
+<h6>Attributes</h6>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

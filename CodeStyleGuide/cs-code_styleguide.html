@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-14T13:17:53.733Z
+date: 2021-09-14T13:20:36.349Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -267,7 +267,10 @@ namespace MyNamespace //Namespaces are PascalCase
 </ul>
 <h2>LINQ</h2>
 <ul>
-  <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.</li>
+  <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.<ul>
+      <li>Note: Please remember long LINQ calls can cause issues with debugging.&nbsp;<br>Please consider this especially in complex LINQ expressions. Generally prefer <code>for</code> where applicable.</li>
+    </ul>
+  </li>
   <li>Do not use SQL-Style LINQ keywords - e.g. use <code>myList.Where(x)</code> not <code>myList where x</code>.</li>
   <li>Avoid <code>Container.Foreach(…)</code> for anything that is longer than a single statement (prefer for loops).</li>
   <li>Wrap long LINQ statements with a new line after each statement. Indent the newline to start on the same height as other LINQ statements when possible.</li>

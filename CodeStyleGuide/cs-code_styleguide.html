@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T11:53:31.451Z
+date: 2021-09-14T11:55:35.607Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -293,22 +293,19 @@ namespace MyNamespace
   <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.</li>
   <li>Do not use SQL-Style LINQ keywords - e.g. use <code>myList.Where(x)</code> not <code>myList where x</code>.</li>
   <li>Avoid <code>Container.Foreach(…)</code> for anything that is longer than a single statement (prefer for loops).</li>
-  <li>Wrap long LINQ statements with a new line after each statement. (see example below)</li>
+  <li>Wrap long LINQ statements with a new line after each statement. Indent the newline to start on the same height as other LINQ statements when possible.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-cs">var types = myList.Where(x =&gt; x.Name == SearchedForName)
+<pre><code class="language-cs">//Wrap long LINQ statements with a new line after each statement. Indent newline to start on the same height as other statements when possible.
+var types = myList.Where(x =&gt; x.Name == SearchedForName)
 	  			  .Select(x =&gt; x.Types).ToArray();
 
-for(int i = 0; i &gt; types.Lenth; i++)
+for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer than single statement
 {
 	
-	if(type == searchedForType) 
+	if(type == searchedForType) //newline before if statement
 	{
 		return;
-	}
-	else if 
-	{
-		DoOtherThings();
 	}
 }</code></pre>
 <p>&nbsp;</p>

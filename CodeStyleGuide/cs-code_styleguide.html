@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:04:41.801Z
+date: 2021-09-14T12:05:24.456Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -159,18 +159,14 @@ namespace MyNamespace //Namespaces are PascalCase
                 long diff = (long)x - y;
                 return diff &gt;= 0 ? diff : -diff;
             };
-
-            // If defining after a continuation line break, indent the whole body.
-            Func&lt;int, int, long&gt; difference2 =
+            Func&lt;int, int, long&gt; difference2 = // If defining after a continuation line break, indent the whole body.
                 (x, y) =&gt;
                 {
                     long diff = (long)x - y;
                     return diff &gt;= 0 ? diff : -diff;
                 };
 
-            // Inline lambda arguments also follow these rules. Prefer a leading newline before
-            // groups of arguments if they include lambdas.
-            CallWithDelegate(
+            CallWithDelegate( // Inline lambda arguments also follow these rules. Prefer a leading newline before groups of arguments if they include lambdas.
                 (x, y) =&gt;
                 {
                     long diff = (long)x - y;

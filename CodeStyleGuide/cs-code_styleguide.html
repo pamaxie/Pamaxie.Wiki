@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:05:24.456Z
+date: 2021-09-14T12:05:33.247Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -154,11 +154,13 @@ namespace MyNamespace //Namespaces are PascalCase
         public void ExpressionBodies()
         {
             Func&lt;int, int&gt; increment = x =&gt; x + 1; //For simple lambdas, fit on one line if possible, no brackets or braces required.
+            
             Func&lt;int, int, long&gt; difference1 = (x, y) =&gt; //Closing brace aligns with first character on line that includes the opening brace.
             {
                 long diff = (long)x - y;
                 return diff &gt;= 0 ? diff : -diff;
             };
+            
             Func&lt;int, int, long&gt; difference2 = // If defining after a continuation line break, indent the whole body.
                 (x, y) =&gt;
                 {

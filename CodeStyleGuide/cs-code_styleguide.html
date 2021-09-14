@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:35:50.041Z
+date: 2021-09-14T12:42:37.357Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -382,6 +382,26 @@ originalContainer = newContainer.ToList();</code></pre>
   </li>
 </ul>
 <h6>Attributes</h6>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<ul>
+  <li>Attributes should appear on the line above the field, property or method thay are associated with, seperated from the member by a newline.</li>
+  <li>Multiple attributed should be seperated by newlines. This allowes for easing adding and removing of attributes and ensures each attribute is easy to search for.</li>
+</ul>
+<h6>Argument Naming</h6>
+<p>Derivated from the Google C++ and C# style guide.<br>When the meaning of a function argument is nonobvious consider one of the following remidies:</p>
+<ul>
+  <li>If the argument is a literal constant, and the same constant is used in multiple function calls in a way that tacticaly assumes the'yre the same, use a named constant to make that constraint explicit and to guarantee that it holds.</li>
+  <li>Consider changing the function signature to replace a bool with an enum argument. This may make the argument values self-describing.</li>
+  <li>Replace large or complex nested expressions with named variables.</li>
+  <li>Consider using Named Arguments to clarify argument meanings at the call site.</li>
+  <li>For functions that have several configuration options, consider defining a single class or struct to hold all the options and pass an instance of that.&nbsp;<br>This approach has several advantages. Options are referenced by name at the call site, which clarifies their meaning.&nbsp;<br>It also reduces function argument count, which makes function calls easier to read and write.&nbsp;<br>As an added benefit, call sites don’t need to be changed when another option is added.</li>
+</ul>
+<p>Consider the following example:</p>
+<pre><code class="language-cs">// Bad - what are these arguments?
+DecimalNumber product = CalculateProduct(values, 7, false, null);</code></pre>
+<p>versus:</p>
+<pre><code class="language-cs">// Good
+ProductOptions options = new ProductOptions();
+options.PrecisionDecimals = 7;
+options.UseCache = CacheUsage.DontUseCache;
+DecimalNumber product = CalculateProduct(values, options, completionDelegate: null);</code></pre>
 <p>&nbsp;</p>

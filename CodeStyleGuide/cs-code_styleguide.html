@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. If you want to contribute you will have to follow this guide tightly for your code to be accepted.
 published: true
-date: 2021-09-14T13:08:51.777Z
+date: 2021-09-14T13:11:31.046Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -12,9 +12,9 @@ dateCreated: 2021-09-13T12:42:44.983Z
 <p>This tyle guide is for C# code that was developed by Pamaxies team and is used in all its publically facing or internal projects. It makes choices to make the style of coding uniform across applications and languages such as C or C++. This is build off of <a href="https://google.github.io/styleguide">Googles Code Style Guide</a>.</p>
 <p>We are going to be working on Extensions / ReSharper configurations to make this more easily realizable (formatting help).<br>Please remember that we also have to follow these rules and they exist to keep the codebase consistent. We maybe updating them later on with new things.</p>
 <h1>Formatting Guidelines</h1>
-<h6>Naming Rules</h6>
+<h2>Naming Rules</h2>
 <p>Naming rules follow <a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines">Microsoft's C# naming guidelines</a>. Where Microsoft's naming guidelines are unspecified (e. g. private and local variables), the rules can be seen below.</p>
-<h6>Rules Summary:</h6>
+<h2>Rules Summary:</h2>
 <p><strong>Code:</strong></p>
 <ul>
   <li>Names of classes, methods, enumerations, public fields, public properties, namespaces: <code>PascalCase</code></li>
@@ -33,7 +33,7 @@ dateCreated: 2021-09-13T12:42:44.983Z
   <li>In general, prefer one class or enum per file. This means enums and files should be seperated.</li>
   <li>Enums should be their own file where it makes sense.</li>
 </ul>
-<h6>Organization</h6>
+<h2>Organization</h2>
 <ul>
   <li>Modifiers occur in the following order: <code>public</code> <code>protected</code> <code>internal</code> <code>private</code> <code>new</code> <code>abstract</code> <code>viritual</code> <code>override</code> <code>sealed</code> <code>static</code> <code>readonly</code> <code>extern</code> <code>unsafe</code> <code>volatile</code> <code>async</code></li>
   <li>Namespace <code>using</code> declarations go at the top, <strong>BEFORE</strong> any namespaces. <code>using</code> import order is alphabetical, apart from <code>System</code> or <code>Microsoft</code> imports which <strong>always</strong> go first.</li>
@@ -58,7 +58,7 @@ dateCreated: 2021-09-13T12:42:44.983Z
     </ul>
   </li>
 </ul>
-<h6>Whitespace rules</h6>
+<h2>Whitespace rules</h2>
 <p>Inspired from Google's Java and C# style.</p>
 <ul>
   <li>A maximum of ONE statement per line.</li>
@@ -214,14 +214,14 @@ namespace MyNamespace //Namespaces are PascalCase
   <li>For inputs use the most restrictive collection type possible, for example <code>IReadOnlyCollection</code> / <code>IReadOnlyList</code> / <code>IEnumerable</code> as imputs to methods when the inputs should be made immutable.</li>
   <li>For outsputs, if passing ownership of the returned container to the owner, prefer <code>IEnumerable</code> over <code>IList</code>. If not transferning ownership, prefer the most restrictive option.</li>
 </ul>
-<h3>Generators vs containers</h3>
+<h2>Generators vs containers</h2>
 <p>Use your best judgement depending on scenario. Please keep in mind that while generator code is often less readable than filling in a container, it can be more performant, except if it is directly turned into a container via <code>.ToList()</code>. Also using generator code that is called multiple times will be considerably slower than iterating over a container multiple times.</p>
-<h6>Propety Styles</h6>
+<h2>Propety Styles</h2>
 <ul>
   <li>For single line, readonly properties, prefer expression body properties (=&gt;) when possible.</li>
   <li>For everything else use the older <code>{ get; set; }</code> syntax.</li>
 </ul>
-<h6>Expression body syntax</h6>
+<h2>Expression body syntax</h2>
 <p>For example:</p>
 <pre><code class="language-cs">int SomeProperty =&gt; _someProperty;</code></pre>
 <p>&nbsp;</p>
@@ -230,7 +230,7 @@ namespace MyNamespace //Namespaces are PascalCase
   <li>Use on method definitions.</li>
   <li>As with methods and other scoped blocks of code, align the closing with the first character of the line that includes the opening brace.<br>Se sample code for examples</li>
 </ul>
-<h6>Structs and classes</h6>
+<h2>Structs and classes</h2>
 <ul>
   <li>Structs are different from classes:<ul>
       <li>Structs are ALWAYS passed and returned by value</li>
@@ -241,23 +241,23 @@ namespace MyNamespace //Namespaces are PascalCase
   <li>Consider struct when the type can be treated like any other value types. For example: if instances of the type are small and communly short lived or commonly embedded in other objects. (Good example are: Vector3, Bounds, Quaternion)</li>
   <li>Note that this guide may vary on this, for example, performance issues may force us to use structs.</li>
 </ul>
-<h6>Lambdas vs named methods</h6>
+<h2>Lambdas vs named methods</h2>
 <ul>
   <li>If a lambda is non-trivial (e.g. more than a couple of statements, exclude declarations), or is reused in multiple places, it should probably be a named method.</li>
   <li>Avoid using Lambdas for complex sorting / searches, <code>for</code> / <code>foreach</code> loops should be applied where debugging the software gets too complex</li>
 </ul>
-<h6>Field initializers</h6>
+<h2>Field initializers</h2>
 <ul>
   <li>Field initializers are generally encouraged.</li>
 </ul>
-<h6>Extension methods</h6>
+<h2>Extension methods</h2>
 <ul>
   <li>Only use extension methods when the source of the original class is not available, or else when changing the source could would not be feasable.</li>
   <li>Only use an extension method if the functionality being added is a ‘core’ general feature that would be approperiate to add to the source of the original class.</li>
   <li>Only put extension methods into core libraries / classes that are available everywhere - extensions that are only available in some code (projects), which use things like <code>strings</code> will become a readability issue.</li>
   <li>Be aware that using extension methods ALWAYS obfuscates the code, so err on the side of not adding them.</li>
 </ul>
-<h6>ref amd pit</h6>
+<h2><code>ref</code> amd <code>pit</code></h2>
 <ul>
   <li>Use <code>out</code> for returns that are not also inputs.</li>
   <li>Place <code>out</code> parameters after ALL other parameters in the method definition.</li>
@@ -265,7 +265,7 @@ namespace MyNamespace //Namespaces are PascalCase
   <li>Do not use <code>ref</code> as an optimization for passing structs.</li>
   <li>Do not use <code>ref</code> to pass a modifiable container into a method. <code>ref</code> is only required when the supplied container needs to be replaced with an entirely different container instance.</li>
 </ul>
-<h6>LINQ</h6>
+<h2>LINQ</h2>
 <ul>
   <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.</li>
   <li>Do not use SQL-Style LINQ keywords - e.g. use <code>myList.Where(x)</code> not <code>myList where x</code>.</li>
@@ -285,7 +285,7 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
 		return;
 	}
 }</code></pre>
-<h6>Array vs <code>List&lt;&gt;</code></h6>
+<h2>Array vs <code>List&lt;&gt;</code></h2>
 <ul>
   <li>In general, prefer <code>List&lt;&gt;</code> over arrays for public variables, properties and return types (please keep in mind the guidance on using the right container types above).</li>
   <li>Prefer <code>List&lt;&gt;</code> everywhere the container size may change.</li>
@@ -298,22 +298,22 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
     </ul>
   </li>
 </ul>
-<h6>Folders and file locations</h6>
+<h2>Folders and file locations</h2>
 <ul>
   <li>Stay consistent with the project.</li>
   <li>Prefer a flatter structure where possible. Avoid creating namespaces where possible.</li>
 </ul>
-<h6>Use of tuple as a return type</h6>
+<h2>Use of tuple as a return type</h2>
 <ul>
   <li>In general, prefer using a named class over <code>Tuple&lt;&gt;</code>, particularly when returning complex types.</li>
 </ul>
-<h6>String interpolation vs <code>String.Format()</code> vs <code>String.Concat</code> vs operator +</h6>
+<h2>String interpolation vs <code>String.Format()</code> vs <code>String.Concat</code> vs operator +</h2>
 <ul>
   <li>Use whatever is easiest to read, particularly for logging and assert messages.</li>
   <li>Be aware that chained operator+ concatenations will be slower and cause significant memory churn.</li>
   <li>If performance is a concern, StringBuilder will be fastest for multiple string concatenations.</li>
 </ul>
-<h6><code>Using</code></h6>
+<h2><code>Using</code></h2>
 <ul>
   <li>Generally, don't alias long typenames with <code>using</code>. Often this is a singn that a <code>Tuple&lt;&gt;</code> needs to be turned into a class.<ul>
       <li>example: <code>using RecordList = List&lt;Tuple&lt;int, float&gt;&gt;</code></li>
@@ -321,35 +321,35 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
   </li>
   <li>Be aware that <code>using</code> statements are only file scoped and thus of limited use. Type aliasses should not be available for external users.</li>
 </ul>
-<h6>Object Initialization Syntax</h6>
+<h2>Object Initialization Syntax</h2>
 <pre><code class="language-cs">var x = new SomeClass
 {
 	Property1 = value1,
 	Property2 = value2,
 }</code></pre>
-<p>&nbsp;</p>
 <ul>
   <li>Object initializer Syntax is fine for ‘plain old data' types.</li>
   <li>Avoid using this syntax for classes or structs with constructors.</li>
   <li>if splitting across multiple lines, indent one block level.</li>
+  <li>Prefer using &nbsp;<code>var newItem = new ItemName()</code> over <code>ClassName newItem = new();</code></li>
   <li>Prefer the above syntax over assigning properties manually (see below)</li>
 </ul>
 <pre><code class="language-cs">var x = new SomeClass();
 x.Property1 = value1;
 x.Proeprty2 = value2;</code></pre>
-<h6>Namespace naming</h6>
+<h2>Namespace naming</h2>
 <ul>
   <li>In general, namespaces should be no more than 3 levels deep. (Pamaxie.Database.Functions)</li>
   <li>Don't force file/folder layout to match namespaces.</li>
   <li>New top-level namespace names must be globally unique over all of Pamaxies Projects. (even different programming languages, for example Pamaxie.Database can only exist ONCE)</li>
 </ul>
-<h6>Default values / null returns for structs</h6>
+<h2>Default values / null returns for structs</h2>
 <ul>
   <li>With structs, prefer returning a ‘success’ boolean with with an <code>out</code> value holding the struct.</li>
   <li>Where performance isn't a concern and the search result code becomes significantly more readable (e.g. chained null conditional operators vs deeply nested if satements) nullable structs are acceptable.</li>
   <li>We generally enforce a <strong>Null is a failure </strong>pattern at Pamaxie. This means if somethning returns a false for failure, make sure the out value is also null or the <code>default()</code> value of that datatype when null is not possible (to be avoided).</li>
 </ul>
-<h6>Removing from containers while iterating</h6>
+<h2>Removing from containers while iterating</h2>
 <p>C# (like many other languages) does not provide and obvious mechanism for removing items from containers while itereating. There are a couple of operations:</p>
 <ul>
   <li>If all that is required to remove items that satisfy some condition, <code>someList.RemoveAll(somePredicate)</code> is recommended.</li>
@@ -367,7 +367,7 @@ for(int i = 0; i &gt; originalContainer.Lenth; i++)
 }
 
 originalContainer = newContainer.ToList();</code></pre>
-<h6>The <code>var</code> keyword</h6>
+<h2>The <code>var</code> keyword</h2>
 <ul>
   <li>The use of var is generally discouraged, it often disturbs readability.</li>
   <li>Encouraged:<ul>
@@ -382,16 +382,12 @@ originalContainer = newContainer.ToList();</code></pre>
     </ul>
   </li>
 </ul>
-<h6>Attributes</h6>
+<h2>Attributes</h2>
 <ul>
   <li>Attributes should appear on the line above the field, property or method thay are associated with, seperated from the member by a newline.</li>
   <li>Multiple attributed should be seperated by newlines. This allowes for easing adding and removing of attributes and ensures each attribute is easy to search for.</li>
 </ul>
-<h6>Instantiating Classes</h6>
-<ul>
-  <li>Prefer using &nbsp;<code>var newItem = new ItemName()</code> over <code>ClassName newItem = new();</code></li>
-</ul>
-<h6>Argument Naming</h6>
+<h2>Argument Naming</h2>
 <p>Derivated from the Google C++ and C# style guide.<br>When the meaning of a function argument is nonobvious consider one of the following remidies:</p>
 <ul>
   <li>If the argument is a literal constant, and the same constant is used in multiple function calls in a way that tacticaly assumes the'yre the same, use a named constant to make that constraint explicit and to guarantee that it holds.</li>
@@ -409,7 +405,7 @@ ProductOptions options = new ProductOptions();
 options.PrecisionDecimals = 7;
 options.UseCache = CacheUsage.DontUseCache;
 DecimalNumber product = CalculateProduct(values, options, completionDelegate: null);</code></pre>
-<h6>Conditional Operators</h6>
+<h2>Conditional Operators</h2>
 <ul>
   <li>Prefer symbols over written out comparison operators - e.g. use <code>||</code> over <code>or</code></li>
   <li>Do not use ?: operators (conditional operator expressions) except when they make the code more redable. (see example below)<ul>
@@ -446,7 +442,7 @@ else
 {
 	value = alternative;
 }</code></pre>
-<h6>Null evaluation</h6>
+<h2>Null evaluation</h2>
 <ul>
   <li>use the ?? operator (null-coalescing operator) whenever possible, to avoid throwing NullReferenceExceptions (see below)</li>
 </ul>

@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T11:16:19.369Z
+date: 2021-09-14T11:17:20.077Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -80,6 +80,7 @@ dateCreated: 2021-09-13T12:42:44.983Z
 <h5>Example:</h5>
 <pre><code class="language-cs">//'using' goes at the top, outside of the namespace.
 //Sort usings from: System, Microsoft and then Alphabetical
+
 using System;
 using Microsoft.Extensions.Primities;
 using Newtonsoft.Json;
@@ -88,127 +89,143 @@ using Newtonsoft.Json;
 namespace MyNamespace
 //Indantation before the bracket
 {
-	//Interfaces start with an 'I'
-	public interface IMyInterface
-	{
-		public int Calculate(float value, float exp);
-	}
-	
-	//Enumerations are PascalCase
-	public enum MyEnum
-	{
-		//Enumerators are PascalCase
-		Yes,
-		No,
-	}
-	
-	//Classes are PascalCase.
-	public class MyClass
-	{
-		//Backing fields are at the top.
-		//Const does not affect naming conventions
-		private const int _barSize = 100;
-		
-		//Backing Fields are _camelCase
-		//Field initializers are encouraged.
-		private bool _noCounting = false;
-		
-		//Container initializers use a 2 space indent.
-		private int[] _someTable = {
-		  2, 3, 4
-		}
-		
-		//Public member variables are PascalCase
-		public int Foo = 0;
-		
-		//public properties with backing fields, should be used where needed
-		public bool NoCounting
-		{
-			get =&gt; return _noCounting;
-			set =&gt; SetValue(ref _noCounting, value);
-		}
-		
-		//Indent before bracket during method call
-		public MyClass()
-		{
-			//Object initializers use a 2 space indent.
-			_results = new Results{
-			  NumNegativeResults = 1,
-			  NumPositiveResults = 1,
-			}
-		}
-		
-		public int CalculateValue(int mulNumber)
-		{
-			var resultValue = Foo * mulNumber;
-			NumTimesCalled++;
-			Foo += _bar;
-			
-			//No newline before opening brace
-			if (!NoCounting){
-				//No space before 'if"
-				//Braces used even when optional
-				if (resultValue &lt; 0){
-					_results.NumNegativeResults++;
-				//No newline between brace and else, space before else
-				} else if(resultValue &gt; 0){
-					_results.NumPositiveResults++
-				}
-			}
-			
-			return resultValue;
-		}
-		
-	    public void ExpressionBodies() 
-	    {
-      		// For simple lambdas, fit on one line if possible, no brackets or braces required.
-      		Func&lt;int, int&gt; increment = x =&gt; x + 1;
+    //Interfaces start with an 'I'
+    public interface IMyInterface
+    {
+        public int Calculate(float value, float exp);
+    }
 
-      		// Closing brace aligns with first character on line that includes the opening brace.
-      		Func&lt;int, int, long&gt; difference1 = (x, y) =&gt; {
-        		long diff = (long)x - y;
-        		return diff &gt;= 0 ? diff : -diff;
-      		};
+    //Enumerations are PascalCase
+    public enum MyEnum
+    {
+        //Enumerators are PascalCase
+        Yes,
+        No,
+    }
 
-      		// If defining after a continuation line break, indent the whole body.
-      		Func&lt;int, int, long&gt; difference2 =
-          		(x, y) =&gt; {
-            	long diff = (long)x - y;
-            	return diff &gt;= 0 ? diff : -diff;
-          	};
+    //Classes are PascalCase.
+    public class MyClass
+    {
+        //Backing fields are at the top.
+        //Const does not affect naming conventions
+        private const int _barSize = 100;
 
-      		// Inline lambda arguments also follow these rules. Prefer a leading newline before
-      		// groups of arguments if they include lambdas.
-      		CallWithDelegate(
-          		(x, y) =&gt; {
-           		 long diff = (long)x - y;
-            		return diff &gt;= 0 ? diff : -diff;
-          		});
-    	}
-    	
-    	//Empty blocks may be concise.
-    	void DoNothing() {}
-    	
-    	//If possible, wrap arguments by aligning newlines with the first argument.
-    	void AVeryLongFunctionNameThatCausesLineWrappingProblems(int longArgumentName,
-                                                             int p1, int p2) {}
-        
+        //Backing Fields are _camelCase
+        //Field initializers are encouraged.
+        private bool _noCounting = false;
+
+        //Container initializers use a 2 space indent.
+        private int[] _someTable =
+        {
+            2, 3, 4
+        }
+
+        //Public member variables are PascalCase
+        public int Foo = 0;
+
+        //public properties with backing fields, should be used where needed
+        public bool NoCounting
+        {
+            get =&gt; return _noCounting;
+            set =&gt; SetValue(ref _noCounting, value);
+        }
+
+        //Indent before bracket during method call
+        public MyClass()
+        {
+            //Object initializers use a 2 space indent.
+            _results = new Results
+            {
+                NumNegativeResults = 1,
+                NumPositiveResults = 1,
+            }
+        }
+
+        public int CalculateValue(int mulNumber)
+        {
+            var resultValue = Foo * mulNumber;
+            NumTimesCalled++;
+            Foo += _bar;
+
+            //No newline before opening brace
+            if (!NoCounting)
+            {
+                //No space before 'if"
+                //Braces used even when optional
+                if (resultValue &lt; 0)
+                {
+                    _results.NumNegativeResults++;
+                    //No newline between brace and else, space before else
+                }
+                else if (resultValue &gt; 0)
+                {
+                    _results.NumPositiveResults++
+                }
+            }
+
+            return resultValue;
+        }
+
+        public void ExpressionBodies()
+        {
+            // For simple lambdas, fit on one line if possible, no brackets or braces required.
+            Func&lt;int, int&gt; increment = x =&gt; x + 1;
+
+            // Closing brace aligns with first character on line that includes the opening brace.
+            Func&lt;int, int, long&gt; difference1 = (x, y) =&gt;
+            {
+                long diff = (long)x - y;
+                return diff &gt;= 0 ? diff : -diff;
+            };
+
+            // If defining after a continuation line break, indent the whole body.
+            Func&lt;int, int, long&gt; difference2 =
+                (x, y) =&gt;
+                {
+                    long diff = (long)x - y;
+                    return diff &gt;= 0 ? diff : -diff;
+                };
+
+            // Inline lambda arguments also follow these rules. Prefer a leading newline before
+            // groups of arguments if they include lambdas.
+            CallWithDelegate(
+                (x, y) =&gt;
+                {
+                    long diff = (long)x - y;
+                    return diff &gt;= 0 ? diff : -diff;
+                });
+        }
+
+        //Empty blocks may be concise.
+        void DoNothing()
+        {
+        }
+
+        //If possible, wrap arguments by aligning newlines with the first argument.
+        void AVeryLongFunctionNameThatCausesLineWrappingProblems(int longArgumentName,
+            int p1, int p2)
+        {
+        }
+
         // If aligning argument lines with the first argument doesn't fit, or is difficult to
-    	// read, wrap all arguments on new lines with a 4 space indent.
-    	void AnotherLongFunctionNameThatCausesLineWrappingProblems(
-        	int longArgumentName, int longArgumentName2, int longArgumentName3) {}
-        
-        void CallingLongFunctionName() {
-      		int veryLongArgumentName = 1234;
-      		int shortArg = 1;
-      		// If possible, wrap arguments by aligning newlines with the first argument.
-      		AnotherLongFunctionNameThatCausesLineWrappingProblems(shortArg, shortArg,
-                                                            veryLongArgumentName);
-      		// If aligning argument lines with the first argument doesn't fit, or is difficult to
-      		// read, wrap all arguments on new lines with a 4 space indent.
-      		AnotherLongFunctionNameThatCausesLineWrappingProblems(
-          		veryLongArgumentName, veryLongArgumentName, veryLongArgumentName);
-    	}
-	}
+        // read, wrap all arguments on new lines with a 4 space indent.
+        void AnotherLongFunctionNameThatCausesLineWrappingProblems(
+            int longArgumentName, int longArgumentName2, int longArgumentName3)
+        {
+        }
+
+        void CallingLongFunctionName()
+        {
+            int veryLongArgumentName = 1234;
+            int shortArg = 1;
+            // If possible, wrap arguments by aligning newlines with the first argument.
+            AnotherLongFunctionNameThatCausesLineWrappingProblems(shortArg, shortArg,
+                veryLongArgumentName);
+            // If aligning argument lines with the first argument doesn't fit, or is difficult to
+            // read, wrap all arguments on new lines with a 4 space indent.
+            AnotherLongFunctionNameThatCausesLineWrappingProblems(
+                veryLongArgumentName, veryLongArgumentName, veryLongArgumentName);
+        }
+    }
 }</code></pre>
 <p>&nbsp;</p>

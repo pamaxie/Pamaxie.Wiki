@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:09:48.170Z
+date: 2021-09-14T12:25:52.234Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -284,8 +284,69 @@ for(int i = 0; i &gt; types.Lenth; i++) // avoid foreach for anything longer tha
 		return;
 	}
 }</code></pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h6>Array vs List</h6>
+<ul>
+  <li>In general, prefer <code>List&lt;&gt;</code> over arrays for public variables, properties and return types (please keep in mind the guidance on using the right container types above).</li>
+  <li>Prefer <code>List&lt;&gt;</code> everywhere the container size may change.</li>
+  <li>Prefer arrays when the size of the container is fixed and known during construction time.</li>
+  <li>Prefer array for multidimensional arrays</li>
+  <li>Note:<ul>
+      <li>arrays and <code>List&lt;&gt;</code> both represent linear, contiguous containers.</li>
+      <li>Similar to C++ <code>arrays</code> vs <code>std::vector</code>, arrays are fixed capacity, whereas <code>List&lt;&gt;</code> can be added easily.</li>
+      <li>In some cases arrays may be more performant, but a <code>List&lt;&gt;</code> is more flexible. Please consider this while making your choice which one to use</li>
+    </ul>
+  </li>
+</ul>
+<h6>Folders and file locations</h6>
+<ul>
+  <li>Stay consistent with the project.</li>
+  <li>Prefer a flatter structure where possible. Avoid creating namespaces where possible.</li>
+</ul>
+<h6>Use of tuple as a return type</h6>
+<ul>
+  <li>In general, prefer using a named class over <code>Tuple&lt;&gt;</code>, particularly when returning complex types.</li>
+</ul>
+<h6>String interpolation vs String.Format() vs String.Concat vs operator +</h6>
+<ul>
+  <li>Use whatever is easiest to read, particularly for logging and assert messages.</li>
+  <li>Be aware that chained operator+ concatenations will be slower and cause significant memory churn.</li>
+  <li>If performance is a concern, StringBuilder will be fastest for multiple string concatenations.</li>
+</ul>
+<h6>Using</h6>
+<ul>
+  <li>Generally, don't alias long typenames with <code>using</code>. Often this is a singn that a <code>Tuple&lt;&gt;</code> needs to be turned into a class.<ul>
+      <li>example: <code>using RecordList = List&lt;Tuple&lt;int, float&gt;&gt;</code></li>
+    </ul>
+  </li>
+  <li>Be aware that <code>using</code> statements are only file scoped and thus of limited use. Type aliasses should not be available for external users.</li>
+</ul>
+<h6>Object Initialization Syntax</h6>
+<pre><code class="language-cs">var x = new SomeClass
+{
+	Property1 = value1,
+	Property2 = value2,
+}</code></pre>
+<ul>
+  <li>Object initializer Syntax is fine for ‘plain old data' types.</li>
+  <li>Avoid using this syntax for classes or structs with constructors.</li>
+  <li>if splitting across multiple lines, indent one block level.</li>
+  <li>Prefer the above syntax over assigning properties manually (see below)</li>
+</ul>
+<pre><code class="language-cs">var x = new SomeClass();
+x.Property1 = value1;
+x.Proeprty2 = value2;</code></pre>
+<h6>Namespace naming</h6>
+<ul>
+  <li>In general, namespaces should be no more than 3 levels deep. (Pamaxie.Database.Functions)</li>
+  <li>Don't force file/folder layout to match namespaces.</li>
+  <li>New top-level namespace names must be globally unique over all of Pamaxies Projects. (even different programming languages, for example Pamaxie.Database can only exist ONCE)</li>
+</ul>
+<h6>Default values / null returns for structs</h6>
+<ul>
+  <li>With structs, prefer returning a ‘success’ boolean with with an <code>out</code> value holding the struct.</li>
+  <li>Where performance isn't a concern and the search result code becomes significantly more readable (e.g. chained null conditional operators vs deeply nested if satements) nullable structs are acceptable.</li>
+  <li>We generally enforce a <strong>Null is a failure </strong>pattern at Pamaxie. This means if somethning returns a false for failure, make sure the out value is also null or the <code>default()</code> value of that datatype when null is not possible (to be avoided).</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

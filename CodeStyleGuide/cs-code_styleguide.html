@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T11:20:19.970Z
+date: 2021-09-14T11:51:17.757Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -58,15 +58,15 @@ dateCreated: 2021-09-13T12:42:44.983Z
   </li>
 </ul>
 <h6>Whitespace rules</h6>
-<p>Developed from Google's Java style.</p>
+<p>Inspired from Google's Java and C# style.</p>
 <ul>
   <li>A maximum of ONE statement per line.</li>
   <li>A maximum of ONE assignement per statement.</li>
   <li>Indentation of 2 spaces, no tabs.</li>
   <li>Column limit: 100.</li>
-  <li>Line break before opening brace, except for <code>if</code></li>
-  <li>NO line break between closing brace and <code>else</code></li>
-  <li>Single space before <code>else</code></li>
+  <li>Line break before opening brace,</li>
+  <li>Line break between closing brace and <code>else</code></li>
+  <li>NewLines before <code>if</code> / <code>foreach</code> / <code>for</code> blocks</li>
   <li>Braces used even when optional</li>
   <li>No space after an opening paranthesis and before a closing Paranethesis.</li>
   <li>No space between an unary operater and its operand. One space bween the operator and each operand of all other operators.</li>
@@ -147,16 +147,13 @@ namespace MyNamespace
             NumTimesCalled++;
             Foo += _bar;
 
-            //No newline before opening brace
-            if (!NoCounting)
+            if (!NoCounting) //Newline before if statemnt and opening brace
             {
-                //No space before 'if"
-                //Braces used even when optional
-                if (resultValue &lt; 0)
-                {
+                if (resultValue &lt; 0) //No space before 'if"
+                { //Braces used even when optional
                     _results.NumNegativeResults++;
-                    //No newline between brace and else, space before else
-                }
+                    
+                } //New between brace and else
                 else if (resultValue &gt; 0)
                 {
                     _results.NumPositiveResults++
@@ -228,4 +225,86 @@ namespace MyNamespace
         }
     }
 }</code></pre>
+<h1>C# coding guidelines</h1>
+<h6>Constants</h6>
+<ul>
+  <li>Variables and fields that can be made <code>const</code> should ALWAYS be made <code>const</code>.</li>
+  <li>If <code>const</code> isn't possible, <code>readonly</code> static can be a suitable alternative.</li>
+  <li>if <code>readonly</code> isn't possible, consider using a <code>static</code> value.</li>
+</ul>
+<h6>IEnumerable vs IList vs IReadOnlyList</h6>
+<ul>
+  <li>For inputs use the most restrictive collection type possible, for example <code>IReadOnlyCollection</code> / <code>IReadOnlyList</code> / <code>IEnumerable</code> as imputs to methods when the inputs should be made immutable.</li>
+  <li>For outsputs, if passing ownership of the returned container to the owner, prefer <code>IEnumerable</code> over <code>IList</code>. If not transferning ownership, prefer the most restrictive option.</li>
+</ul>
+<h6>Generators vs containers</h6>
+<p>Use your best judgement depending on scenario. Please keep in mind that while generator code is often less readable than filling in a container, it can be more performant, except if it is directly turned into a container via <code>.ToList()</code>. Also using generator code that is called multiple times will be considerably slower than iterating over a container multiple times.</p>
+<h6>Propety Styles</h6>
+<ul>
+  <li>For single line, readonly properties, prefer expression body properties (=&gt;) when possible.</li>
+  <li>For everything else use the older <code>{ get; set; }</code> syntax.</li>
+</ul>
+<h6>Expression body syntax</h6>
+<p>For example:</p>
+<pre><code class="language-cs">int SomeProperty =&gt; _someProperty;</code></pre>
+<ul>
+  <li>Use expression syntax in lambadas and properties where possible.</li>
+  <li>Use on method definitions.</li>
+  <li>As with methods and other scoped blocks of code, align the closing with the first character of the line that includes the opening brace.<br>Se sample code for examples</li>
+</ul>
+<h6>Structs and classes</h6>
+<ul>
+  <li>Structs are different from classes:<ul>
+      <li>Structs are ALWAYS passed and returned by value</li>
+      <li>Assigning a value to a member of a returned struct doesn't modify the original - e.g. <code>transform.position.x = 10</code> doesn't set the transform's <code>position.x</code> to 10;&nbsp;<br><code>position</code> here is a property that returns a <code>Vector3</code> by value, so this just sets the x parameter of a copy of the original.</li>
+    </ul>
+  </li>
+  <li>Almost alyways use a class when possible</li>
+  <li>Consider struct when the type can be treated like any other value types. For example: if instances of the type are small and communly short lived or commonly embedded in other objects. (Good example are: Vector3, Bounds, Quaternion)</li>
+  <li>Note that this guide may vary on this, for example, performance issues may force us to use structs.</li>
+</ul>
+<h6>Lambdas vs named methods</h6>
+<ul>
+  <li>If a lambda is non-trivial (e.g. more than a couple of statements, exclude declarations), or is reused in multiple places, it should probably be a named method.</li>
+  <li>Avoid using Lambdas for complex sorting / searches, <code>for</code> / <code>foreach</code> loops should be applied where debugging the software gets too complex</li>
+</ul>
+<h6>Field initializers</h6>
+<ul>
+  <li>Field initializers are generally encouraged.</li>
+</ul>
+<h6>Extension methods</h6>
+<ul>
+  <li>Only use extension methods when the source of the original class is not available, or else when changing the source could would not be feasable.</li>
+  <li>Only use an extension method if the functionality being added is a ‘core’ general feature that would be approperiate to add to the source of the original class.</li>
+  <li>Only put extension methods into core libraries / classes that are available everywhere - extensions that are only available in some code (projects), which use things like <code>strings</code> will become a readability issue.</li>
+  <li>Be aware that using extension methods ALWAYS obfuscates the code, so err on the side of not adding them.</li>
+</ul>
+<h6>ref amd pit</h6>
+<ul>
+  <li>Use <code>out</code> for returns that are not also inputs.</li>
+  <li>Place <code>out</code> parameters after ALL other parameters in the method definition.</li>
+  <li><code>ref</code> should only be used, when mutating an input is nessecary.</li>
+  <li>Do not use <code>ref</code> as an optimization for passing structs.</li>
+  <li>Do not use <code>ref</code> to pass a modifiable container into a method. <code>ref</code> is only required when the supplied container needs to be replaced with an entirely different container instance.</li>
+</ul>
+<h6>LINQ</h6>
+<ul>
+  <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.</li>
+  <li>Do not use SQL-Style LINQ keywords - e.g. use <code>myList.Where(x)</code> not <code>myList where x</code>.</li>
+  <li>Avoid <code>Container.Foreach(…)</code> for anything that is longer than a single statement (prefer for loops).</li>
+  <li>Wrap long LINQ statements with a new line after each statement. (see example below)</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-cs">var types = myList.Where(x =&gt; x.Name == SearchedForName)
+	  			  .Select(x =&gt; x.Types).ToArray();
+
+for(int i = 0; i &gt; types.Lenth; i++)
+{
+	
+	
+}</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>

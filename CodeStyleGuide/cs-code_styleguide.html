@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: Styleguide on how we want C# Code to be developed for Pamaxie
 published: true
-date: 2021-09-14T12:52:21.988Z
+date: 2021-09-14T12:55:52.896Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -422,6 +422,7 @@ DecimalNumber product = CalculateProduct(values, options, completionDelegate: nu
 
 int value = condition ? consequent : alternative; //BAD
 
+//GOOD
 if (condition)
 {
 	value = consequent;
@@ -430,4 +431,18 @@ else
 {
 	value = alternative;
 }</code></pre>
-<p>&nbsp;</p>
+<h6>Null evaluation</h6>
+<ul>
+  <li>use the ?? operator (null-coalescing operator) whenever possible, to avoid throwing NullReferenceExceptions (see below)</li>
+</ul>
+<pre><code class="language-cs">//BAD
+if (item.Number == null)
+{
+	int value = 0
+}
+else
+{
+	int value = item.Number
+}
+
+//GOOD</code></pre>

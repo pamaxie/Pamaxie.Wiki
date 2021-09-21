@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-14T13:49:54.526Z
+date: 2021-09-21T11:52:35.974Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -256,7 +256,7 @@ namespace MyNamespace //Namespaces are PascalCase
   <li>Only put extension methods into core libraries / classes that are available everywhere - extensions that are only available in some code (projects), which use things like <code>strings</code> will become a readability issue.</li>
   <li>Be aware that using extension methods ALWAYS obfuscates the code, so err on the side of not adding them.</li>
 </ul>
-<h2><code>ref</code> amd <code>pit</code></h2>
+<h2><code>ref</code> and <code>out</code></h2>
 <ul>
   <li>Use <code>out</code> for returns that are not also inputs.</li>
   <li>Place <code>out</code> parameters after ALL other parameters in the method definition.</li>

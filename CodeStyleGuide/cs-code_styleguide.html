@@ -2,15 +2,15 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-24T09:44:02.090Z
+date: 2021-09-30T13:05:11.963Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
 -->
 
 <h1>C# with Pamaxie</h1>
-<p>This style guide is for C# code that was developed by Pamaxies team and is used in all its publically facing or internal projects. It makes choices to make the style of coding uniform across applications and languages such as C or C++. This is build off of <a href="https://google.github.io/styleguide">Googles Code Style Guide</a>.</p>
-<p>We are going to be working on Extensions / ReSharper configurations to make this more easily realizable (formatting help).<br>Please remember that we also have to follow these rules and they exist to keep the codebase consistent. We maybe updating them later on with new things.</p>
+<p>This style guide is for C# code that was developed by Pamaxies team and is used in all its publicly facing or internal projects. It defines certain programming conventions we use to have consistency between languages and projects. This is build off of <a href="https://google.github.io/styleguide">Googles Code Style Guide</a>.</p>
+<p>We are going to be working on Extensions / ReSharper configurations to make this more easily realizable (formatting help).<br>Please remember that we also have to follow these rules and they exist to keep the codebase consistent. We maybe updating them later on with new things or changes.</p>
 <h1>Formatting Guidelines</h1>
 <h2>Naming Rules</h2>
 <p>Naming rules follow <a href="https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines">Microsoft's C# naming guidelines</a>. Where Microsoft's naming guidelines are unspecified (e. g. private and local variables), the rules can be seen below.</p>
@@ -67,9 +67,9 @@ dateCreated: 2021-09-13T12:42:44.983Z
   <li>Column limit: 100.</li>
   <li>Line break before opening brace</li>
   <li>Line break between methods / functions and <code>static</code>, <code>public</code> and <code>private</code> properties.</li>
-  <li>Two LineBreaks between <code>public</code>, <code>private</code> and <code>static</code> methods / functions</li>
+  <li>One to Two LineBreaks between <code>public</code>, <code>private</code> and <code>static</code> methods / functions, depending on needed seperation</li>
   <li>Line break between closing brace and <code>else</code></li>
-  <li>NewLines <strong>before </strong>and <strong>after</strong> <code>if</code> / <code>foreach</code> / <code>for</code> blocks</li>
+  <li>NewLines <strong>before </strong>and <strong>after</strong> <code>if</code> / <code>foreach</code> / <code>for</code> blocks except they're incapsulated DIRECTLY (brackets directly after opening or closing block)</li>
   <li>Braces used even when optional</li>
   <li>Properties with backing fields should <strong>ONLY</strong> be used when needed.</li>
   <li>No space after an opening parentheses and before a closing parentheses.</li>
@@ -161,7 +161,8 @@ namespace MyNamespace //Namespaces are PascalCase
 
             if (!NoCounting) //Newline before if statemnt and opening brace
             {
-            	
+         		var resultValue += 1;
+         		
                 if (resultValue &lt; 0) //Newline before if blocks
                 { //Braces used even when optional
                     _results.NumNegativeResults++;
@@ -170,7 +171,7 @@ namespace MyNamespace //Namespaces are PascalCase
                 else if (resultValue &gt; 0)
                 {
                     _results.NumPositiveResults++
-                }
+                } // No newline if the block is encapsulated
             }
 
             return resultValue; //Newline after if blocks
@@ -330,14 +331,14 @@ for(int i = 0; i &lt; types.Lenth; i++) // avoid foreach for anything longer tha
   <li>Prefer using &nbsp;<code>var newItem = new ItemName()</code> over <code>ClassName newItem = new();</code></li>
   <li>Prefer the above syntax over assigning properties manually (see below)</li>
 </ul>
-<pre><code class="language-cs">//GOOD
+<pre><code class="language-cs">//Prefer
 var x = new SomeClass
 {
 	Property1 = value1,
 	Property2 = value2,
 }</code></pre>
 <p>versus:</p>
-<pre><code class="language-cs">//BAD
+<pre><code class="language-cs">//Avoid
 var x = new SomeClass();
 x.Property1 = value1;
 x.Proeprty2 = value2;</code></pre>
@@ -349,7 +350,7 @@ x.Proeprty2 = value2;</code></pre>
 </ul>
 <h2>Default values / null returns for structs</h2>
 <ul>
-  <li>With structs, prefer returning a ‘success’ boolean with with an <code>out</code> value holding the struct.</li>
+  <li>With structs, prefer returning a ‘success’ Boolean with with an <code>out</code> value holding the struct.</li>
   <li>Where performance isn't a concern and the search result code becomes significantly more readable (e.g. chained null conditional operators vs deeply nested if satements) nullable structs are acceptable.</li>
   <li>We generally enforce a <strong>Null is a failure </strong>pattern at Pamaxie. This means if somethning returns a false for failure, make sure the out value is also null or the <code>default()</code> value of that datatype when null is not possible (to be avoided).</li>
 </ul>
@@ -438,7 +439,7 @@ if (value 1 != value 2 &amp;&amp;
 int value = condition ? consequent : alternative;
 
 //BAD
-int value == condition ? consequent?.value ?? 0 : alternative?.value ?? 1;
+int value == condition ? consequent?.value.GetProperty() ?? 0 : alternative?.value.CalculateSomeValue() ?? 1;
 
 //GOOD
 if (condition)
@@ -449,6 +450,11 @@ else
 {
 	value = alternative?.value ?? 1;
 }</code></pre>
+<h2>Regions</h2>
+<ul>
+  <li>Regions should generally try to be avoided while developing on our solutions</li>
+  <li>If you need to separate your code into multiple files, please prefer using partial classes (where possible)</li>
+</ul>
 <h2>Null evaluation</h2>
 <ul>
   <li>use the ?? operator (null-coalescing operator) whenever possible, to avoid throwing NullReferenceExceptions (see below)</li>

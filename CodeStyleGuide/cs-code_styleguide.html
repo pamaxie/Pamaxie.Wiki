@@ -2,7 +2,7 @@
 title: C# Code Styleguide
 description: This is how we code C# with all of pamaxies projects. Please consider these rules while contributing your code to Pamaxie.
 published: true
-date: 2021-09-30T13:05:11.963Z
+date: 2021-09-30T13:08:11.531Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-09-13T12:42:44.983Z
@@ -268,11 +268,11 @@ namespace MyNamespace //Namespaces are PascalCase
 <h2>LINQ</h2>
 <ul>
   <li>In general, prefer single line LINQ calls and imperative code, rather than long chains of LINQ. Mixing imperative code and heavily chained LINQ is often harder to read.<ul>
-      <li>Note: Please remember long LINQ calls can cause issues with debugging.&nbsp;<br>Please consider this especially in complex LINQ expressions. Generally prefer <code>for</code> where applicable.</li>
+      <li>Note: Please remember long LINQ calls can cause issues with debugging.&nbsp;<br>Please consider this especially in complex LINQ expressions. <strong>Generally prefer </strong><code><strong>for</strong></code><strong> where possible <u>if the statement is too long</u>.</strong></li>
     </ul>
   </li>
   <li>Do not use SQL-Style LINQ keywords - e.g. use <code>myList.Where(x)</code> not <code>myList where x</code>.</li>
-  <li>Avoid <code>Container.Foreach(…)</code> for anything that is longer than a single statement (prefer for loops).</li>
+  <li>Avoid <code>Container.Foreach(…)</code> &nbsp;or <code>foreach()</code> for anything that is longer than a single statement (prefer for loops).&nbsp;<br>This is to ensure consistency with languages who may not have an implementation for it.</li>
   <li>Wrap long LINQ statements with a new line after each statement. Indent the newline to start on the same height as other LINQ statements when possible.</li>
 </ul>
 <p>Example:</p>
@@ -281,8 +281,7 @@ namespace MyNamespace //Namespaces are PascalCase
 
 for(int i = 0; i &lt; types.Lenth; i++) // avoid foreach for anything longer than single statement
 {
-	
-	if(type == searchedForType) //newline before if statement
+	if(type == searchedForType)
 	{
 		return;
 	}

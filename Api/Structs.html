@@ -2,22 +2,20 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: false
-date: 2022-04-10T19:36:51.163Z
+date: 2022-04-10T19:53:01.526Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
 -->
 
 <h1>Database API</h1>
-<h2>Business Data</h2>
-<h3>General Information</h3>
+<h2>General Information</h2>
 <h4>DateTime</h4>
 <ul>
   <li><strong>The default format we use for <u>DateTime</u> is the </strong><a href="https://en.wikipedia.org/wiki/ISO_8601"><strong>ISO 8601 standard</strong></a><strong> (example: "2012-03-19T07:22Z")</strong></li>
   <li><strong><u>ALL</u> dates should always be served as UTC time. Not converting them to UTC time prior to sending them to us might result in invalid dates being saved.</strong></li>
 </ul>
-<h3>NoSQL</h3>
-<h4>ScanData</h4>
+<h2>ScanData</h2>
 <p>&nbsp;</p>
 <figure class="table" style="float:left;">
   <table>
@@ -62,9 +60,12 @@ dateCreated: 2022-04-10T19:02:09.380Z
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p><br>Notes:<br>--<br>&nbsp;</p>
-<p>Json Example:<br>--</p>
-<h4>ImageScanResult</h4>
+<p><br>Notes:</p>
+<ul>
+  <li>--</li>
+</ul>
+<p>Json Example:<br><code>{}</code></p>
+<h2>ImageScanResult</h2>
 <figure class="table">
   <table>
     <thead>
@@ -125,8 +126,12 @@ dateCreated: 2022-04-10T19:02:09.380Z
     </tbody>
   </table>
 </figure>
-<p>Notes:<br>--<br><br>Json Example:<br>--</p>
-<h4>ShieldImageData</h4>
+<p>Notes:</p>
+<ul>
+  <li>--</li>
+</ul>
+<p>Json Example:<br><code>{}</code></p>
+<h2>ShieldImageData</h2>
 <figure class="table">
   <table>
     <thead>
@@ -184,8 +189,8 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p>--</p>
-<h4>ShieldAnnotationImageData</h4>
+<p><code>{}</code></p>
+<h2>ShieldAnnotationImageData</h2>
 <figure class="table">
   <table>
     <thead>
@@ -243,8 +248,8 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p>--</p>
-<h4>SymbolNetData</h4>
+<p><code>{}</code></p>
+<h2>SymbolNetData</h2>
 <figure class="table">
   <table>
     <thead>
@@ -298,6 +303,122 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p>--</p>
-<h3>SQL</h3>
-<p>&nbsp;</p>
+<p><code>{}</code></p>
+<h2>PamProject</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px;">Name</th>
+        <th style="width:200px;">Data Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id</td>
+        <td>ulong</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>OwnerId</td>
+        <td>ulong</td>
+      </tr>
+      <tr>
+        <td>Flags</td>
+        <td>ProjectFlags</td>
+      </tr>
+      <tr>
+        <td>CreationDate</td>
+        <td>DateTime</td>
+      </tr>
+      <tr>
+        <td>LastModified</td>
+        <td>DateTime</td>
+      </tr>
+      <tr>
+        <td>LastModifiedUserId</td>
+        <td>ulong</td>
+      </tr>
+      <tr>
+        <td>TTL</td>
+        <td>nullable:DateTime</td>
+      </tr>
+      <tr>
+        <td>Users</td>
+        <td>collection:ProjectUser</td>
+      </tr>
+      <tr>
+        <td>ApiKeys</td>
+        <td>collection:ApiKey</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Notes:</p>
+<ul>
+  <li>--</li>
+</ul>
+<p>Json Example:</p>
+<p><code>{}</code></p>
+<h2>PamUser</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px;">Name</th>
+        <th style="width:200px;">Data Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Id</td>
+        <td>ulong</td>
+      </tr>
+      <tr>
+        <td>UserName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>FirstName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>LastName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>Flags</td>
+        <td>UserFlags</td>
+      </tr>
+      <tr>
+        <td>CreationDate</td>
+        <td>DateTime</td>
+      </tr>
+      <tr>
+        <td>TTL</td>
+        <td>nullable:DateTime</td>
+      </tr>
+      <tr>
+        <td>Projects</td>
+        <td>collection:(project, long, bool)</td>
+      </tr>
+      <tr>
+        <td>KnownIPs</td>
+        <td style="width:500px;">collection:(string, bool)</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Notes:</p>
+<ul>
+  <li>--</li>
+</ul>
+<p>Json Example:</p>
+<p><code>{}</code></p>

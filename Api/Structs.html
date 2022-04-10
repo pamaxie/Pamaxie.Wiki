@@ -2,7 +2,7 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: false
-date: 2022-04-10T19:53:01.526Z
+date: 2022-04-10T20:03:30.939Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
@@ -28,27 +28,27 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>Key</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>DataType</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>ScanMachineGuid</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>IsUserScan</td>
-        <td>bool</td>
+        <td><code>bool</code></td>
       </tr>
       <tr>
-        <td>ScanResultKey</td>
-        <td>string</td>
+        <td>ScanResult</td>
+        <td><code>T:ScanResult</code></td>
       </tr>
       <tr>
         <td>TTL</td>
-        <td>nullable:DateTime</td>
+        <td><code>nullable:DateTime</code></td>
       </tr>
     </tbody>
   </table>
@@ -62,7 +62,7 @@ dateCreated: 2022-04-10T19:02:09.380Z
 <p>&nbsp;</p>
 <p><br>Notes:</p>
 <ul>
-  <li>--</li>
+  <li>The currently available Structs that are of Type ScanResult are: <code>ImageScanResult</code></li>
 </ul>
 <p>Json Example:<br><code>{}</code></p>
 <h2>ImageScanResult</h2>
@@ -75,10 +75,6 @@ dateCreated: 2022-04-10T19:02:09.380Z
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>OwnerKey</td>
-        <td><code>string</code></td>
-      </tr>
       <tr>
         <td>Key</td>
         <td><code>string</code></td>
@@ -109,15 +105,15 @@ dateCreated: 2022-04-10T19:02:09.380Z
       </tr>
       <tr>
         <td>AllShieldData</td>
-        <td><code>ShieldImageData</code></td>
+        <td><code>PamShieldScanResult</code></td>
       </tr>
       <tr>
         <td>AllShieldAnnotationData</td>
-        <td><code>ShieldAnnotationImageData</code></td>
+        <td><code>PamShieldAnnotationScanResult</code></td>
       </tr>
       <tr>
         <td>AllSymbolData</td>
-        <td><code>SymbolNetData</code></td>
+        <td><code>PamSymbolNetResult</code></td>
       </tr>
       <tr>
         <td>TTL</td>
@@ -131,7 +127,7 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>--</li>
 </ul>
 <p>Json Example:<br><code>{}</code></p>
-<h2>ShieldImageData</h2>
+<h2>PamShieldScanResult</h2>
 <figure class="table">
   <table>
     <thead>
@@ -143,43 +139,43 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>GoreLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>PornographicLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>RacyLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>NoneLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DetectedLabel</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>NetworkVersion</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>VersionCommonName</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>ScanPPi</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>WasCompressed</td>
-        <td>bool</td>
+        <td><code>bool</code></td>
       </tr>
       <tr>
         <td>ScanDate</td>
-        <td>DateTime</td>
+        <td><code>DateTime</code></td>
       </tr>
     </tbody>
   </table>
@@ -190,7 +186,7 @@ dateCreated: 2022-04-10T19:02:09.380Z
 </ul>
 <p>Json Example:</p>
 <p><code>{}</code></p>
-<h2>ShieldAnnotationImageData</h2>
+<h2>PamShieldAnnotationScanResult</h2>
 <figure class="table">
   <table>
     <thead>
@@ -202,43 +198,43 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>ViritualModelLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DrawingLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>AnimationLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>RealLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DetectedLabel</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>NetworkVersion</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>VersionCommonName</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>ScanPPi</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>WasCompressed</td>
-        <td>bool</td>
+        <td><code>bool</code></td>
       </tr>
       <tr>
         <td>ScanDate</td>
-        <td>DateTime</td>
+        <td><code>DateTime</code></td>
       </tr>
     </tbody>
   </table>
@@ -249,7 +245,7 @@ dateCreated: 2022-04-10T19:02:09.380Z
 </ul>
 <p>Json Example:</p>
 <p><code>{}</code></p>
-<h2>SymbolNetData</h2>
+<h2>PamSymbolNetResult</h2>
 <figure class="table">
   <table>
     <thead>
@@ -261,39 +257,39 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>HitlerLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>SwastikaLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>NoneLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DetectedLabel</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>NetworkVersion</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>VersionCommonName</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>ScanPPi</td>
-        <td>int</td>
+        <td><code>int</code></td>
       </tr>
       <tr>
         <td>WasCompressed</td>
-        <td>bool</td>
+        <td><code>bool</code></td>
       </tr>
       <tr>
         <td>ScanDate</td>
-        <td>DateTime</td>
+        <td><code>DateTime</code></td>
       </tr>
     </tbody>
   </table>
@@ -316,43 +312,43 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>Id</td>
-        <td>ulong</td>
+        <td><code>ulong</code></td>
       </tr>
       <tr>
         <td>Name</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
-        <td>OwnerId</td>
-        <td>ulong</td>
+        <td>Owner</td>
+        <td style="width:600px;"><code>LazyObject:(PamUser User, long UserId)</code></td>
       </tr>
       <tr>
-        <td>Flags</td>
-        <td>ProjectFlags</td>
-      </tr>
-      <tr>
-        <td>CreationDate</td>
-        <td>DateTime</td>
-      </tr>
-      <tr>
-        <td>LastModified</td>
-        <td>DateTime</td>
-      </tr>
-      <tr>
-        <td>LastModifiedUserId</td>
-        <td>ulong</td>
-      </tr>
-      <tr>
-        <td>TTL</td>
-        <td>nullable:DateTime</td>
+        <td>LastModifiedUser</td>
+        <td><code>LazyObject:(PamUser User, long UserId)</code></td>
       </tr>
       <tr>
         <td>Users</td>
-        <td>collection:ProjectUser</td>
+        <td><code>LazyList:(long UserId, ProjectPermissions Permissions)</code></td>
       </tr>
       <tr>
-        <td>ApiKeys</td>
-        <td>collection:ApiKey</td>
+        <td>ApiTokens</td>
+        <td><code>LazyList(string Token, long TokenId)</code></td>
+      </tr>
+      <tr>
+        <td>Flags</td>
+        <td><code>ProjectFlags</code></td>
+      </tr>
+      <tr>
+        <td>CreationDate</td>
+        <td><code>DateTime</code></td>
+      </tr>
+      <tr>
+        <td>LastModifiedAt</td>
+        <td><code>DateTime</code></td>
+      </tr>
+      <tr>
+        <td>TTL</td>
+        <td><code>nullable:DateTime</code></td>
       </tr>
     </tbody>
   </table>
@@ -375,43 +371,47 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>Id</td>
-        <td>ulong</td>
-      </tr>
-      <tr>
-        <td>UserName</td>
-        <td>string</td>
+        <td><code>ulong</code></td>
       </tr>
       <tr>
         <td>Email</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
-        <td>FirstName</td>
-        <td>string</td>
+        <td>UserName</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>LastName</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
-        <td>Flags</td>
-        <td>UserFlags</td>
+        <td>FirstName</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
-        <td>CreationDate</td>
-        <td>DateTime</td>
+        <td>PasswordHash</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
-        <td>TTL</td>
-        <td>nullable:DateTime</td>
+        <td>KnownIps</td>
+        <td><code>LazyList:(string)</code></td>
       </tr>
       <tr>
         <td>Projects</td>
-        <td>collection:(project, long, bool)</td>
+        <td><code>LazyList:(PamProject Project, long ProjectId)</code></td>
       </tr>
       <tr>
-        <td>KnownIPs</td>
-        <td style="width:500px;">collection:(string, bool)</td>
+        <td>Flags</td>
+        <td><code>UserFlags</code></td>
+      </tr>
+      <tr>
+        <td>CreationDate</td>
+        <td><code>DateTime</code></td>
+      </tr>
+      <tr>
+        <td>TTL</td>
+        <td style="width:500px;"><code>nullable:DateTime</code></td>
       </tr>
     </tbody>
   </table>

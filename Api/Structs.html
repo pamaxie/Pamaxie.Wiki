@@ -2,7 +2,7 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: false
-date: 2022-04-10T20:03:46.179Z
+date: 2022-04-10T20:07:00.054Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
@@ -10,11 +10,77 @@ dateCreated: 2022-04-10T19:02:09.380Z
 
 <h1>Database API</h1>
 <h2>General Information</h2>
-<h4>DateTime</h4>
+<h3>DateTime</h3>
 <ul>
   <li><strong>The default format we use for <u>DateTime</u> is the </strong><a href="https://en.wikipedia.org/wiki/ISO_8601"><strong>ISO 8601 standard</strong></a><strong> (example: "2012-03-19T07:22Z")</strong></li>
   <li><strong><u>ALL</u> dates should always be served as UTC time. Not converting them to UTC time prior to sending them to us might result in invalid dates being saved.</strong></li>
 </ul>
+<h2><strong>Enums</strong></h2>
+<h3><strong>ProjectFlags</strong></h3>
+<pre><code class="language-cs">    /// &lt;summary&gt;
+    /// No flags are set
+    /// &lt;/summary&gt;
+    None = 0,
+    
+    /// &lt;summary&gt;
+    /// Project is locked from being used / accessed or modified
+    /// &lt;/summary&gt;
+    Locked = 1,
+    
+    /// &lt;summary&gt;
+    /// Project is shared with multiple users
+    /// &lt;/summary&gt;
+    Shared = 2</code></pre>
+<h3>UserFlags</h3>
+<pre><code class="language-cs">    /// &lt;summary&gt;
+    /// No user flags are set
+    /// &lt;/summary&gt;
+    None = 0,
+    
+    /// &lt;summary&gt;
+    /// User account is locked and cannot be accessed or used
+    /// &lt;/summary&gt;
+    Locked = 1,
+    
+    /// &lt;summary&gt;
+    /// Is the user account confirmed?
+    /// &lt;/summary&gt;
+    ConfirmedAccount = 2,
+    
+    /// &lt;summary&gt;
+    /// Is the user account secured via 2Fa
+    /// &lt;/summary&gt;
+    //TwoFactorSecured = 4,
+    
+    /// &lt;summary&gt;
+    /// Type of user
+    /// &lt;/summary&gt;
+    PamaxieStaff = 8,
+    
+    /// &lt;summary&gt;
+    /// Does the user have access to closed access features
+    /// &lt;/summary&gt;
+    HasClosedAccess = 16</code></pre>
+<h3>ProjectPermissions</h3>
+<pre><code class="language-plaintext">    /// &lt;summary&gt;
+    /// No Permissions for this user (User is not part for this project or no permissions have been granted to them)
+    /// &lt;/summary&gt;
+    None = 0,
+    
+    /// &lt;summary&gt;
+    /// Read the projects current properties
+    /// &lt;/summary&gt;
+    Read = 1,
+    
+    /// &lt;summary&gt;
+    /// Write project properties
+    /// &lt;/summary&gt;
+    Write = 2,
+    
+    /// &lt;summary&gt;
+    /// Mange Users, read / write and do anything really in the Project
+    /// &lt;/summary&gt;
+    Administrator = 128</code></pre>
 <h2>PamScanData</h2>
 <p>&nbsp;</p>
 <figure class="table" style="float:left;">

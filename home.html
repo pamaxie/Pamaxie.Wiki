@@ -1,120 +1,19 @@
 <!--
-title: Wiki Home
-description: Home of Pamaxies wiki. This contains general information about the project, what we want the project to be and information about our team and recommended development tools. Also contains a semi up-to-date roadmap.
-published: true
-date: 2021-10-05T15:43:25.351Z
+title: Welcome to our Wiki
+description: This is the welcome / homepage of our wiki with some useful links and some project information
+published: false
+date: 2022-04-10T18:52:43.945Z
 tags: 
 editor: ckeditor
-dateCreated: 2021-10-05T12:52:06.363Z
+dateCreated: 2022-04-10T18:52:43.945Z
 -->
 
-<h1>Introduction</h1>
-<p>Hello and welcome to Pamaxies Wiki. This will be used for all projects that Pamaxie offers and create a consise documentation about working with our libraries.&nbsp;<br>Implementing your own Libraries. Setting up Servers to use our software or just wanting to contribute to our source code.&nbsp;<br>If there is any information that is not covered here, please feel free to create a ticket with the “documentation” tag on our GitHub repository where you have issues with the coverage of documentation.</p>
-<p>The rest of this page will explain basic information about which Network Infastructure we use for hosting Pamaxie (to inspire you to build one off it).&nbsp;<br>Below we will also post our currently used tools we use to contribute to Pamaxie, which we recommend you use for development with our projects.</p>
-<h1>Network Infastructure</h1>
-<p>Please see the images below for all ways you can setup your network infastructure that are possible with our current software design.</p>
-<h6>Minimal Possible Infastructure</h6>
-<figure class="image image-style-align-left"><img src="/401_–_2.png">
-  <figcaption>This is the minimal supported infastructure of our API.&nbsp;</figcaption>
-</figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h1>Contribute to Pamaxie</h1>
-<p>Before contributing your source code, please make sure that you know and understand our code styles.&nbsp;For detailed instructions on contributing please see the <a href="/en/contribution">contribution mega guide</a>.<br>All languages that we end up using with Pamaxies development will have a specific structure we require developers to comply to.&nbsp;<br>This is especially important to keep code readable. These guides can be found under the “Code Style / Design Guides” grouping.</p>
-<h2>Setting up development enviorement</h2>
-<p>We generally recommend using <a href="https://www.gitkraken.com/">GitKraken</a> to manage our Git Repositories. Since all projects with Pamaxie are hosted publically accessable, all you need is the free version of it.&nbsp;<br>Other software to manage GitHub repositories include <a href="https://desktop.github.com/">GitHub Desktop</a> or the &nbsp;<a href="https://git-scm.com/downloads">Git CLI</a> <strong>[COMPLEX]</strong>. You may also use JetBrains integrated solutions (some people in our team prefer this).</p>
-<p>For our Development we use <a href="https://visualstudio.microsoft.com/downloads/">Visual Studio</a>. Some of our Devs also replaced Visual Studio with Jetbrains products (<a href="https://www.jetbrains.com/rider/">Rider</a> for C#, <a href="https://www.jetbrains.com/clion/">CLion</a> for C &amp; C++, <a href="https://www.jetbrains.com/pycharm/">PyCharm</a> for Python, etc..).&nbsp;<br>For Interpreter Languages like Python and JS some of us also use <a href="https://code.visualstudio.com/Download">VS Code</a>.</p>
-<p>&nbsp;</p>
-<h2>Visual Studio Plugins</h2>
-<p>We have a number of plugins we recommend for Visual Studio Development.</p>
-<ul>
-  <li><a href="https://dotnet.microsoft.com/apps/machinelearning-ai/ml-dotnet/model-builder">ML.NET Model Builder</a> (This is a simple UI tool to build custom machine learning models in VS2019)</li>
-  <li><a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.FileNesting">File Nesting</a> (Automatically nests files based on file name and enables developers to nest / unnest any file manually)</li>
-  <li><a href="https://marketplace.visualstudio.com/items?itemName=MikeWard-AnnArbor.VSColorOutput">VSColorOutput</a> (Color output for build and debug windows)</li>
-</ul>
-<p>&nbsp;</p>
-<h3>C# Specific Plugins</h3>
-<ul>
-  <li><a href="https://www.jetbrains.com/resharper/">JetBrains ReSharper</a> (Productivity Extension for VS2019)</li>
-</ul>
-<p>&nbsp;</p>
-<h2>IntelliJ / Jetbrains IDE Plugins</h2>
-<ul>
-  <li><a href="https://plugins.jetbrains.com/plugin/12804-discordbeam">DiscordBeam</a> (Share files and code to a Discord Server, we use this for our Internal Discord Server a lot)</li>
-  <li><a href="https://plugins.jetbrains.com/plugin/9223-heap-allocations-viewer">Heap Allocations Viewer</a> (This highlights local object allocations and more)</li>
-  <li><a href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar">Nyan Progress Bar</a> (For the flare.)</li>
-  <li><a href="https://plugins.jetbrains.com/plugin/9746-ideolog">Ideolog</a> (Easily Customizable code highlighting)</li>
-  <li><a href="https://plugins.jetbrains.com/plugin/10080-rainbow-brackets">Rainbow Brackets</a> (Makes functional blocks more easily descernable)</li>
-  <li><a href="https://plugins.jetbrains.com/plugin/12118-hiberbee-theme">Hiberbee Theme</a> (Theme we recommend)</li>
-</ul>
-<h1>About Pamaxie</h1>
-<p>Pamaxie is a publicly accessible content filter aimed at software and hardware developers.&nbsp;<br>Utilizing it, they can determine what type of data was sent through their system and if it is safe for their end users.&nbsp;</p>
-<h2>The Problems we are tackling</h2>
-<p>We plan on developing on an open source, self-hostable API that allows its users to scan media send to it.&nbsp;<br>We plan on detecting malicious files, hate speech, false information and adult content through it.&nbsp;<br>This should hopefully make it easier for website and application developers to focus on their main business instead of developing their own content detection systems.&nbsp;<br>We hope this saves developer time, effort and money implementing systems of the same scale as ours.</p>
-<h2>How we plan to solve them</h2>
-<p>We plan on solving the problems through open research in the various fields required, working together with other specialists to find a solution to our problems.&nbsp;<br>For image detection and filtering we decided on using machine learning implementations to detect various tags for images.&nbsp;<br>This includes for example Nazi symbolism and nudity. After that we deliver the results with the media type we detected.&nbsp;<br>Media type detection is done through magic numbers, a few bytes at the start of the file’s binary data.&nbsp;<br>This is a method to detect the media type based on the binary data of a format.&nbsp;<br>This works because many formats start their data with a number of bytes to identify it.&nbsp;<br><br>We are implementing Video detection, which is going to be supported in the future.&nbsp;<br>It is using a combination of iFrame extraction and frame deltas to get keyframes from videos via FFMPEG.&nbsp;<br>After this is completed, the extracted frames are ran through a neural network.&nbsp;<br>Then, like the other solutions we return the media type and detected labels for the data.&nbsp;<br>What is slightly different with Video detection is that we also deliver the rough timestamps which contained certain labels (for example Nazi symbolism).&nbsp;<br><br>Identification of different types of known exploits is also planned, but the implementation is still being discussed.&nbsp;<br>This would include detecting known viruses or exploits like zip bombs or ransomware.&nbsp;<br>We are probably only going to work over a database of banned software hashes to keep the solution maintainable for us.&nbsp;<br>We are also looking into solutions involving AV software. This solution will not be developed on for a while.&nbsp;<br><br>Text classification is also planned to allow identification of hate speech or the spreading of wrong information online.&nbsp;<br>This solution is still being discussed and also probably not going to be worked on for a while. Its implementation would work based on natural language processing.&nbsp;<br>We will also host an instance of the API making it even more accessible for smaller companies/projects who don’t have the resources to host it themselves.&nbsp;<br>This will work over a registration of an account and an application on our website.&nbsp;<br>This website will also serve as a central hub for companies, or us to manage the API controllers from.</p>
-<h2>The Team</h2>
-<ul>
-  <li>Leechy<ul>
-      <li>Hey, I'm Leechy often called Lee. I currently work as a full-time software developer for a German software company.&nbsp;<br>They specialize mostly in financial and business software. I will spend most of my time working on the project during weekends.&nbsp;<br>I'm the project lead and mostly responsible for making sure all gears run properly.&nbsp;<br>That means you will see me most of the time doing documentation, reviewing the code of others, or nitpicking other people's solutions.&nbsp;<br>I also manage the servers, making sure they function reliably.</li>
-    </ul>
-  </li>
-  <li>Vyolex<ul>
-      <li>Hey, I'm Vyo. I am mostly responsible helping with the more complex parts of Pamaxie (like FFMPEG/ NN Stuff).<br>I also do research into how we can imrpove neural network reliability and help Lee with collecting new training data.</li>
-    </ul>
-  </li>
-  <li>Koldborg<ul>
-      <li>Hello, I am Koldborg or Kold. I am mostly responsible for tests and general software implementations. I also help preventing incidents for the website<br>to make sure its up and running without any problems. I plan on helping with the neural network / machine learning side of things in the future<br>once I gained enough expierence.</li>
-    </ul>
-  </li>
-  <li>buddeli<ul>
-      <li>Hey, I am buddeli. I help with localization of the website and other pages (like this wiki).&nbsp;<br>Currently I'm still waiting on work to be done, because at the moment the work I can do is very limited.</li>
-    </ul>
-  </li>
-</ul>
-<h1>Roadmap (Next 12 months)</h1>
-<ul class="todo-list">
-  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Additions:</span></label>
-    <ul class="todo-list">
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Management features over Pamaxies Website</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Statuspage for API / Analysis / Server availability</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create an easy way to Install and do an intial config of the API / Website</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create an easy way to Update the API / Website</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Implement a library for .Net Framework</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Remove Dependency on Login with Google (At most an optional option)</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) More General Image Detection (detecting if things are a drawing for example)</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Implement a library for Python</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Implement a library for JavaScript</span></label></li>
-    </ul>
-  </li>
-  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Improvements:</span></label>
-    <ul class="todo-list">
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Remove dependency on SQL Server (Redis only)</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Make sure that connection to the SQL Server uses a CLEAR Client-Server architecture&nbsp;</span></label><br><label class="todo-list__label"><span class="todo-list__label__description">(avoid directly polling from the database without contacting DB API)</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Localize Websites</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Website Accessability Overhaul</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Increase Documentation Coverage</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Increase Test Coverage</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Create Code-Style Documentation for different Programming Languages</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">(OPTIONAL) Make services DIN 66399 and DIN 66398 Compliant</span></label></li>
-    </ul>
-  </li>
-  <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Fixes</span></label>
-    <ul class="todo-list">
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Use Proper StatusCodes for the Website/API</span></label></li>
-      <li><label class="todo-list__label"><input type="checkbox" disabled="disabled"><span class="todo-list__label__description">Rework Authentication Flow for the different APIs (use headers with Basic Auth for the initial auth, instead of the body because of security concerns).</span></label></li>
-    </ul>
-  </li>
-</ul>
+<h2>Introduction</h2>
+<p>Hello and welcome to our wiki, we're happy to have you here. We are using this site to document certain things about our API, Setting up Servers or giving examples on how to help contribute to Pamaxie. Pamaxie is build to follow the open source philosophy in a very very distinct manner. What this means is this:&nbsp;<br>This project is first off never intended to be developed by one person or company. We believe content filters should be developed with all kinds of cultures and people in mind and this is where you come in! You can contribute to our effort in many ways, even if you don't know how to code at all. We require people to go through content we collected on the internet and see if they find it offensive with a reason why they think it should be filtered. We also need translators to make sure everyone can read this wiki and knows how to setup or work with this project.</p>
+<p>We also need people who are willing to contribute to our designs of our website, general service design (aka how we represent ourselves) and fix the odd typo here and there.<br>We think a community of people enthusiastic about ensuring online safety without risking anyone's privacy is very important.</p>
+<p>As a community, enthusiastic about improving online safety we are far stronger than any company could ever be &lt;3</p>
+<h3>Who we even are</h3>
+<p>Now you might ask yourself: who are you and why are you and what is your goals?<br>Pamaxie is a project created by a few people enthusiastic about online safety funded by the amazing people of the Prototypefund team. We are very happy we were given an opportunity to develop a prototype of our service which aims to provide detection of potentially harmful content. For the prototype we plan to only implement an image detection system. In the future however, depending on how well the prototype works, we plan on expanding this to videos, contextual text message (text in context) and even certain malicious files (aka Viruses).<br>This means depending on how well our project goes, we plan to expand quite a bit, offering privacy centric content protection systems, available for anyone.<br><br>The next part which differentiates us from other services is this: We offer free models for any non commercial projects. This means as long as you do not profit off your project and use our service (within reason), you can use it completely for free. This includes 1000 images per DAY for the beginning. We might have to adjust this, depending on how much load we can handle.</p>
+<p>Talking about handling loads, we also offer spinning up your own detection clients, which just require an API key and you can scan your own content. As much as you want. No rate limits, even if used commercially. This is all still in conceptualization and might change in the future (depending on how abused this is). But for now we plan on letting people spin up their own workers by running a python script. &nbsp;This requires only a smaller server, something along the lines of 2 CPU cores and 4 GB of ram. We also plan to implement GPU and TPU support (with TPU support being planned to work with the initial prototype).<br><br>We hope this could give you a bit of a view into what we do. Please let us know if we can improve this introduction in any way.</p>
+<h3>Where to go from here</h3>
+<p>If you're looking to help, or just want to get started integrating our API, we first recommend you join <a href="https://discord.gg/WsJnPTcvae">our Discord server</a>.&nbsp;<br>This way we can help find your way if you ever get lost.<br><br>Other than that you can navigate to the different pages about how to contribute or integrate or maybe even setup your own server on the right!<br>Good luck and we're happy to have you &lt;3</p>

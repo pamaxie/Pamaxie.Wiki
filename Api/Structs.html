@@ -2,7 +2,7 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: false
-date: 2022-04-10T19:26:08.982Z
+date: 2022-04-10T19:36:51.163Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
@@ -62,7 +62,8 @@ dateCreated: 2022-04-10T19:02:09.380Z
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p><br>Notes:<br>--</p>
+<p><br>Notes:<br>--<br>&nbsp;</p>
+<p>Json Example:<br>--</p>
 <h4>ImageScanResult</h4>
 <figure class="table">
   <table>
@@ -75,52 +76,228 @@ dateCreated: 2022-04-10T19:02:09.380Z
     <tbody>
       <tr>
         <td>OwnerKey</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>Key</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>DetectedShieldLabel</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>DetectedShieldLabelLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DetectedShieldLabelAnnotation</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>DetectedShieldLabelAnnotationLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>DetectedSymbolLabel</td>
-        <td>string</td>
+        <td><code>string</code></td>
       </tr>
       <tr>
         <td>DetectedSymbolLikelihood</td>
-        <td>float</td>
+        <td><code>float</code></td>
       </tr>
       <tr>
         <td>AllShieldData</td>
-        <td>string</td>
+        <td><code>ShieldImageData</code></td>
       </tr>
       <tr>
         <td>AllShieldAnnotationData</td>
-        <td>string</td>
+        <td><code>ShieldAnnotationImageData</code></td>
       </tr>
       <tr>
         <td>AllSymbolData</td>
-        <td>string</td>
+        <td><code>SymbolNetData</code></td>
       </tr>
       <tr>
         <td>TTL</td>
-        <td>nullable:DateTime</td>
+        <td><code>nullable:DateTime</code></td>
       </tr>
     </tbody>
   </table>
 </figure>
+<p>Notes:<br>--<br><br>Json Example:<br>--</p>
+<h4>ShieldImageData</h4>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px;">Name</th>
+        <th style="width:200px;">Data Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GoreLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>PornographicLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>RacyLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>NoneLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>DetectedLabel</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>NetworkVersion</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>VersionCommonName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>ScanPPi</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>WasCompressed</td>
+        <td>bool</td>
+      </tr>
+      <tr>
+        <td>ScanDate</td>
+        <td>DateTime</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Notes:</p>
+<ul>
+  <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
+</ul>
+<p>Json Example:</p>
+<p>--</p>
+<h4>ShieldAnnotationImageData</h4>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px;">Name</th>
+        <th style="width:200px;">Data Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ViritualModelLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>DrawingLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>AnimationLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>RealLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>DetectedLabel</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>NetworkVersion</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>VersionCommonName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>ScanPPi</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>WasCompressed</td>
+        <td>bool</td>
+      </tr>
+      <tr>
+        <td>ScanDate</td>
+        <td>DateTime</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Notes:</p>
+<ul>
+  <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
+</ul>
+<p>Json Example:</p>
+<p>--</p>
+<h4>SymbolNetData</h4>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:200px;">Name</th>
+        <th style="width:200px;">Data Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>HitlerLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>SwastikaLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>NoneLikelihood</td>
+        <td>float</td>
+      </tr>
+      <tr>
+        <td>DetectedLabel</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>NetworkVersion</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>VersionCommonName</td>
+        <td>string</td>
+      </tr>
+      <tr>
+        <td>ScanPPi</td>
+        <td>int</td>
+      </tr>
+      <tr>
+        <td>WasCompressed</td>
+        <td>bool</td>
+      </tr>
+      <tr>
+        <td>ScanDate</td>
+        <td>DateTime</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Notes:</p>
+<ul>
+  <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
+</ul>
+<p>Json Example:</p>
+<p>--</p>
+<h3>SQL</h3>
+<p>&nbsp;</p>

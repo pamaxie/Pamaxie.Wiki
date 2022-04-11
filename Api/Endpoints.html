@@ -2,10 +2,38 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-10T19:06:00.780Z
+date: 2022-04-11T17:43:35.315Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
 -->
 
-<p>To be created</p>
+<h1>Database API</h1>
+<h2>General Information</h2>
+<h3>Authorization</h3>
+<ul>
+  <li>For initially authenticating with the Scanning API we use a custom authentication format. This is only required for the initial authentication (login). After that we continue to use Bearer Authentication. Our own Authentication method (PamAuth) requires a token (Prefixed by PamToken/-//). The usually Auth header should look a bit like this:&nbsp;<br><code>Token PamToken/-//956927111468163072/-//956927426313601024/-//1023981Zjaflkjaqweoiasfja</code></li>
+</ul>
+<h2>User Service</h2>
+<p>Create User Account</p>
+<pre><code class="language-plaintext">Request Type: Post
+Request Url: /db/v1/user/create
+Authorization: None
+Content-Type: application/json
+Request Body:
+	{
+    	"Id": 0,
+    	"Email": "john@wolf.email",
+    	"UserName": "John",
+    	"LastName": "Wolf",
+    	"FirstName": "John",
+    	"PasswordHash": "$argon2i$v=19$m=4096,t=10,p=1$1023819823091820jaflkjasodu91283ukj%",
+    	"KnownIps": null,
+    	"Projects": null,
+    	"Flags": 0,
+    	"CreationDate": "0001-01-01T00:00:00",
+    	"TTL": "2022-09-05T13:17:50.155621+02:00"
+	}</code></pre>
+<p>Login User Account<br>&nbsp;</p>
+<p>&nbsp;</p>
+<p> </p>

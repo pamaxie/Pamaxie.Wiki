@@ -2,20 +2,19 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: true
-date: 2022-04-12T17:53:44.972Z
+date: 2022-04-12T20:52:47.549Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
 -->
 
-<h1>Database API</h1>
-<h2>General Information</h2>
-<h3>Authorization</h3>
+<h1>General Information</h1>
+<h2>Authorization</h2>
 <ul>
   <li>For initially authenticating with the Scanning API we use a custom authentication format. This is only required for the initial authentication (login). After that we continue to use Bearer Authentication. Our own Authentication method (PamAuth) requires a token (Prefixed by PamToken/-//). The usually Auth header should look a bit like this:&nbsp;<br><code>Token PamToken/-//956927111468163072/-//956927426313601024/-//1023981Zjaflkjaqweoiasfja</code></li>
 </ul>
-<h2>User Service</h2>
-<h3>Create User Account</h3>
+<h1>User Service</h1>
+<h2>Create User Account</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/create
 Authorization: None
@@ -61,7 +60,7 @@ Notes:
 #we generally do not advise against setting this.
 
 #Setting the Id, KnownIps, Projects, Flags or CreationDate has no effect and will be ignored.</code></pre>
-<h3>Login User Account</h3>
+<h2>Login User Account</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/login
 Authorization: Basic
@@ -96,7 +95,7 @@ Notes:
 
 #Authoriziation maybe done over Username and Password of the individuals user account encoded
 #into a base64 string and seperated by a ':' character.</code></pre>
-<h3>Update User Account</h3>
+<h2>Update User Account</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/create
 Authorization: JWT Bearer
@@ -142,7 +141,7 @@ Notes:
 #we generally do not advise against setting this.
 
 #Setting the Id, KnownIps, Projects, Flags or CreationDate has no effect and will be ignored.</code></pre>
-<h3>Delete User Account</h3>
+<h2>Delete User Account</h2>
 <pre><code class="language-plaintext">Request Type: DELETE
 Request Url: /db/v1/user/delete={userId}
 Authorization: JWT Bearer
@@ -158,7 +157,7 @@ Notes:
 #The path of the request after delete= specifies the users Id to be deleted.
 
 #The user that has been deleted recieves an email about their account being deleted.</code></pre>
-<h3>Get User Account</h3>
+<h2>Get User Account</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/get={userId}
 Authorization: JWT Bearer
@@ -187,7 +186,7 @@ Notes:
 #The path of the request after get= specifies the users Id to get.
 
 #We return the same object that the login request returns during a get (minimal)</code></pre>
-<h3>Refresh Token</h3>
+<h2>Refresh Token</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/refreshToken
 Authorization: JWT Bearer
@@ -202,7 +201,7 @@ Return Body:
 	
 ------------	
 Notes:</code></pre>
-<h3>Is IP Known</h3>
+<h2>Is IP Known</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/IsIpKnown={IP}
 Authorization: JWT Bearer
@@ -217,7 +216,7 @@ Notes:
 #this users account before
 
 #The path of the request after IsIpKnown= specifies the IP address to validate against</code></pre>
-<h3>Get User Id</h3>
+<h2>Get User Id</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/GetId={QueryParam}
 Authorization: JWT Bearer
@@ -233,7 +232,7 @@ Notes:
 #The Query parameters maybe a Username or Email
 
 #This endpoint may only be used by Pamaxies staff team</code></pre>
-<h3>Load Known IPs</h3>
+<h2>Load Known IP's</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/LoadIPs
 Authorization: JWT Bearer
@@ -266,7 +265,7 @@ Notes:
 
 #We only require a minimal object to be returned to us (We really just require the Id Property
 #being set like in this example). You can however send us the entire User Object as well.</code></pre>
-<h3>Load Projects</h3>
+<h2>Load Projects</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/LoadProject
 Authorization: JWT Bearer
@@ -325,7 +324,7 @@ Notes:
 
 #We only require a minimal object to be returned to us (We really just require the Id Property
 #being set like in this example). You can however send us the entire User Object as well.</code></pre>
-<h3>Load Fully</h3>
+<h2>Load Fully</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/LoadProject
 Authorization: JWT Bearer
@@ -388,8 +387,8 @@ Notes:
 
 #We only require a minimal object to be returned to us (We really just require the Id Property
 #being set like in this example). You can however send us the entire User Object as well.</code></pre>
-<h2>ProjectService</h2>
-<h3>Create Project</h3>
+<h1>ProjectService</h1>
+<h2>Create Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/create
 Authorization: JWT Bearer
@@ -435,7 +434,7 @@ Notes:
 
 #We ignore any values set to: Id, KnownIps, Owner, LastModifiedUser, Users, ApiTokens, CreationDate
 #or LastModifiedAt</code></pre>
-<h3>Update Project</h3>
+<h2>Update Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/update
 Authorization: JWT Bearer
@@ -483,7 +482,7 @@ Notes:
 #or LastModifiedAt
 
 #You require write Permissions on the Project to update it</code></pre>
-<h3>Get Project</h3>
+<h2>Get Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/get={ProjectId}
 Authorization: JWT Bearer
@@ -520,7 +519,7 @@ Notes:
 #The path of the request after get= should specify the id of the project you want to get (Project Id)
 
 #You require read permissions on a project to get it</code></pre>
-<h3>Delete Project</h3>
+<h2>Delete Project</h2>
 <pre><code class="language-plaintext">Request Type: DELETE
 Request Url: /db/v1/project/delete={ProjectId}
 Authorization: JWT Bearer
@@ -534,7 +533,7 @@ Notes:
 #(Project Id)
 
 #You require administrative permissions on the project to delete it</code></pre>
-<h3>Create API Token for Project</h3>
+<h2>Create API Token for Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/createToken
 Authorization: JWT Bearer
@@ -557,7 +556,7 @@ Notes:
 #has to be set for security reasons.
 
 #You require write permissions on the project to create a token</code></pre>
-<h3>Delete API Token for Project</h3>
+<h2>Delete API Token for Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/createToken
 Authorization: JWT Bearer
@@ -574,7 +573,7 @@ Notes:
 #Deleting a Token revokes it's access and makes any request through this token impossible
 
 #You require write permissions on the project to delete a token</code></pre>
-<h3>Add User to Project</h3>
+<h2>Add User to Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/addUser
 Authorization: JWT Bearer
@@ -593,7 +592,7 @@ Notes:
 #will be highly limited (We recommend at LEAST read permissions)
 
 #You require administrator permissions to add a user to a project</code></pre>
-<h3>Remove User from Project</h3>
+<h2>Remove User from Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/removeUser
 Authorization: JWT Bearer
@@ -608,7 +607,7 @@ Return Body: NONE
 Notes:
 
 #You require administrator permissions to remove a user to a project</code></pre>
-<h3>Load Owner of Project</h3>
+<h2>Load Owner of Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/loadOwner
 Authorization: JWT Bearer
@@ -655,7 +654,7 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what we recommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Load Last Modified User of Project</h3>
+<h2>Load Last Modified User of Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/loadLastmodifiedUser
 Authorization: JWT Bearer
@@ -702,7 +701,7 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Load API Tokens of Project</h3>
+<h2>Load API Tokens of Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/loadApiTokens
 Authorization: JWT Bearer
@@ -736,7 +735,7 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Load Projects Users</h3>
+<h2>Load Projects Users</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/loadUsers
 Authorization: JWT Bearer
@@ -770,7 +769,7 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Check User Permissions on Project</h3>
+<h2>Check User Permissions on Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/hasPermission
 Authorization: JWT Bearer
@@ -791,7 +790,7 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Give User Permissions on Project</h3>
+<h2>Give User Permissions on Project</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/project/setPermission
 Authorization: JWT Bearer
@@ -810,8 +809,8 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h2>Scanning Service</h2>
-<h3>Login Scanning Service</h3>
+<h1>Scanning Service</h1>
+<h2>Login Scanning Service</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/scan/login
 Authorization: PamAuth
@@ -832,7 +831,7 @@ Notes:
 #The JWT Bearer Tokens returned by our Scanning service are automatically long lived tokens
 
 #You may not use this token to access any of the user or project services.</code></pre>
-<h3>Refresh Scanning Token</h3>
+<h2>Refresh Scanning Token</h2>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/scan/refreshToken
 Authorization: JWT Bearer
@@ -855,7 +854,7 @@ Notes:
 #You may not use a User Token to authenticate with this service
 
 #You may not use this token to access any of the user or project services.</code></pre>
-<h3>Scan Item</h3>
+<h2>Scan Item</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /scan/v1/detect
 Authorization: JWT Bearer
@@ -880,7 +879,7 @@ Notes:
 
 #We recommend specifying the correct Content-Type in the header of the scan. This way we can
 #ensure to serve the Scan Request the best way possible</code></pre>
-<h3>Update Scan</h3>
+<h2>Update Scan</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/update
 Authorization: JWT Bearer
@@ -916,7 +915,7 @@ Notes:
 #If the object does not exist in the database we create it with this endpoint
 
 #You may not use a User Token to authenticate with this service</code></pre>
-<h3>Get Scan</h3>
+<h2>Get Scan</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/get={ScanHash}
 Authorization: JWT Bearer
@@ -952,7 +951,7 @@ Notes:
 #You may not use a User Token to authenticate with this service
 
 #The path after get= specifies the hash of the scan that should be retrieved</code></pre>
-<h3>Delete Scan</h3>
+<h2>Delete Scan</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/delete={ScanHash}
 Authorization: JWT Bearer

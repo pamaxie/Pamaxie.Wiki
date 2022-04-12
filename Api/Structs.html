@@ -2,7 +2,7 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: true
-date: 2022-04-12T21:23:32.620Z
+date: 2022-04-12T21:38:21.159Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
@@ -613,7 +613,64 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>--</li>
 </ul>
 <p>Json Example:</p>
-<p><code>{}</code></p>
+<pre><code class="language-plaintext">{
+    "Id": 963553087639789568,
+    "Name": null,
+    "Owner": {
+        "Data": {
+            "Item1": {
+                "Id": 963552696680321024,
+                "Email": "john@doe.mail",
+                "UserName": "JohnDoe",
+                "LastName": "John",
+                "FirstName": "Doe",
+                "PasswordHash": null,
+                "KnownIps": [],
+                "Projects": [],
+                "Flags": 18,
+                "CreationDate": "2022-04-12T21:35:02.497921Z",
+                "TTL": "2022-09-05T11:17:50.155621Z"
+            },
+            "Item2": 963552696680321024
+        },
+        "IsLoaded": true
+    },
+    "LastModifiedUser": {
+        "Data": {
+            "Item1": {
+                "Id": 963552696680321024,
+                "Email": "john@doe.mail",
+                "UserName": "JohnDoe",
+                "LastName": "John",
+                "FirstName": "Doe",
+                "PasswordHash": null,
+                "KnownIps": [],
+                "Projects": [],
+                "Flags": 18,
+                "CreationDate": "2022-04-12T21:35:02.497921Z",
+                "TTL": "2022-09-05T11:17:50.155621Z"
+            },
+            "Item2": 963552696680321024
+        },
+        "IsLoaded": true
+    },
+    "Users": [
+        {
+            "Item1": 963552696680321024,
+            "Item2": 128
+        }
+    ],
+    "ApiTokens": [
+        {
+            "Item1": "$argon2id$v=19$m=65536,t=3,p=1$iFY0D8m38MyIItyRLo1ANw$rs/BCKLLKmD22utT/C6PWvmW2s05++yrkTIvWK62Vmg",
+            "Item2": 963553350568132608
+        }
+    ],
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}</code></pre>
 <h2>PamUser</h2>
 <figure class="table">
   <table>
@@ -650,11 +707,11 @@ dateCreated: 2022-04-10T19:02:09.380Z
       </tr>
       <tr>
         <td>KnownIps</td>
-        <td><code>LazyList:(string)</code></td>
+        <td><code>collection:(string)</code></td>
       </tr>
       <tr>
         <td>Projects</td>
-        <td><code>LazyList:(PamProject Project, long ProjectId)</code></td>
+        <td><code>collection:(PamProject Item1, long Item2)</code></td>
       </tr>
       <tr>
         <td>Flags</td>
@@ -673,7 +730,7 @@ dateCreated: 2022-04-10T19:02:09.380Z
 </figure>
 <p>Notes:</p>
 <ul>
-  <li>--</li>
+  <li>&nbsp;</li>
 </ul>
 <p>Json Example:</p>
 <pre><code class="language-plaintext">{

@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T16:27:46.950Z
+date: 2022-04-12T17:10:40.932Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -195,7 +195,7 @@ Content-Type: EMPTY
 Request Body: EMPTY
 Return Body:
 {
-    "token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NDk3NzgyMDAsImV4cCI6MTY1MjM3MDIwMCwiaXNzIjoiUGFtYXhpZSIsImF1ZCI6IlBhbWF4aWUiLCJvd25lcklkIjo5NjM0NjA5NTg4NzU4MTU5MzZ9.Q46mjC6NEUXxAo757PdpeEci49H2T0Jk9ovNMu7JiZU",
+    "token": "Token",
     "expiresAtUTC": "2022-05-12T15:43:20.8306105+00:00",
     "isLongLived": true
 }
@@ -414,40 +414,341 @@ Notes:
 #These properties may not be set:
 # - Id
 # - KnownIps
-# - Projects
-# - Flags
+# - Owner
+# - LastModifiedUser
+# - Users
+# - ApiTokens
 # - CreationDate
+# - LastModifiedAt
 # - TTL
 #These properties must be set:
-# - Email
-# - UserName
-# - LastName
-# - FirstName
-# - PasswordHash
+# - Name
 #These properties may be set:
 # - TTL
 
-#You can enter a more verbose Project description into </code></pre>
+#We generally do not recommend setting a TTL for a Project since this will automatically delete the
+#project if their API tokens are not accessed (which means if no API tokens are set it will be
+#deleted)
+
+#We recommend only giving us a Project Name (aka Json data minimilized to just the Name of a Project)
+#this is to reduce network load
+
+#We ignore any values set to: Id, KnownIps, Owner, LastModifiedUser, Users, ApiTokens, CreationDate
+#or LastModifiedAt</code></pre>
 <h3>Update Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/update
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Id": 963475102257651712,
+    "Name": "TestProject",
+    "Owner": null,
+    "LastModifiedUser": null,
+    "Users": null,
+    "ApiTokens": null,
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+Return Body: EMPTY
+------------	
+Notes:
+
+#These properties may not be set:
+# - Id
+# - KnownIps
+# - Owner
+# - LastModifiedUser
+# - Users
+# - ApiTokens
+# - CreationDate
+# - LastModifiedAt
+# - TTL
+#These properties must be set:
+# - Name
+#These properties may be set:
+# - TTL
+
+#We generally do not recommend setting a TTL for a Project since this will automatically delete the
+#project if their API tokens are not accessed (which means if no API tokens are set it will be
+#deleted)
+
+#You can change the ProjectName with this endpoint, everything else is handled through seperate
+#enpoints. We might allow for more things to be changed later on.
+
+#We ignore any values set to: Id, KnownIps, Owner, LastModifiedUser, Users, ApiTokens, CreationDate
+#or LastModifiedAt
+
+#You require write Permissions on the Project to update it</code></pre>
 <h3>Get Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/get={ProjectId}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "Id": 963475102257651712,
+    "Name": "ProjectName",
+    "Owner": {
+        "Data": {
+            "Item1": null,
+            "Item2": 963460958875815936
+        },
+        "IsLoaded": false
+    },
+    "LastModifiedUser": {
+        "Data": {
+            "Item1": null,
+            "Item2": 0
+        },
+        "IsLoaded": false
+    },
+    "Users": [],
+    "ApiTokens": [],
+    "Flags": 0,
+    "CreationDate": "2022-04-12T16:26:04.880209Z",
+    "LastModifiedAt": "2022-04-12T16:26:04.880033Z",
+    "TTL": null
+}
+------------	
+Notes:
+
+#The path of the request after get= should specify the id of the project you want to get (Project Id)
+
+#You require read permissions on a project to get it</code></pre>
 <h3>Delete Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: DELETE
+Request Url: /db/v1/project/delete={ProjectId}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body: EMPTY
+------------	
+Notes:
+
+#The path of the request after delete= should specify the id of the project you want to delete 
+#(Project Id)
+
+#You require administrative permissions on the project to delete it</code></pre>
 <h3>Create API Token for Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/createToken
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "ProjectId": 956927111468163072,
+    "ExpiresAtUTC": "9999-12-31T22:59:59.9999999Z"
+}
+Return Body:
+PamToken/-//963469917997244416/-//963482075615215616/-//1083019283012830uafoiaj012938jf838394jafDFJA
+------------	
+Notes:
+
+#Creating a token serves you a PamToken. This is a credential, but we only save its ARGON2
+#Representation in our database. Please make sure to store this credential somewhere secure and NEVER
+#share it.
+
+#The ExpiresAtUTC specifies an expirition time for the token. You can set this to any date but it
+#has to be set for security reasons.
+
+#You require write permissions on the project to create a token</code></pre>
 <h3>Delete API Token for Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/createToken
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "ProjectId": 963469917997244416,
+    "TokenId": 963482075615215616
+}
+Return Body: NONE
+------------	
+Notes:
+
+#Deleting a Token revokes it's access and makes any request through this token impossible
+
+#You require write permissions on the project to delete a token</code></pre>
 <h3>Add User to Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/addUser
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "ProjectId": 950835844418117632,
+    "UserId": 949716012092100608,
+    "Permissions": 128
+}
+Return Body: NONE
+------------	
+Notes:
+
+#Please ensure you set the proper permissions for the user otherwise their acccess to the project
+#will be highly limited (We recommend at LEAST read permissions)
+
+#You require administrator permissions to add a user to a project</code></pre>
 <h3>Remove User from Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/removeUser
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "ProjectId": 950835844418117632,
+    "UserId": 949716012092100608
+}
+Return Body: NONE
+------------	
+Notes:
+
+#You require administrator permissions to remove a user to a project</code></pre>
 <h3>Load Owner of Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/loadOwner
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "Id": 963475102257651712
+}
+Return Body:
+{
+    "Id": 963469917997244416,
+    "Name": null,
+    "Owner": {
+        "Data": {
+            "Item1": {
+                "Id": 963460958875815936,
+                "Email": "john@doe.mail",
+                "UserName": "JohnDoe",
+                "LastName": "John",
+                "FirstName": "Doe",
+                "PasswordHash": null,
+                "KnownIps": [],
+                "Projects": [],
+                "Flags": 18,
+                "CreationDate": "2022-04-12T15:34:31.300681Z",
+                "TTL": "2022-09-05T11:17:50.155621Z"
+            },
+            "Item2": 963460958875815936
+        },
+        "IsLoaded": true
+    },
+    "LastModifiedUser": null,
+    "Users": null,
+    "ApiTokens": null,
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+------------	
+Notes:
+
+#You require read permissions to load the owner of a Project
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what we recommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
 <h3>Load Last Modified User of Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/loadLastmodifiedUser
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "Id": 963475102257651712
+}
+Return Body:
+{
+    "Id": 963469917997244416,
+    "Name": null,
+    "Owner": null,
+    "LastModifiedUser": {
+        "Data": {
+            "Item1": {
+                "Id": 963460958875815936,
+                "Email": "john@doe.mail",
+                "UserName": "JohnDoe",
+                "LastName": "John",
+                "FirstName": "Doe",
+                "PasswordHash": null,
+                "KnownIps": [],
+                "Projects": [],
+                "Flags": 18,
+                "CreationDate": "2022-04-12T15:34:31.300681Z",
+                "TTL": "2022-09-05T11:17:50.155621Z"
+            },
+            "Item2": 963460958875815936
+        },
+        "IsLoaded": true
+    },
+    "Users": null,
+    "ApiTokens": null,
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+------------	
+Notes:
+
+#You require read permissions to load the last modified user of a Project
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
 <h3>Load API Tokens of Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/loadLastmodifiedUser
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "Id": 963475102257651712
+}
+Return Body:
+{
+    "Id": 963469917997244416,
+    "Name": null,
+    "Owner": null,
+    "LastModifiedUser": {
+        "Data": {
+            "Item1": {
+                "Id": 963460958875815936,
+                "Email": "john@doe.mail",
+                "UserName": "JohnDoe",
+                "LastName": "John",
+                "FirstName": "Doe",
+                "PasswordHash": null,
+                "KnownIps": [],
+                "Projects": [],
+                "Flags": 18,
+                "CreationDate": "2022-04-12T15:34:31.300681Z",
+                "TTL": "2022-09-05T11:17:50.155621Z"
+            },
+            "Item2": 963460958875815936
+        },
+        "IsLoaded": true
+    },
+    "Users": null,
+    "ApiTokens": null,
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+------------	
+Notes:
+
+#You require read permissions to load the last modified user of a Project
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
 <h3>Load Projects Users</h3>
 <p>&nbsp;</p>
 <h3>Check User Permissions on Project</h3>

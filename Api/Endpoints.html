@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T17:17:26.070Z
+date: 2022-04-12T17:42:33.382Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -810,4 +810,137 @@ Notes:
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
+<h2>Scanning Service</h2>
+<h3>Login Scanning Service</h3>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/scan/login
+Authorization: PamAuth
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "Token": {
+        "Token": "JWT Token",
+        "ExpiresAtUTC": "2022-05-12T17:21:22.6412677+00:00",
+        "IsLongLived": true
+    },
+    "ProjectId": 963469917997244416
+}
+------------	
+Notes:
+
+#The JWT Bearer Tokens returned by our Scanning service are automatically long lived tokens
+
+#You may not use this token to access any of the user or project services.</code></pre>
+<h3>Refresh Scanning Token</h3>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/scan/refreshToken
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "Token": {
+        "Token": "JWT Token",
+        "ExpiresAtUTC": "2022-05-12T17:21:22.6412677+00:00",
+        "IsLongLived": true
+    },
+    "ProjectId": 963469917997244416
+}
+------------	
+Notes:
+
+#The JWT Bearer Tokens returned by our Scanning service are automatically long lived tokens
+
+#You may not use a User Token to authenticate with this service
+
+#You may not use this token to access any of the user or project services.</code></pre>
+<h3>Update Scan</h3>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/scan/update
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Key": "ImageHash",
+    "DataType": "img",
+    "DataExtension": "png",
+    "ScanMachineGuid": null,
+    "IsUserScan": false,
+    "ScanResult": {
+        "Key": null,
+        "DetectedShieldLabel": "test",
+        "DetectedShieldLabelLikelihood": 0.78,
+        "DetectedShieldLabelAnnotation": "test",
+        "DetectedShieldLabelAnnotationLikelihood": 0.99,
+        "DetectedSymbolLabel": "test",
+        "DetectedSymbolLikelihood": 0.45,
+        "AllShieldData": null,
+        "AllShieldAnnotationData": null,
+        "AllSymbolData": null,
+        "TTL": null
+    },
+    "TTL": null
+}
+Return Body: ImageHash
+------------	
+Notes:
+
+#This endpoint is not accessible to the public
+
+#If the object does not exist in the database we create it with this endpoint
+
+#You may not use a User Token to authenticate with this service</code></pre>
+<h3>Get Scan</h3>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/scan/get={ScanHash}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "Key": "testtest2",
+    "DataType": "img",
+    "DataExtension": "png",
+    "ScanMachineGuid": "bbe46a6e-c1a2-4ccc-b263-49a0c0943525",
+    "IsUserScan": true,
+    "ScanResult": {
+        "Key": "testtest2/-/imgScanResult",
+        "DetectedShieldLabel": "test",
+        "DetectedShieldLabelLikelihood": 0.78,
+        "DetectedShieldLabelAnnotation": "test",
+        "DetectedShieldLabelAnnotationLikelihood": 0.99,
+        "DetectedSymbolLabel": "test",
+        "DetectedSymbolLikelihood": 0.45,
+        "AllShieldData": null,
+        "AllShieldAnnotationData": null,
+        "AllSymbolData": null,
+        "TTL": "2022-10-12T17:25:20.8327722+00:00"
+    },
+    "TTL": "2022-10-12T17:25:20.8277511+00:00"
+}
+------------	
+Notes:
+
+#This endpoint is not accessible to the public
+
+#You may not use a User Token to authenticate with this service
+
+#The path after get= specifies the hash of the scan that should be retrieved</code></pre>
+<h3>Delete Scan</h3>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/scan/delete={ScanHash}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body: EMPTY
+------------	
+Notes:
+
+#This endpoint is not accessible to the public
+
+#You may not use a User Token to authenticate with this service
+
+#The path after delete= specifies the hash of the scan that should be deleted</code></pre>
+<p>&nbsp;</p>
 <p>&nbsp;</p>

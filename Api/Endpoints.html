@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T17:51:38.034Z
+date: 2022-04-12T17:52:14.650Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -856,8 +856,8 @@ Notes:
 
 #You may not use this token to access any of the user or project services.</code></pre>
 <h3>Scan Item</h3>
-<pre><code class="language-plaintext">Request Type: GET
-Request Url: /db/v1/scan/refreshToken
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /scan/v1/detect
 Authorization: JWT Bearer
 Content-Type: content type for image
 Request Body: Binary

@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T17:42:33.382Z
+date: 2022-04-12T17:47:13.694Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -847,6 +847,21 @@ Return Body:
     },
     "ProjectId": 963469917997244416
 }
+------------	
+Notes:
+
+#The JWT Bearer Tokens returned by our Scanning service are automatically long lived tokens
+
+#You may not use a User Token to authenticate with this service
+
+#You may not use this token to access any of the user or project services.</code></pre>
+<h3>Scan Item</h3>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/scan/refreshToken
+Authorization: JWT Bearer
+Content-Type: image/png
+Request Body: EMPTY
+Return Body:
 ------------	
 Notes:
 

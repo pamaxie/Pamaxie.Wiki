@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T15:44:29.301Z
+date: 2022-04-12T16:11:54.451Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -65,7 +65,7 @@ Notes:
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/login
 Authorization: Basic
-Content-Type: none
+Content-Type: Text
 Request Body (Optional): (LongLived = true)
 Returns: 
 {
@@ -146,7 +146,7 @@ Notes:
 <pre><code class="language-plaintext">Request Type: DELETE
 Request Url: /db/v1/user/delete={userId}
 Authorization: JWT Bearer
-Content-Type: application/json
+Content-Type: EMPTY
 Request Body: EMPTY
 Return Body: "The requested users account has been deleted"
 
@@ -159,10 +159,10 @@ Notes:
 
 #The user that has been deleted recieves an email about their account being deleted.</code></pre>
 <h3>Get User Account</h3>
-<pre><code class="language-plaintext">Request Type: DELETE
+<pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/get={userId}
 Authorization: JWT Bearer
-Content-Type: application/json
+Content-Type: EMPTY
 Request Body: EMPTY
 Return Body:
 {
@@ -188,10 +188,10 @@ Notes:
 
 #We return the same object that the login request returns during a get (minimal)</code></pre>
 <h3>Refresh Token</h3>
-<pre><code class="language-plaintext">Request Type: DELETE
+<pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/refreshToken
 Authorization: JWT Bearer
-Content-Type: application/json
+Content-Type: EMPTY
 Request Body: EMPTY
 Return Body:
 {
@@ -203,13 +203,190 @@ Return Body:
 ------------	
 Notes:</code></pre>
 <h3>Is IP Known</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/user/IsIpKnown={IP}
+Authorization: JWT Bearer
+Content-Type: EMPTY
+Request Body: EMPTY
+Return Body: boolean (true / false)
+	
+------------	
+Notes:
+
+#The body returns either a "true" or "false" depending if the IP address is known to have accessed
+#this users account before
+
+#The path of the request after IsIpKnown= specifies the IP address to validate against</code></pre>
 <h3>Get User Id</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/user/GetId={QueryParam}
+Authorization: JWT Bearer
+Content-Type: EMPTY
+Request Body: EMPTY
+Return Body: long
+	
+------------	
+Notes:
+
+#This endpoint returns the users Id depending on the query parameter after GetId=
+
+#The Query parameters maybe a Username or Email
+
+#This endpoint may only be used by Pamaxies staff team</code></pre>
 <h3>Load Known IPs</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/user/LoadIPs
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Id": 963460958875815936
+}
+Return Body:
+{
+    "Id": 963460958875815936,
+    "Email": "john@doe.mail",
+    "UserName": "JohnDoe",
+    "LastName": "John",
+    "FirstName": "Doe",
+    "PasswordHash": null,
+    "KnownIps": [
+        "192.168.1.1"
+    ],
+    "Projects": [],
+    "Flags": 18,
+    "CreationDate": "2022-04-12T15:34:31.300681Z",
+    "TTL": "2022-09-05T11:17:50.155621Z"
+}
+	
+------------	
+Notes:
+
+#This endpoint loads the Users known IP addresses.
+
+#We only require a minimal object to be returned to us (We really just require the Id Property
+#being set like in this example). You can however send us the entire User Object as well.</code></pre>
 <h3>Load Projects</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/user/LoadProject
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Id": 963460958875815936
+}
+Return Body:
+{
+    "Id": 963460958875815936,
+    "Email": "john@doe.mail",
+    "UserName": "JohnDoe",
+    "LastName": "John",
+    "FirstName": "Doe",
+    "PasswordHash": null,
+    "KnownIps": [],
+    "Projects": [
+        {
+            "Item1": {
+                "Id": 963469917997244416,
+                "Name": "TestProject",
+                "Owner": {
+                    "Data": {
+                        "Item1": null,
+                        "Item2": 963460958875815936
+                    },
+                    "IsLoaded": false
+                },
+                "LastModifiedUser": {
+                    "Data": {
+                        "Item1": null,
+                        "Item2": 0
+                    },
+                    "IsLoaded": false
+                },
+                "Users": [],
+                "ApiTokens": [],
+                "Flags": 0,
+                "CreationDate": "2022-04-12T16:05:28.857717Z",
+                "LastModifiedAt": "2022-04-12T16:05:28.85561Z",
+                "TTL": null
+            },
+            "Item2": 963469918093721600
+        }
+    ],
+    "Flags": 18,
+    "CreationDate": "2022-04-12T15:34:31.300681Z",
+    "TTL": "2022-09-05T11:17:50.155621Z"
+}
+	
+------------	
+Notes:
+
+#This endpoint loads the Users Projects
+
+#We only require a minimal object to be returned to us (We really just require the Id Property
+#being set like in this example). You can however send us the entire User Object as well.</code></pre>
 <h3>Load Fully</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/user/LoadProject
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Id": 963460958875815936
+}
+Return Body:
+{
+    "Id": 963460958875815936,
+    "Email": "john@doe.mail",
+    "UserName": "JohnDoe",
+    "LastName": "John",
+    "FirstName": "Doe",
+    "PasswordHash": null,
+    "KnownIps": [
+        "192.168.1.1"
+    ],
+    "Projects": [
+        {
+            "Item1": {
+                "Id": 963469917997244416,
+                "Name": "TestProject",
+                "Owner": {
+                    "Data": {
+                        "Item1": null,
+                        "Item2": 963460958875815936
+                    },
+                    "IsLoaded": false
+                },
+                "LastModifiedUser": {
+                    "Data": {
+                        "Item1": null,
+                        "Item2": 0
+                    },
+                    "IsLoaded": false
+                },
+                "Users": [],
+                "ApiTokens": [],
+                "Flags": 0,
+                "CreationDate": "2022-04-12T16:05:28.857717Z",
+                "LastModifiedAt": "2022-04-12T16:05:28.85561Z",
+                "TTL": null
+            },
+            "Item2": 963469918093721600
+        }
+    ],
+    "Flags": 18,
+    "CreationDate": "2022-04-12T15:34:31.300681Z",
+    "TTL": "2022-09-05T11:17:50.155621Z"
+}
+	
+------------	
+Notes:
+
+#This endpoint loads the entire User Object
+
+#We generally advise against using this endpoint if you do not need all of this data.
+
+#We only require a minimal object to be returned to us (We really just require the Id Property
+#being set like in this example). You can however send us the entire User Object as well.</code></pre>
+<h2>AAAAAA</h2>
 <p>&nbsp;</p>

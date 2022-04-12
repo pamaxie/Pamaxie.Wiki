@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T17:10:40.932Z
+date: 2022-04-12T17:17:26.070Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -704,7 +704,7 @@ Notes:
 #However you can also serve us all data, doing so might increase load times</code></pre>
 <h3>Load API Tokens of Project</h3>
 <pre><code class="language-plaintext">Request Type: POST
-Request Url: /db/v1/project/loadLastmodifiedUser
+Request Url: /db/v1/project/loadApiTokens
 Authorization: JWT Bearer
 Content-Type: application/json
 Request Body: 
@@ -716,26 +716,47 @@ Return Body:
     "Id": 963469917997244416,
     "Name": null,
     "Owner": null,
-    "LastModifiedUser": {
-        "Data": {
-            "Item1": {
-                "Id": 963460958875815936,
-                "Email": "john@doe.mail",
-                "UserName": "JohnDoe",
-                "LastName": "John",
-                "FirstName": "Doe",
-                "PasswordHash": null,
-                "KnownIps": [],
-                "Projects": [],
-                "Flags": 18,
-                "CreationDate": "2022-04-12T15:34:31.300681Z",
-                "TTL": "2022-09-05T11:17:50.155621Z"
-            },
-            "Item2": 963460958875815936
-        },
-        "IsLoaded": true
-    },
+    "LastModifiedUser": null,
     "Users": null,
+    "ApiTokens": [
+        {
+            "Item1": "argon2Hash",
+            "Item2": 963486574631206912
+        }
+    ],
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+------------	
+Notes:
+
+#You require read permissions to load the api tokens of a Project
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
+<h3>Load Projects Users</h3>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/loadUsers
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "Id": 963475102257651712
+}
+Return Body:
+{
+    "Id": 963469917997244416,
+    "Name": null,
+    "Owner": null,
+    "LastModifiedUser": null,
+    "Users": [
+        {
+            "Item1": 963460958875815936,
+            "Item2": 128
+        }
+    ],
     "ApiTokens": null,
     "Flags": 0,
     "CreationDate": "0001-01-01T00:00:00",
@@ -745,14 +766,48 @@ Return Body:
 ------------	
 Notes:
 
-#You require read permissions to load the last modified user of a Project
+#You require read permissions to load the users of a project
 
 #You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
 #However you can also serve us all data, doing so might increase load times</code></pre>
-<h3>Load Projects Users</h3>
-<p>&nbsp;</p>
 <h3>Check User Permissions on Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/hasPermission
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "UserId": 949716012092100608,
+    "ProjectId": 950835844418117632,
+    "Permissions": 128
+}
+Return Body: bool (True / False)
+------------	
+Notes:
+
+#The Return Body returns a boolean value indicating if the user has the requested permissions or not
+
+#You require read permissions to read the permissions of a user
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
 <h3>Give User Permissions on Project</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/setPermission
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: 
+{
+    "UserId": 949716012092100608,
+    "ProjectId": 950835844418117632,
+    "Permissions": 128
+}
+Return Body: EMPTY
+------------	
+Notes:
+
+#You require administrative permissions to set the permissions of a user
+
+#You can serve us a PamProject JSON object with only the ID loaded, which is what werecommend. 
+#However you can also serve us all data, doing so might increase load times</code></pre>
 <p>&nbsp;</p>

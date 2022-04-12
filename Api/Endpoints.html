@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-11T17:43:35.315Z
+date: 2022-04-12T15:03:14.526Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -15,8 +15,8 @@ dateCreated: 2022-04-10T19:06:00.780Z
   <li>For initially authenticating with the Scanning API we use a custom authentication format. This is only required for the initial authentication (login). After that we continue to use Bearer Authentication. Our own Authentication method (PamAuth) requires a token (Prefixed by PamToken/-//). The usually Auth header should look a bit like this:&nbsp;<br><code>Token PamToken/-//956927111468163072/-//956927426313601024/-//1023981Zjaflkjaqweoiasfja</code></li>
 </ul>
 <h2>User Service</h2>
-<p>Create User Account</p>
-<pre><code class="language-plaintext">Request Type: Post
+<h3>Create User Account</h3>
+<pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/create
 Authorization: None
 Content-Type: application/json
@@ -33,7 +33,61 @@ Request Body:
     	"Flags": 0,
     	"CreationDate": "0001-01-01T00:00:00",
     	"TTL": "2022-09-05T13:17:50.155621+02:00"
-	}</code></pre>
-<p>Login User Account<br>&nbsp;</p>
+	}
+	
+------------	
+Notes:
+
+#These properties may not be set:
+# - Id
+# - KnownIps
+# - Projects
+# - Flags
+# - CreationDate
+# - TTL
+#These properties must be set:
+# - Email
+# - UserName
+# - LastName
+# - FirstName
+# - PasswordHash
+
+#The password hash should always be set to an argon2 hash. Please ensure you're giving it a decent
+#amount of rounds (10 or more preferably)
+
+#Setting a TTL will make the account volotile (self delete if not used for a certain amount of time),
+#we generally do not advise against setting this.</code></pre>
+<h3>Login User Account</h3>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/user/login
+Authorization: Basic
+Content-Type: none
+Request Body (Optional): (LongLived = true)
+	
+------------	
+Notes:
+
+#You may enter a request body with the contents of: "LongLived = true", 
+#this ensures we return a long lived token
+
+#Authoriziation maybe done over Username and Password of the individuals user account encoded
+#into a base64 string and seperated by a ':' character.</code></pre>
+<h3>Update User Account</h3>
 <p>&nbsp;</p>
-<p> </p>
+<h3>Delete User Account</h3>
+<p>&nbsp;</p>
+<h3>Get User Account</h3>
+<p>&nbsp;</p>
+<h3>Refresh Token</h3>
+<p>&nbsp;</p>
+<h3>Is IP Known</h3>
+<p>&nbsp;</p>
+<h3>Get User Id</h3>
+<p>&nbsp;</p>
+<h3>Load Known IPs</h3>
+<p>&nbsp;</p>
+<h3>Load Projects</h3>
+<p>&nbsp;</p>
+<h3>Load Fully</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

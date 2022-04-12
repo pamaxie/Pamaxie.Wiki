@@ -2,7 +2,7 @@
 title: Getting Started
 description: A short introduction on getting started with our API and how to use it properly
 published: false
-date: 2022-04-12T20:38:10.047Z
+date: 2022-04-12T20:44:17.939Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T18:04:16.683Z
@@ -50,4 +50,14 @@ Content-Type: application/json
 Request Body: EMPTY</code></pre>
 <p><br>Like stated above you will get a token and your ProjectId (that is associated with this token) back. This header basically is prefixed by a Token and then uses our PamToken to authenticate with the API. This will then always return a long lived JWT bearer token to you. The lifespan of that long lived JWT bearer token is the same as the users is (1 Month).</p>
 <h1>Scanning Data</h1>
-<p>Another essential&nbsp;</p>
+<p>Another essential part of our API is accessing our Scanning systems. We usually recommend just Polling the Detect endpoint, which handles caching, Data Detection and Recognition depending on data type automatically.</p>
+<h2>Detect Endpoint</h2>
+<p>The Detect endpoint was written to be easy to interact with. All you need to do is give us your Binary data, and preferably a content type. The API will then try to figure out the contents type automatically and do all steps for detection. The Result is also cached so if we already have results for your scan media we will return those to your.<br><br>The request we recommend doing looks a bit like this:</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /scan/v1/detect
+Authorization: JWT Bearer
+Content-Type: content type for image
+Request Body: Binary</code></pre>
+<p>We will return you a PamScan which is an object containing a definition type of what kind of media we detected in your scan. After that we recommend you parse the data you need.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

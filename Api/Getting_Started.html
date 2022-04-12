@@ -2,7 +2,7 @@
 title: Getting Started
 description: A short introduction on getting started with our API and how to use it properly
 published: false
-date: 2022-04-12T19:26:27.657Z
+date: 2022-04-12T20:33:42.501Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T18:04:16.683Z
@@ -10,4 +10,44 @@ dateCreated: 2022-04-12T18:04:16.683Z
 
 <h1>Authentication</h1>
 <h2>User Authentication</h2>
-<p>User authentication is required if you want to modify, create or load a users properties.</p>
+<p>User authentication is required if you want to modify or load a users properties, or the properties of a Project that is attached to said users. This means you can interact with our User and Project service utilizing this form of Authentication. Sending data to us for scanning requires a separate token.</p>
+<h3>Creating a User Account</h3>
+<p>For user account creation we have our <code>https://api.pamaxie.com/db/v1/user/create</code> endpoint. This Endpoint is also called by our website when a new user for it is created, but technically you could also use it for internal tooling if you'd like. Upon account creation you will be sent a confirmation email containing a link that will direct the user to the <code>https://api.pamaxie.com/db/v1/user/verify=</code> Token endpoint.</p>
+<p>The recommended way for creating a user looks like this:</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/user/create
+Authorization: None
+Content-Type: application/json
+Request Body:
+  {
+      "Email": "john@wolf.email",
+      "UserName": "John",
+      "LastName": "Wolf",
+      "FirstName": "John",
+      "PasswordHash": "$argon2i$v=19$m=4096,t=10,p=1$1023819823091820jaflkjasodu91283ukj%",
+  }</code></pre>
+<p>Let me break this down a bit. The Request Body Requires us to post a PamUser Object, however we can just sent a minimized version of it to our API, which doesn't include a bunch of things that would be ignored anyways. You can also specify a TTL for the User Object if you want your account to be automatically deleted if its not logged into for a certain amount of time. Short warning about this however, we currently do not notify users about this happening soon.<br><br>After creating a user account you currently have to first confirm your email then wait for our staff team to clear you. This is because we are in a closed access phase. Once cleared you will get an email with some instructions from us and a link to probably this page to help you get started with our API.</p>
+<h3>Logging into an existing User Account</h3>
+<p>For logging into an existing user account you need to send a request with a Basic Authentication Header to us. If you don't know what Basic authentication is, its a Base64 encoded string seperated by a ‘:’ character. This is then prefixed with a “Basic” to show the authentication type. An example of that header value would be: <code>Basic eW91QXJlOmF3c29tZQ==</code></p>
+<p>The recommended way for authenticating with the API looks like this:</p>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/user/login
+Authorization: Basic
+Content-Type: Text
+Request Body: LongLived = true / false</code></pre>
+<p>Let's break this down as well, though this is very easy. We require the Authorization to be made with our <code>https://api.pamaxie.com/db/v1/user/login</code> endpoint. The Request Body can ask for a long lived token by entering a <code>LongLived = true</code>, however this can be completely left out (we will return a normal lifespan token then, which has a lifespan of 10 Minutes for our official API. The Long Lived Token has a lifespan of 1 Month for the official API.</p>
+<h2>Scan Authentication</h2>
+<p>We separate our user and Scan interaction completely to ensure that API token abuse can be held to a minimum. This means you cannot use a JWT bearer token or PamAuth to authenticate with the User / Project Service.</p>
+<h3>Creating a Token</h3>
+<p>Creation of API tokens can only be done if you have created a project beforehand. We generally recommend creating your API Token via our websites. All other methods will not be documented here and are not supported.<br><br>Pamaxies API Tokens have their own Format and look like this: <code>PamToken/-//956927111468163072/-//956927426313601024/-//1023981Zjaflkjaqweoiasfja</code><br>The explanation behind their formatting is this: PamToken is a validation that the Token is in a correct format. It is then followed up with our separator characters and two ulongs that point to certain objects. This is just to securely encode data into the authentication that we require for the initial authentication only. After this comes the actual Authentication Code that is used to verify someones identity.</p>
+<h3>Logging in with an existing Token</h3>
+<p>Logging into the Scan API is very similar to the user API, but requires the PamAuth system. This system requires a header that looks like this:&nbsp;<br><code>Token PamToken/-//963469917997244416/-//963486574631206912/-//1m5mqCqm9BZI7+1XDAgeq7kPQYKkm7D825L8d7+EPy2BjBGqxScFAsa71TJYAL7xI4SurOPNc9w+VfnbCbMS2w==</code></p>
+<p>The request we recommend doing looks a bit like this:</p>
+<pre><code class="language-plaintext">Request Type: GET
+Request Url: /db/v1/scan/login
+Authorization: PamAuth
+Content-Type: application/json
+Request Body: EMPTY</code></pre>
+<p><br>Like stated above you will get a token and your ProjectId (that is associated with this token) back. This header basically is prefixed by a Token and then uses our PamToken to authenticate with the API. This will then always return a long lived JWT bearer token to you. The lifespan of that long lived JWT bearer token is the same as the users is (1 Month)</p>
+<h1>Scanning Data</h1>
+<p>Another essential&nbsp;</p>

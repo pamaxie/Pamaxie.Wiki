@@ -2,10 +2,49 @@
 title: Getting Started
 description: Getting started with contributing to our Project. This includes a quick help on how to setup IDEs which plugins we recommend the development flow
 published: false
-date: 2022-04-12T21:51:16.086Z
+date: 2022-04-12T22:42:59.710Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T21:51:16.086Z
 -->
 
-<p>A</p>
+<h1>Outline</h1>
+<p>Contribution to Pamaxie can be done in a variety of ways. We require people who translate help articles on this wiki, people who help us fix bugs and potential security issues on our API and or website and other things like providing us with Hardware for hosting.<br>Pamaxie is completely funded by the public, with our initial funding being handled by the German government, so if you can't help in any other way you can also donate to us. Any small amount of money is more than welcome! Donations can be made <a href="https://github.com/sponsors/pamaxie">here</a></p>
+<p>If you'd like to contribute by helping us code, design new interesting things for us or translate pages we would like you to <a href="https://discord.gg/WsJnPTcvae">join our discord</a>.&nbsp;<br>This is important so we can keep community efforts organized and can plan with your help so your work is fully realized.<br><br>We would also like to note that Pamaxie is a side project of all of us and none of us does it full time (apart from the funding phase which ends in August of 2022). This means that certain problems may take a while to be fixed or that some things might not be perfect. We are however always striving to perfect this product as well as we can.</p>
+<h2>Things to read</h2>
+<p>There is a few things we would like you to read before contributing. This is to ensure we have a good contribution atmosphere. What you should read are our <a href="https://wiki.pamaxie.com/en/contribution/contribution-guidelines">contribution guidelines</a> and <a href="https://wiki.pamaxie.com/en/contribution/code-of-conduct">code of conduct</a> for contribution. They are general rules and a requirement for everyone to follow.</p>
+<h2>Helping as a Designer</h2>
+<p>At the moment we are looking for a few things designer / design wise. These include illustrations for our website and this wiki to make the whole thing more fun to read. If you are willing to help out with that please let us know, once you joined our discord server.<br><br>Please note that we are aiming for an inclusive design perspective which means we do have some design requirements if you are willing to help.<br>This means we don't want to work together with artists who are not inclusive to people of all color, gender, heritage or sexuality. We hope you understand.</p>
+<h2>Helping as a Legal Help</h2>
+<p>We are trying to make our Terms of Service as well as Data Policies readable and accessible to anyone, however this might result in some legal implications. If you are a lawyer and would like to give us legal advise please feel free to create an issue on <a href="https://github.com/pamaxie/Pamaxie">our GitHub</a> (for the primary project) or go to our discord and ping one of us.</p>
+<h2>Helping as a Security Expert</h2>
+<p>If you are a security expert, a normal user or someone who just stumbled across a security vulnerability on any of our products, feel free to reach out to us to ensure the issue is dealt with professionally. You may either create a GitHub issue for smaller security concerns or questions or <a href="mailto:developer@pamaxie.com">write us an email</a> if you'd consider the issue should be resolved in a more private / delicate way.</p>
+<h2>Helping us as a Software Developer</h2>
+<p>As a Software Developer you would be a great asset to have, since Pamaxie is quite a bit project to handle for a team of 3 Developers. If you'd like to help coding, we will provide some interesting things about how to create issues and pull requests properly.<br><br>For programming environments we recommend you to use the following tools:<br><a href="https://www.gitkraken.com/">GitKraken</a> for Git Source control management<br><a href="https://www.jetbrains.com/">Jetbrains</a> IntelliJ Products for software development<br><br>We develop all of our products in a UNIX software environment and recommend doing so too, because they are only running on linux / unix systems.<br><br>For plugins for JetBrains we use the following ones:</p>
+<ul>
+  <li>Rust Plugin for Rust Development</li>
+  <li>Rainbow Braces</li>
+  <li>Discord Beam</li>
+  <li>Ideolog</li>
+</ul>
+<p>We recommend using them, however understand if you'd prefer using different ones. You may also use Visual Studio or Visual Studio Code for development on our project. We do not have any requirements in those regards. Please just ensure that IDE specific files are not pushed to our repository during pull requests. (Update the .gitignore if you find files that are targeted)</p>
+<p>&nbsp;</p>
+<h2>Creating Pull Requests</h2>
+<p>Before creating a pull request please ensure that your code is clean and follows the Google Code Guidelines to a certain degree. This is to ensure code quality is upheld. We might create our own Code Guidelines in the future if the Requirements are high enough.<br><br>We will annotate and inspect your code anyway and will look for any potential issues. If none have been found we will use a LGTM to let you know the pull request has been authorized. We have 2 people of Pamaxie's staff authorize your pull request before its merged. If your pull request cannot built please update it so it can be built. If it can't be built we won't even look at it (except the branch you are pushing to is labeled as broken)<br><br>We hold the right to refuse pull requests for any reason.</p>
+<h2>Creating issues</h2>
+<p>If you want to create a GitHub issue, please ensure the bug or other thing you encountered is well documented. We might close your issue with “unproducable” in the description. This means we cannot produce the issue on our systems and thus it cannot be analyzed properly. You may create a new issue with more documentation provided if this happens.<br><br>Depending on the issue we might label it with certain labels. A short explanation of those is:</p>
+<ul>
+  <li>Good first issue – An issue we recommend to newcomers to the project (not necessarily the programming language)</li>
+  <li>Improvement – This issue is an improvement to existing code bases and does not fix any issue with it</li>
+  <li>Bug – This is a bug / problematic piece of code and should be handled as such. This includes security issues</li>
+  <li>Documentation – This indicates that a piece of code or API requires more / better documentation to be easier to work with</li>
+  <li>Help Wanted – These are usually issues that we cannot handle because of lacking expertise. This means that if we have the time we will read into it but would like external help</li>
+  <li>Question – This is just a general question about how to do certain things in our Project. Please remember advanced support requests will not be handled for free</li>
+  <li>Invalid – (Assigned by us) The issue was not readable or we could not make a problem with it</li>
+  <li>MissingFunds - (Assigned by us) This issue requires additional funding to be continued to be worked on (because of potential expenses on fixing the issue)</li>
+  <li>WontFix - (Assigned when closed) We will not resolve this issue for another reason</li>
+  <li>Unfeasible – (Assigned when closed) Fixing this issue is not feasible and doesn't make sense.</li>
+  <li>Duplicate - (Assigned when closed) The issue will not be worked on because it is closely resembling another issue we are working on&nbsp;</li>
+</ul>
+<p>&nbsp;</p>
+<p>This is pretty much all you need to know to help us out develop on Pamaxie and make the project better than it was without you! So what are you waiting for, if we sparked your interest join our discord and talk about how you can help all of us with your skills!</p>

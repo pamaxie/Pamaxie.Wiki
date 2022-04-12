@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T15:03:14.526Z
+date: 2022-04-12T15:14:21.898Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -51,19 +51,43 @@ Notes:
 # - LastName
 # - FirstName
 # - PasswordHash
+#These properties may be set:
+# - TTL
 
 #The password hash should always be set to an argon2 hash. Please ensure you're giving it a decent
 #amount of rounds (10 or more preferably)
 
 #Setting a TTL will make the account volotile (self delete if not used for a certain amount of time),
-#we generally do not advise against setting this.</code></pre>
+#we generally do not advise against setting this.
+
+#Setting the Id, KnownIps, Projects, Flags or CreationDate has no effect and will be ignored.</code></pre>
 <h3>Login User Account</h3>
 <pre><code class="language-plaintext">Request Type: GET
 Request Url: /db/v1/user/login
 Authorization: Basic
 Content-Type: none
 Request Body (Optional): (LongLived = true)
-	
+Returns: 
+{
+    "Token": {
+        "Token": "TokenString",
+        "ExpiresAtUTC": "2022-05-12T15:09:17.9476967+00:00",
+        "IsLongLived": true
+    },
+    "User": {
+        "Id": 956925542190288896,
+        "Email": "john@doe.vc",
+        "UserName": "john",
+        "LastName": "John",
+        "FirstName": "Doe",
+        "PasswordHash": null,
+        "KnownIps": [],
+        "Projects": [],
+        "Flags": 18,
+        "CreationDate": "2022-03-25T14:41:03.045039Z",
+        "TTL": "2022-09-05T11:17:50.155621Z"
+    }
+}
 ------------	
 Notes:
 
@@ -73,7 +97,51 @@ Notes:
 #Authoriziation maybe done over Username and Password of the individuals user account encoded
 #into a base64 string and seperated by a ':' character.</code></pre>
 <h3>Update User Account</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/user/create
+Authorization: None
+Content-Type: application/json
+Request Body:
+	{
+    	"Id": 0,
+    	"Email": "john@wolf.email",
+    	"UserName": "John",
+    	"LastName": "Wolf",
+    	"FirstName": "John",
+    	"PasswordHash": "$argon2i$v=19$m=4096,t=10,p=1$1023819823091820jaflkjasodu91283ukj%",
+    	"KnownIps": null,
+    	"Projects": null,
+    	"Flags": 0,
+    	"CreationDate": "0001-01-01T00:00:00",
+    	"TTL": "2022-09-05T13:17:50.155621+02:00"
+	}
+	
+------------	
+Notes:
+
+#These properties may not be set:
+# - Id
+# - PasswordHash
+# - KnownIps
+# - Projects
+# - Flags
+# - CreationDate
+# - TTL
+#These properties may be set:
+# - Email
+# - UserName
+# - LastName
+# - FirstName
+# - PasswordHash
+# - TTL
+
+#If the password hash is set we will change this accounts password, if it is left as null
+#we will simply ignore its content.
+
+#Setting a TTL will make the account volotile (self delete if not used until the TTL date),
+#we generally do not advise against setting this.
+
+#Setting the Id, KnownIps, Projects, Flags or CreationDate has no effect and will be ignored.</code></pre>
 <h3>Delete User Account</h3>
 <p>&nbsp;</p>
 <h3>Get User Account</h3>

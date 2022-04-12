@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T15:18:35.283Z
+date: 2022-04-12T15:44:29.301Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -76,8 +76,8 @@ Returns:
     },
     "User": {
         "Id": 956925542190288896,
-        "Email": "john@doe.vc",
-        "UserName": "john",
+        "Email": "john@doe.mail",
+        "UserName": "JohnDoe",
         "LastName": "John",
         "FirstName": "Doe",
         "PasswordHash": null,
@@ -104,8 +104,8 @@ Content-Type: application/json
 Request Body:
 	{
     	"Id": 0,
-    	"Email": "john@wolf.email",
-    	"UserName": "John",
+    	"Email": "john@doe.mail",
+    	"UserName": "JohnDoe",
     	"LastName": "Wolf",
     	"FirstName": "John",
     	"PasswordHash": "$argon2i$v=19$m=4096,t=10,p=1$1023819823091820jaflkjasodu91283ukj%",
@@ -148,8 +148,8 @@ Request Url: /db/v1/user/delete={userId}
 Authorization: JWT Bearer
 Content-Type: application/json
 Request Body: EMPTY
-Return Body: "The user was successfully deleted from our Database."
-	
+Return Body: "The requested users account has been deleted"
+
 ------------	
 Notes:
 
@@ -159,9 +159,49 @@ Notes:
 
 #The user that has been deleted recieves an email about their account being deleted.</code></pre>
 <h3>Get User Account</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: DELETE
+Request Url: /db/v1/user/get={userId}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "Id": 963460958875815936,
+    "Email": "john@doe.mail",
+    "UserName": "JohnDoe",
+    "LastName": "John",
+    "FirstName": "Doe",
+    "PasswordHash": "",
+    "KnownIps": [],
+    "Projects": [],
+    "Flags": 18,
+    "CreationDate": "2022-04-12T15:34:31.300681Z",
+    "TTL": "2022-09-05T11:17:50.155621Z"
+}
+	
+------------	
+Notes:
+
+#You may only get your own user account.
+
+#The path of the request after get= specifies the users Id to get.
+
+#We return the same object that the login request returns during a get (minimal)</code></pre>
 <h3>Refresh Token</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: DELETE
+Request Url: /db/v1/user/refreshToken
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body:
+{
+    "token": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE2NDk3NzgyMDAsImV4cCI6MTY1MjM3MDIwMCwiaXNzIjoiUGFtYXhpZSIsImF1ZCI6IlBhbWF4aWUiLCJvd25lcklkIjo5NjM0NjA5NTg4NzU4MTU5MzZ9.Q46mjC6NEUXxAo757PdpeEci49H2T0Jk9ovNMu7JiZU",
+    "expiresAtUTC": "2022-05-12T15:43:20.8306105+00:00",
+    "isLongLived": true
+}
+	
+------------	
+Notes:</code></pre>
 <h3>Is IP Known</h3>
 <p>&nbsp;</p>
 <h3>Get User Id</h3>

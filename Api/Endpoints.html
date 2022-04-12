@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T15:14:21.898Z
+date: 2022-04-12T15:18:35.283Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -99,7 +99,7 @@ Notes:
 <h3>Update User Account</h3>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/user/create
-Authorization: None
+Authorization: JWT Bearer
 Content-Type: application/json
 Request Body:
 	{
@@ -143,7 +143,21 @@ Notes:
 
 #Setting the Id, KnownIps, Projects, Flags or CreationDate has no effect and will be ignored.</code></pre>
 <h3>Delete User Account</h3>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">Request Type: DELETE
+Request Url: /db/v1/user/delete={userId}
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body: EMPTY
+Return Body: "The user was successfully deleted from our Database."
+	
+------------	
+Notes:
+
+#You may only delete your own user account.
+
+#The path of the request after delete= specifies the users Id to be deleted.
+
+#The user that has been deleted recieves an email about their account being deleted.</code></pre>
 <h3>Get User Account</h3>
 <p>&nbsp;</p>
 <h3>Refresh Token</h3>

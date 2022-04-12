@@ -2,7 +2,7 @@
 title: Structs
 description: Structs Pamaxie uses for our storage and / or scanning API
 published: true
-date: 2022-04-12T20:49:22.386Z
+date: 2022-04-12T21:23:32.620Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:02:09.380Z
@@ -189,7 +189,60 @@ dateCreated: 2022-04-10T19:02:09.380Z
 <ul>
   <li>The currently available Structs that are of Type ScanResult are: <code>ImageScanResult</code></li>
 </ul>
-<p>Json Example:<br><code>{}</code></p>
+<p>Json Example (with ImageScanResult):</p>
+<pre><code class="language-plaintext">{
+  "Key": "786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce",
+  "DataType": "image",
+  "DataExtension": "png",
+  "ScanMachineGuid": "ca55cd70-c0f9-45d6-b1d6-b17ce08e35b1",
+  "IsUserScan": false,
+  "ScanResult": {
+    "Key": "786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce/-/imgScanResult",
+    "DetectedShieldLabel": "None",
+    "DetectedShieldLabelLikelihood": 0.7,
+    "DetectedShieldLabelAnnotation": "Real",
+    "DetectedShieldLabelAnnotationLikelihood": 0.7,
+    "DetectedSymbolLabel": "None",
+    "DetectedSymbolLikelihood": 0.8,
+    "AllShieldData": {
+      "GoreLikelihood": 0.1,
+      "PornographicLikelihood": 0.1,
+      "RacyLikelihood": 0.1,
+      "NoneLikelihood": 0.7,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.785113+02:00"
+    },
+    "AllShieldAnnotationData": {
+      "VirtualModelLikelihood": 0.1,
+      "DrawingLikelihood": 0.1,
+      "AnimationLikelihood": 0.1,
+      "RealLikelihood": 0.7,
+      "DetectedLabel": "Real",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.837923+02:00"
+    },
+    "AllSymbolData": {
+      "HitlerLikelihood": 0.1,
+      "SwastikaLikelihood": 0.1,
+      "NoneLikelihood": 0.8,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.838061+02:00"
+    },
+    "TTL": "2022-10-12T23:20:34.839208+02:00"
+  },
+  "TTL": "2022-10-12T23:20:34.839208+02:00"
+}</code></pre>
 <h2>ImageScanResult</h2>
 <figure class="table">
   <table>
@@ -251,7 +304,52 @@ dateCreated: 2022-04-10T19:02:09.380Z
 <ul>
   <li>--</li>
 </ul>
-<p>Json Example:<br><code>{}</code></p>
+<p>Json Example:</p>
+<pre><code class="language-plaintext">{
+    "Key": "786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce/-/imgScanResult",
+    "DetectedShieldLabel": "None",
+    "DetectedShieldLabelLikelihood": 0.7,
+    "DetectedShieldLabelAnnotation": "Real",
+    "DetectedShieldLabelAnnotationLikelihood": 0.7,
+    "DetectedSymbolLabel": "None",
+    "DetectedSymbolLikelihood": 0.8,
+    "AllShieldData": {
+      "GoreLikelihood": 0.1,
+      "PornographicLikelihood": 0.1,
+      "RacyLikelihood": 0.1,
+      "NoneLikelihood": 0.7,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.785113+02:00"
+    },
+    "AllShieldAnnotationData": {
+      "VirtualModelLikelihood": 0.1,
+      "DrawingLikelihood": 0.1,
+      "AnimationLikelihood": 0.1,
+      "RealLikelihood": 0.7,
+      "DetectedLabel": "Real",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.837923+02:00"
+    },
+    "AllSymbolData": {
+      "HitlerLikelihood": 0.1,
+      "SwastikaLikelihood": 0.1,
+      "NoneLikelihood": 0.8,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.838061+02:00"
+    },
+    "TTL": "2022-10-12T23:20:34.839208+02:00"
+}</code></pre>
 <h2>PamShieldScanResult</h2>
 <figure class="table">
   <table>
@@ -310,7 +408,18 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p><code>{}</code></p>
+<pre><code class="language-plaintext">{
+      "GoreLikelihood": 0.1,
+      "PornographicLikelihood": 0.1,
+      "RacyLikelihood": 0.1,
+      "NoneLikelihood": 0.7,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.785113+02:00"
+}</code></pre>
 <h2>PamShieldAnnotationScanResult</h2>
 <figure class="table">
   <table>
@@ -369,7 +478,18 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p><code>{}</code></p>
+<pre><code class="language-plaintext">{
+      "VirtualModelLikelihood": 0.1,
+      "DrawingLikelihood": 0.1,
+      "AnimationLikelihood": 0.1,
+      "RealLikelihood": 0.7,
+      "DetectedLabel": "Real",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.837923+02:00"
+}</code></pre>
 <h2>PamSymbolNetResult</h2>
 <figure class="table">
   <table>
@@ -424,7 +544,17 @@ dateCreated: 2022-04-10T19:02:09.380Z
   <li>This class is usually only used in conjunction with the ImageScanResult class to store the information result from Pamaxie's Image Shield Scanning system</li>
 </ul>
 <p>Json Example:</p>
-<p><code>{}</code></p>
+<pre><code class="language-plaintext">{
+      "HitlerLikelihood": 0.1,
+      "SwastikaLikelihood": 0.1,
+      "NoneLikelihood": 0.8,
+      "DetectedLabel": "None",
+      "NetworkVersion": 1,
+      "VersionCommonName": "Anthelina",
+      "ScanPPi": 300,
+      "WasCompressed": false,
+      "ScanDate": "2022-04-12T23:20:34.838061+02:00"
+}</code></pre>
 <h2>PamProject</h2>
 <figure class="table">
   <table>

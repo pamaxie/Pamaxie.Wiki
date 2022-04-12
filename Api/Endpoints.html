@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: false
-date: 2022-04-12T16:11:54.451Z
+date: 2022-04-12T16:27:46.950Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -388,5 +388,70 @@ Notes:
 
 #We only require a minimal object to be returned to us (We really just require the Id Property
 #being set like in this example). You can however send us the entire User Object as well.</code></pre>
-<h2>AAAAAA</h2>
+<h2>ProjectService</h2>
+<h3>Create Project</h3>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/project/create
+Authorization: JWT Bearer
+Content-Type: application/json
+Request Body:
+{
+    "Id": 0,
+    "Name": "TestProject",
+    "Owner": null,
+    "LastModifiedUser": null,
+    "Users": null,
+    "ApiTokens": null,
+    "Flags": 0,
+    "CreationDate": "0001-01-01T00:00:00",
+    "LastModifiedAt": "0001-01-01T00:00:00",
+    "TTL": null
+}
+Return Body: 963475102257651712
+------------	
+Notes:
+
+#These properties may not be set:
+# - Id
+# - KnownIps
+# - Projects
+# - Flags
+# - CreationDate
+# - TTL
+#These properties must be set:
+# - Email
+# - UserName
+# - LastName
+# - FirstName
+# - PasswordHash
+#These properties may be set:
+# - TTL
+
+#You can enter a more verbose Project description into </code></pre>
+<h3>Update Project</h3>
+<p>&nbsp;</p>
+<h3>Get Project</h3>
+<p>&nbsp;</p>
+<h3>Delete Project</h3>
+<p>&nbsp;</p>
+<h3>Create API Token for Project</h3>
+<p>&nbsp;</p>
+<h3>Delete API Token for Project</h3>
+<p>&nbsp;</p>
+<h3>Add User to Project</h3>
+<p>&nbsp;</p>
+<h3>Remove User from Project</h3>
+<p>&nbsp;</p>
+<h3>Load Owner of Project</h3>
+<p>&nbsp;</p>
+<h3>Load Last Modified User of Project</h3>
+<p>&nbsp;</p>
+<h3>Load API Tokens of Project</h3>
+<p>&nbsp;</p>
+<h3>Load Projects Users</h3>
+<p>&nbsp;</p>
+<h3>Check User Permissions on Project</h3>
+<p>&nbsp;</p>
+<h3>Give User Permissions on Project</h3>
+<p>&nbsp;</p>
 <p>&nbsp;</p>

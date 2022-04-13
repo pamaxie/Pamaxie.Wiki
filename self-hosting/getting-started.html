@@ -2,7 +2,7 @@
 title: Getting Started
 description: Help with getting started on self hosting pamaxie's api.
 published: true
-date: 2022-04-13T01:32:57.438Z
+date: 2022-04-13T01:33:13.660Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T22:03:03.688Z
@@ -30,7 +30,7 @@ dateCreated: 2022-04-12T22:03:03.688Z
 <h2>Setting everything up</h2>
 <p><a href="https://hub.docker.com/repository/docker/pamaxie/database">You can pull our Docker image</a>, and then you should start it with the appropriate environment variables. We will warn you if you missed any of the required ones.</p>
 <p>An example of a startup command for a docker container with all environment variables filled would look like this:</p>
-<pre><code class="language-plaintext">docker run&nbsp;
+<pre><code class="language-plaintext">docker run&nbsp;\
 -e Db1Settings="Host=localhost;Username=postgres;Password=postgresPass;Database=pamaxie;" \
 -e Db2Settings="redis0:6380,redis1:6380,allowAdmin=true,password=redisPass" \
 -e JwtSecret="YourSecret" \

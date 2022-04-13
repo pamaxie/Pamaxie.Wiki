@@ -2,10 +2,113 @@
 title: Contribution Guidelines
 description: Contribution Guidelines for contributing with Pamaxie.
 published: false
-date: 2022-04-12T21:54:15.888Z
+date: 2022-04-13T00:04:10.201Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T21:54:15.888Z
 -->
 
-<p>A</p>
+<h1>General information</h1>
+<p>Thank you for your interest in contributing to Pamaxie's Project!<br>This document covers the process for contributing to Pamaxie's repositories and specifies some do's and don'ts that we want our contributors to uphold.</p>
+<h1>Reporting</h1>
+<h2>Where to report</h2>
+<p>Pamaxie's projects are distributed across multiple repositories in the Pamaxie Organization on GitHub. Depending on the feedback you might want to file your issue in a different repository. Here are our usual repositories to file into:</p>
+<ul>
+  <li><a href="https://github.com/pamaxie/Pamaxie.Website">Website</a></li>
+  <li><a href="https://github.com/pamaxie/Pamaxie">Scanning API</a></li>
+  <li><a href="https://github.com/pamaxie/Pamaxie.Database">Database API</a></li>
+  <li><a href="https://github.com/pamaxie/Pamaxie.Wiki">Wiki</a></li>
+</ul>
+<h2>Finding Existing Issues</h2>
+<p>Before filing a new issue, please search the open issues for the project to check if it already exists.<br><br>If you do not find an existing issue, please provide your own feedback as the discussion goes on. Do consider up voting the original post, if you think this would be important to fix, this helps us prioritize popular issues in our backlog.</p>
+<p>&nbsp;</p>
+<h2>Improvements</h2>
+<p>Improvements require some consideration into what we are as a company and what our goals are. Please remember that we are a smaller team and host on publicly funded servers, which may make some products infeasible for us to run.<br><br>This means a good Improvement report would include a way into how this improves our product and how it fits into our existing product stack or project</p>
+<h2>Good Bug Reports</h2>
+<p>Good bug reports generally follow a few things, these are:</p>
+<ul>
+  <li>High level descriptions of the problem (so they're easy to understand)</li>
+  <li>An Environment in which they were produced in (your Operating System and other system parameters that might affect the issue)</li>
+  <li>What behavior you want to happen</li>
+  <li>What actually happened</li>
+  <li>A path of minimal reproduction, this means the minimum amount of steps that have to be taken to produce the bug</li>
+  <li>Additional issues you might know, for example, was this a problem in previous versions, is there any ways you can work around the problem to fix it?</li>
+</ul>
+<h3>Why we need Minimal Reproductions</h3>
+<p>Minimal Reproductions let us reduce the effort that we spend on a bug. Depending on bug report, debugging can be a daunting task.&nbsp;<br>Imagine this: You are trying to pull a root out your garden but, it seems to go on and on, until you realize that root is connected to an entire tree.&nbsp;<br>This is essentially what our problems can look like. We are trying to find the root of an issue and having to go through multiple thousands of lines of code potentially to find it can be a very time demanding task.</p>
+<h3>How to get to a minimal reproduction</h3>
+<p>If you're a programmer and found this bug by trying out different things with our API, remove as many parameters or optional things as possible until the problem doesn't happen anymore. This tells us when / how the problem occurs the closest.<br><br>If you're just using our website, just try to reduce the steps you took to find the bug in the first place (e.g. see if you can produce the same bug with less steps involved)</p>
+<h2>Contributing Changes</h2>
+<ul>
+  <li><strong>DO</strong> follow the <a href="https://google.github.io/styleguide/">google code guidelines&nbsp;</a></li>
+  <li><strong>DO</strong> give priority to how the code of the project is currently formed</li>
+  <li><strong>DO</strong> write unit tests for any additional code to validate it's validation is proper</li>
+  <li><strong>DO</strong> feel free to talk about how you helped us and brag about it on social media</li>
+  <li><strong>DO</strong> keep discussions focused and don't start showing pictures of your kids to everyone</li>
+</ul>
+<p>&nbsp;</p>
+<ul>
+  <li>DON'T suprize us with gigantic pull requests that fix multiple issues. Instead file one per issue, make a discussion about what you are currently doing to resolve the issue then do a pull request for said issue</li>
+  <li>DON'T commit code you didn't write. Pamaxie is very advent on writing a consistent source code with its style. If you think you find something interesting for us, ensure its good with us by asking us on our discord</li>
+  <li>DON'T submit PRs for licensed code or code stolen from other repositories. We do not want stolen source code in our codebase</li>
+  <li>DON'T do modifications or removals of API endpoints if not absolutely required (We will only allow additions without creating a new version anyway)</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Workflow</h2>
+<p>We have a workflow that you can follow which we would recommend to all people who want to contribute to our project:</p>
+<ol>
+  <li>Create an issue / search for an open issue that's up for grabs<ol>
+      <li>For trivial changes you can change this step.</li>
+      <li>If there is an existing issue use / reuse it</li>
+      <li>If you want to do an addition to our project please ensure we and the community agreed to it first</li>
+      <li>Clearly state that you will be implementing the issue, if you are. We will assign the issue to you. Before please do not start working on the issue.</li>
+    </ol>
+  </li>
+  <li>Create a personal for of the Repository on GitHub</li>
+  <li>In your fork create a branch off main<ol>
+      <li>Name your branch so it clearly communicates what you are working on.<br>If you are working on an existing issue, prefix your branch with # and the issue number (e.g. #23 - Fixing Massive Problem)</li>
+      <li>Branches are really useful to isolate your changes from other incoming changes from the upstream.</li>
+    </ol>
+  </li>
+  <li>Document your changes as you go<ol>
+      <li>While you're working on your problem, give feedback what you are doing to resolve it (especially if you are implementing a feature).</li>
+      <li>Feel free to link to commits in your branch in the main repository to get feedback if you are insecure about changes you made</li>
+      <li>If someone of our team gives you to stop (perhaps because you made a fatal mistake, please do so.&nbsp;<br>We will give you some details and then talk about how we can fix the problem in your commit / contribution together.</li>
+    </ol>
+  </li>
+  <li>Make and commit your changes to the branch regularly to prevent data loss<ol>
+      <li>We really mean this. We have seen and experienced a lot of problems ourselves. You really can't backup too often.</li>
+    </ol>
+  </li>
+  <li>Add the required Unit Tests for any additions you made, or change the ones that existing accordingly (Please let us know if you change any existing unit tests and why you did)<ol>
+      <li>Unit tests are important to ensure the code validation rules of your newly implemented code (or extensions to existing ones) are valid and have not been reduced.</li>
+      <li>Unit tests should not be decreasing security over life (reduction of checks)</li>
+      <li>Unit tests should not tests against external libraries if they work</li>
+    </ol>
+  </li>
+  <li>Build the project and all components of it to ensure it runs<ol>
+      <li>Please clean the project before building it to ensure you're running on a clean slate.</li>
+      <li>Make sure all unit tests are passing successfully. If not our test runners will fail.</li>
+    </ol>
+  </li>
+  <li>Create a pull request (PR) against the main branch of our repository<ol>
+      <li>State in the description what you worked on and how you solved the problem</li>
+      <li>Check if all of the CI checks are passing successfully</li>
+    </ol>
+  </li>
+  <li>Wait for our feedback and approval<ol>
+      <li>When all CI checks are passing our team will slowly approach your changes after handing all changes before you</li>
+      <li>We might provide feedback or wanted changes to your code before allowing a merge, please contribute those otherwise we will close the pull request</li>
+    </ol>
+  </li>
+  <li>When 2 of our employees signed off on your code, your PR will be merged<ol>
+      <li>We will make a new build with your changes included once the next official release is scheduled</li>
+      <li>You can delete your branch used for making your change and also delete the fork of our project if you want to.</li>
+    </ol>
+  </li>
+</ol>
+<h2>Up for grabs?</h2>
+<p>Up for grabs is a label we assign to issues that can be worked on by anyone in the public. This means anyone can work on it even if they aren't part of our team.</p>
+<h2>Project Environments</h2>
+<p>Our Primary support for all our projects is running as a docker container (apart from our website). Please ensure your project builds and works perfectly under Ubuntu's LTS release for x86 and x64 platforms.</p>
+<p>&nbsp;</p>

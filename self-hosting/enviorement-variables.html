@@ -2,7 +2,7 @@
 title: Enviorement Variables
 description: Enviorement variables that can be set in pamaxie's docker containers for additional settings
 published: true
-date: 2022-04-13T00:56:32.415Z
+date: 2022-04-13T01:32:06.501Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T22:04:11.751Z
@@ -13,11 +13,11 @@ dateCreated: 2022-04-12T22:04:11.751Z
 <h1>Database API</h1>
 <p><code>Db1Settings</code> – REQUIRED – Settings for database 1 (for the native database driver this means a redis connection string)</p>
 <p><code>Db2Settings</code> – &nbsp;REQUIRED – Settings for database 2 (for the native database driver this means a postgres connection string)</p>
-<p><code>DbDriverGuid</code> – &nbsp;REQUIRED – This sets the GUID for the default database driver (for the native database this is <code>283f10c3-5022-4cda-a5a7-e491a1e84b32</code>)</p>
 <p><code>JwtSecret</code> – &nbsp;REQUIRED – This sets the Secret of the JWT Bearer Token Generation</p>
-<p><code>JwtTimeout</code> – REQUIRED – This sets the Timeout for the JWT bearer Token Generation</p>
-<p><code>JwtLLTimeout</code> – REQUIRED – This sets the Timeout for the Long Lived JWT Bearer token Generation</p>
 <p><code>SendGridToken</code> – REQUIRED – This sets the SendGrid token for sending out emails (for things like registration)</p>
+<p><code>DbDriverGuid</code> – &nbsp;OPTIONAL – This sets the GUID for the default database driver (default is <code>283f10c3-5022-4cda-a5a7-e491a1e84b32</code>)</p>
+<p><code>JwtTimeout</code> – OPTIONAL – This sets the Timeout for the JWT bearer Token Generation (default is <code>10</code> minutes)</p>
+<p><code>JwtLLTimeout</code> – OPTIONAL – This sets the Timeout for the Long Lived JWT Bearer token Generation (default is <code>30</code> days)</p>
 <p><code>EndpointUrl</code> – OPTIONAL – The URL that is put into things like email or return data, we default to <code>https://api.pamaxie.com/db/v1/</code>, if you host the server yourself we recommend setting this to your URL.</p>
 <p><code>Hosts</code> – OPTIONAL – Default port and IP address the application uses (maybe separated by ‘;’ for multiple hosts) (otherwise we default to all IP's on port 80 (<code>http://0.0.0.0</code>))</p>
 <h1>Scanning API</h1>

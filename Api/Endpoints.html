@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: true
-date: 2022-04-12T20:52:47.549Z
+date: 2022-04-13T00:54:51.516Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -919,7 +919,6 @@ Notes:
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/get={ScanHash}
 Authorization: JWT Bearer
-Content-Type: application/json
 Request Body: EMPTY
 Return Body:
 {
@@ -955,7 +954,6 @@ Notes:
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/delete={ScanHash}
 Authorization: JWT Bearer
-Content-Type: application/json
 Request Body: EMPTY
 Return Body: EMPTY
 ------------	
@@ -966,5 +964,25 @@ Notes:
 #You may not use a User Token to authenticate with this service
 
 #The path after delete= specifies the hash of the scan that should be deleted</code></pre>
+<h2>CanConnect</h2>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/scan/CanConnect={ScanHash}
+Authorization: None
+Request Body: EMPTY
+Return Body: EMPTY
+------------	
+Notes:
+
+#This endpoint is primarily used by our own scan API to validate if we can sent requests to the database (if our API is available)</code></pre>
+<h2>CanAuthenticate</h2>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /db/v1/scan/CanAuthenticate
+Authorization: JWT Bearer
+Request Body: EMPTY
+Return Body: EMPTY
+------------	
+Notes:
+
+#This endpoint is primarily used by our own scan API to validate if we can authenticate a user via their JWT VBBearer token.</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

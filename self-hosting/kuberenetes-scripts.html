@@ -2,10 +2,126 @@
 title: Kubernetes Scripts
 description: Kubernetes scripts for self hosting pamaxie with descriptions on how to use them properly to make them fit your needs.
 published: false
-date: 2022-04-12T22:05:30.104Z
+date: 2022-04-13T01:43:07.709Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T22:05:30.104Z
 -->
 
-<p>A</p>
+<h1>The Scripts</h1>
+<h2>Service Config</h2>
+<pre><code class="language-plaintext">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pam-db
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pam-db
+  template:
+    metadata:
+      labels:
+        app: pam-db
+    spec:
+      containers:
+      - name: pamaxie-db
+        image: pamaxie/database:1.1.8
+        env:
+          - name: EndpointUrl
+            value: "https://api.pamaxie.com/db/v1/"
+          - name: Hosts
+            value: "http://0.0.0.0:8080"
+          - name: Db1Settings
+            valueFrom:
+              secretKeyRef:
+                name: pamdb-secrets
+                key: db1
+          - name: Db2Settings
+            valueFrom:
+              secretKeyRef:
+                name: pamdb-secrets
+                key: db2
+          - name: JwtSecret
+            valueFrom:
+              secretKeyRef:
+                name: pamdb-secrets
+                key: jwtSecret
+          - name: SendGridToken
+            valueFrom:
+              secretKeyRef:
+                name: pamdb-secrets
+                key: sendgridToken
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pam-db-service
+spec:
+  selector:
+    app: pam-db
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pam-db-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - api.pamaxie.com
+    secretName: pamdb-tls-secret
+  rules:
+    - host: api.pamaxie.com
+      http:
+        paths:
+          - path: /db/v1/
+            pathType: Prefix
+            backend:
+              service:
+                name: pam-db-service
+                port:
+                  number: 80</code></pre>
+<p>Explanation:<br>A short run up of this one is: We create a new Deployment which we named pam-db, after which we specify the amount of replicas for the deployment is 2 and that it is a docker container with the API's docker container. After this we create a Service which creates a selector for this application giving it the port 80, but targeting its 8080 port.<br><br>Now we create an ingress mapping which tells us where the ingress for the API is (aka which path and host URL points to which service at which port).<br>For a more detailed explanation of this script please contact us personally.</p>
+<h2>Scaling Config</h2>
+<pre><code class="language-plaintext">apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: pam-db-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: pam-db
+  minReplicas: 1
+  maxReplicas: 15
+  targetCPUUtilizationPercentage: 50</code></pre>
+<p>Explanation:<br>This is a scaling configuration (we're still optimizing this one so fair warning). This basically creates a scaler, which scales a certain target accordingly. we gave it the name pam-db-scaler and ensured it's kind is a HorizontalPodAutoscaler. The specification (spec) of the scaler specifies which kind of target we want to scale and what the minimum and maximum amount of replicas is that we want. After this we specify that we want to scale up once we hit 50% load.</p>
+<h2>Secrets</h2>
+<pre><code class="language-plaintext">apiVersion: v1
+kind: Secret
+metadata:
+  name: pamdb-secrets
+data:
+  db1: BASE64 Encoded Db1 Connection String
+  db2: Base64 Encoded Db2 Connection String
+  jwtSecret: Base64 Encoded Jwt Secret
+  sendgridToken: Base64 Encoded Sendgrid APi Token
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: pamdb-tls-secret
+data:
+  tls.crt: Base64 Encoded Cert
+  tls.key: Base64 Encoded Key
+---</code></pre>
+<p>Explanation:</p>
+<p>This file basically stores all of our secrets that we use across all of our API's. This ensures they are handled appropriately. We specify our kind in the top, which for this file is Secret. We then say we want to name this secret “pamdb-secrets”, after which we store the actual data which in this case is our db1 and db2 connection strings, as well as our jwt secret and our sendgrid api token.<br>All of these secrets always have to be base64 encoded before being stored here.<br><br>After this we create a second secret, which we use to store our SSL certificate for secure connections to our server. Here we can specify a kind which is tls. These then get named pamdb-tls-secret and we set their tls.cert and tls.key properties to the base64 secrets.</p>

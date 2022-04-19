@@ -2,7 +2,7 @@
 title: Api Endpoints
 description: Pamaxie's API endpoint definitions with some documentation on how to properly call them or more information on what to watch out for.
 published: true
-date: 2022-04-13T00:55:04.117Z
+date: 2022-04-19T04:54:59.407Z
 tags: api
 editor: ckeditor
 dateCreated: 2022-04-10T19:06:00.780Z
@@ -877,8 +877,44 @@ Notes:
 #Depending on which machine handled your scan (one of ours or one you provided) the result will be 
 #flagged as a user scan
 
-#We recommend specifying the correct Content-Type in the header of the scan. This way we can
-#ensure to serve the Scan Request the best way possible</code></pre>
+#We recommend usually using the proper endpoint right away. This endpoint attempts an automatic detection of media types which is not error proof.</code></pre>
+<h2>Scan Image</h2>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /scan/v1/detectImage
+Authorization: JWT Bearer
+Content-Type: content type for image
+Request Body: Binary
+Return Body:
+{
+    "Key": "Blake2b512 Hash",
+    "DataType": "image",
+    "ScanMachineGuid": "",
+    "IsUserScan": false,
+    "ScanResult": null,
+    "TTL": 0
+}
+------------	
+Notes:
+
+#This endpoint will return an error if anything but an image is sent to it.
+
+#You may not use a User Token to authenticate with this service
+
+#Depending on which machine handled your scan (one of ours or one you provided) the result will be 
+#flagged as a user scan</code></pre>
+<h2>Get Item Hash</h2>
+<pre><code class="language-plaintext">Request Type: POST
+Request Url: /scan/v1/getHash
+Authorization: JWT Bearer
+Content-Type: content type for image
+Request Body: Binary
+Return Body: "Blake2b512 Hash"
+------------	
+Notes:
+
+#This endpoint just returns a Blake2b512 Hash of the data that is sent to it.
+
+#We usually recommend doing this locally, if you want to query data to reduce network load and inprove performance.</code></pre>
 <h2>Update Scan</h2>
 <pre><code class="language-plaintext">Request Type: POST
 Request Url: /db/v1/scan/update

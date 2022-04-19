@@ -2,7 +2,7 @@
 title: Enviorement Variables
 description: Enviorement variables that can be set in pamaxie's docker containers for additional settings
 published: true
-date: 2022-04-19T19:15:51.257Z
+date: 2022-04-19T19:16:21.750Z
 tags: 
 editor: ckeditor
 dateCreated: 2022-04-12T22:04:11.751Z
@@ -17,7 +17,7 @@ dateCreated: 2022-04-12T22:04:11.751Z
 <p><code>SendGridToken</code> – REQUIRED – This sets the SendGrid token for sending out emails (for things like registration)</p>
 <p><code>DbDriverGuid</code> – &nbsp;OPTIONAL – This sets the GUID for the default database driver (default is <code>283f10c3-5022-4cda-a5a7-e491a1e84b32</code>)</p>
 <p><code>JwtTimeout</code> – OPTIONAL – This sets the Timeout for the JWT bearer Token Generation (default is <code>10</code> minutes)</p>
-<p><code>JwtLLTimeout</code> – OPTIONAL – This sets the Timeout for the Long Lived JWT Bearer token Generation (default is <code>30</code> days). We usually do not recommend setting this to less than 10 days.</p>
+<p><code>JwtLLTimeout</code> – OPTIONAL – This sets the Timeout for the Long Lived JWT Bearer token Generation (default is <code>30</code> days). We do not recommend setting this to less than 10 days, because some of our code only refreshes the tokens every day to ensure they're still up to date.</p>
 <p><code>EndpointUrl</code> – OPTIONAL – The URL that is put into things like email or return data, we default to <code>https://api.pamaxie.com/db/v1/</code>, if you host the server yourself we recommend setting this to your URL.</p>
 <p><code>Hosts</code> – OPTIONAL – Default port and IP address the application uses (maybe separated by ‘;’ for multiple hosts) (otherwise we default to all IP's on port 80 (<code>http://0.0.0.0</code>))</p>
 <h1>Scanning API</h1>
